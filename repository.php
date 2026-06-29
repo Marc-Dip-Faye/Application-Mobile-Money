@@ -1,33 +1,20 @@
 <?php
 
-    $wallets = [];
-    $transactions = [];
+function trouverWalletIndex(array $wallets, string $telephone): int
+{
+    $telephones = array_column($wallets, 'telephone');
 
-    function trouverWalletIndex(array $wallets, string $telephone): int {
-        for ($i = 0; $i < count($wallets); $i++) {
-            if ($wallets[$i]['telephone'] === $telephone) {
-                return $i;
-            }
-        }
-        return -1;
-    }
+    $index = array_search($telephone, $telephones);
 
-    function verifiTelephoneExiste(array $wallets, string $telephone): bool {
-        for ($i = 0; $i < count($wallets); $i++) {
-            if ($wallets[$i]['telephone'] == $telephone) {
-                return true;
-            }
-        }
-        return false;
-    }
+    return $index === false ? -1 : $index;
+}
 
-    function verifiCodeExiste(array $wallets, string $code): bool {
-        for ($i = 0; $i < count($wallets); $i++) {
-            if ($wallets[$i]['code'] == $code) {
-                return true;
-            }
-        }
-        return false;
-    }
-    
-?>
+function verifiTelephoneExiste(array $wallets, string $telephone): bool
+{
+    return in_array($telephone, array_column($wallets, 'telephone'));
+}
+
+function verifiCodeExiste(array $wallets, string $code): bool
+{
+    return in_array($code, array_column($wallets, 'code'));
+}
