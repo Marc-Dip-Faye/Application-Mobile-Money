@@ -223,7 +223,7 @@
       <div class="bento-card bento-skills reveal">
         <div class="bento-badge">STACK MATRIX</div>
         <h3 class="bento-title">Technologies Maîtrisées</h3>
-        <div class="skills-chips">
+      <div class="skills-chips" id="skillsChips">
           <span class="skill-chip active"><i class="skill-icon">⚡</i> React / Next.js</span>
           <span class="skill-chip active"><i class="skill-icon">🚀</i> Node.js & Express</span>
           <span class="skill-chip active"><i class="skill-icon">🐘</i> PHP & Laravel</span>
@@ -278,62 +278,8 @@
       <button class="filter-btn" data-filter="design">Design</button>
     </div>
 
-    <div class="projets-grid">
-      <div class="projet-card reveal" data-category="web">
-        <div class="projet-image">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="Dashboard Analytics">
-          <div class="projet-overlay">
-            <div class="projet-info">
-              <span class="projet-category">Web App</span>
-              <h3 class="projet-name">Dashboard Analytics</h3>
-              <p class="projet-desc">Plateforme de visualisation de données en temps réel avec interface responsive.</p>
-              <div class="projet-tech"><span>React</span><span>Node.js</span><span>D3.js</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="projet-card reveal" data-category="ecommerce">
-        <div class="projet-image">
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="Shop Premium">
-          <div class="projet-overlay">
-            <div class="projet-info">
-              <span class="projet-category">E-commerce</span>
-              <h3 class="projet-name">Shop Premium</h3>
-              <p class="projet-desc">Boutique en ligne moderne avec système de paiement sécurisé et gestion des stocks.</p>
-              <div class="projet-tech"><span>Next.js</span><span>Stripe</span><span>MongoDB</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="projet-card reveal" data-category="app">
-        <div class="projet-image">
-          <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80" alt="Task Master Pro">
-          <div class="projet-overlay">
-            <div class="projet-info">
-              <span class="projet-category">Mobile App</span>
-              <h3 class="projet-name">Task Master Pro</h3>
-              <p class="projet-desc">Application mobile de gestion de tâches collaborative avec notifications instantanées.</p>
-              <div class="projet-tech"><span>React Native</span><span>Firebase</span><span>Redux</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="projet-card reveal" data-category="web">
-        <div class="projet-image">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Social Connect">
-          <div class="projet-overlay">
-            <div class="projet-info">
-              <span class="projet-category">Web App</span>
-              <h3 class="projet-name">Social Connect</h3>
-              <p class="projet-desc">Réseau social professionnel innovant axé sur le partage d'expériences et d'opportunités.</p>
-              <div class="projet-tech"><span>Vue.js</span><span>GraphQL</span><span>PostgreSQL</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="projets-grid" id="projetsGrid">
+      <!-- Dynamic project cards loaded via fetch('data/projects.json') -->
     </div>
   </div>
 </section>
@@ -605,6 +551,12 @@
     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M18 6L6 18M6 6l12 12"/>
     </svg>
+  </button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Précédent">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Suivant">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
   </button>
   <div class="lightbox-content">
     <img src="" alt="" class="lightbox-img" id="lightboxImg">

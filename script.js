@@ -2,8 +2,24 @@
 // MARC DIP FAYE PORTFOLIO INTERACTION SCRIPT
 // ============================================
 
+// Global Data Store
+let projectsData = [];
+let skillsData = [];
+let voyagesData = [];
+
+// Lightbox Gallery State
+let currentGalleryImages = [];
+let currentGalleryIndex = 0;
+
 // ===== LOADER & INITIALIZATION =====
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
+  // Load Dynamic Data First
+  await Promise.all([
+    loadProjectsData(),
+    loadSkillsData(),
+    loadVoyagesData()
+  ]);
+
   setTimeout(() => {
     const loader = document.getElementById('loader');
     if (loader) loader.classList.add('done');
@@ -23,6 +39,149 @@ window.addEventListener('load', () => {
     createHeroParticles();
   }, 1200);
 });
+
+// ===== FETCH DATA FUNCTIONS =====
+
+// 1. Load Projects from data/projects.json
+async function loadProjectsData() {
+  const container = document.getElementById('projetsGrid');
+  if (!container) return;
+
+  try {
+    const response = await fetch('data/projects.json');
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    projectsData = await response.json();
+    renderProjects(projectsData);
+  } catch (error) {
+    console.warn('Could not load data/projects.json, using fallback data:', error);
+    // Fallback static projects
+    projectsData = [
+      {
+        id: 1,
+        title: "Dashboard Analytics",
+        category: "web",
+        categoryLabel: "Web App",
+        description: "Plateforme de visualisation de données en temps réel avec interface responsive.",
+        images: ["https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"],
+        technologies: ["React", "Node.js", "D3.js"]
+      },
+      {
+        id: 2,
+        title: "Shop Premium",
+        category: "ecommerce",
+        categoryLabel: "E-commerce",
+        description: "Boutique en ligne moderne avec système de paiement sécurisé et gestion des stocks.",
+        images: ["https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80"],
+        technologies: ["Next.js", "Stripe", "MongoDB"]
+      },
+      {
+        id: 3,
+        title: "Task Master Pro",
+        category: "app",
+        categoryLabel: "Mobile App",
+        description: "Application mobile de gestion de tâches collaborative avec notifications instantanées.",
+        images: ["https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80"],
+        technologies: ["React Native", "Firebase", "Redux"]
+      },
+      {
+        id: 4,
+        title: "Social Connect",
+        category: "web",
+        categoryLabel: "Web App",
+        description: "Réseau social professionnel innovant axé sur le partage d'expériences et d'opportunités.",
+        images: ["https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"],
+        technologies: ["Vue.js", "GraphQL", "PostgreSQL"]
+      }
+    ];
+    renderProjects(projectsData);
+  }
+}
+
+// Render Project Cards maintaining exact HTML structure and CSS classes
+function renderProjects(projects) {
+  const container = document.getElementById('projetsGrid');
+  if (!container) return;
+
+  container.innerHTML = '';
+
+  projects.forEach((projet) => {
+    const card = document.createElement('div');
+    card.className = 'projet-card reveal visible';
+    card.setAttribute('data-category', projet.category);
+    card.setAttribute('data-id', projet.id);
+
+    const mainImage = (projet.images && projet.images.length > 0)
+      ? projet.images[0]
+      : 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80';
+
+    const techChips = (projet.technologies || [])
+      .map(tech => `<span>${escapeHtml(tech)}</span>`)
+      .join('');
+
+    card.innerHTML = `
+      <div class="projet-image">
+        <img src="${mainImage}" alt="${escapeHtml(projet.title)}">
+        <div class="projet-overlay">
+          <div class="projet-info">
+            <span class="projet-category">${escapeHtml(projet.categoryLabel || projet.category)}</span>
+            <h3 class="projet-name">${escapeHtml(projet.title)}</h3>
+            <p class="projet-desc">${escapeHtml(projet.description)}</p>
+            <div class="projet-tech">${techChips}</div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Click handler to open project multi-image gallery in Lightbox
+    card.addEventListener('click', () => {
+      openProjectGallery(projet);
+    });
+
+    container.appendChild(card);
+  });
+
+  // Re-observe reveal elements if needed
+  if (typeof revealObserver !== 'undefined') {
+    container.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  }
+}
+
+// 2. Load Skills from data/skills.json
+async function loadSkillsData() {
+  const container = document.getElementById('skillsChips');
+  if (!container) return;
+
+  try {
+    const response = await fetch('data/skills.json');
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    skillsData = await response.json();
+    renderSkills(skillsData);
+  } catch (error) {
+    console.warn('Could not load data/skills.json:', error);
+  }
+}
+
+function renderSkills(skills) {
+  const container = document.getElementById('skillsChips');
+  if (!container || !skills || skills.length === 0) return;
+
+  container.innerHTML = skills.map(skill => `
+    <span class="skill-chip ${skill.active ? 'active' : ''}">
+      <i class="skill-icon">${skill.icon || '⚡'}</i> ${escapeHtml(skill.name)}
+    </span>
+  `).join('');
+}
+
+// 3. Load Voyages from data/voyages.json
+async function loadVoyagesData() {
+  try {
+    const response = await fetch('data/voyages.json');
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    voyagesData = await response.json();
+  } catch (error) {
+    console.warn('Could not load data/voyages.json:', error);
+  }
+}
 
 // ===== TYPEWRITER EFFECT =====
 const textToType = "Développeur Fullstack & Designer spécialisé dans la création d'applications web et mobiles modernes, performantes et élégantes.";
@@ -69,19 +228,22 @@ if (window.innerWidth > 768 && cursor && ring) {
   }
   animateRing();
 
-  document.querySelectorAll('a, button, .filter-btn, .projet-card, .voyage-item, .dock-item, .social-link, .bento-card, .skill-chip').forEach(el => {
-    el.addEventListener('mouseenter', () => {
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest('a, button, .filter-btn, .projet-card, .voyage-item, .dock-item, .social-link, .bento-card, .skill-chip')) {
       ring.style.width = '55px';
       ring.style.height = '55px';
       ring.style.borderColor = 'var(--neon-green)';
       ring.style.boxShadow = '0 0 15px var(--neon-green-glow)';
-    });
-    el.addEventListener('mouseleave', () => {
+    }
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest('a, button, .filter-btn, .projet-card, .voyage-item, .dock-item, .social-link, .bento-card, .skill-chip')) {
       ring.style.width = '42px';
       ring.style.height = '42px';
       ring.style.borderColor = 'rgba(0, 255, 102, 0.4)';
       ring.style.boxShadow = 'none';
-    });
+    }
   });
 }
 
@@ -149,24 +311,34 @@ function processCliCommand(cmd) {
       break;
 
     case 'about':
-      appendCliLine(`Marc Dip FAYE — Fullstack Developer & Creative Tech baséd à Dakar.
+      appendCliLine(`Marc Dip FAYE — Fullstack Developer & Creative Tech basé à Dakar.
 Spécialisé en React, Next.js, Node.js, PHP & Architectures Web/Mobile performantes.`);
       break;
 
     case 'skills':
-      appendCliLine(`Stack Technique Principal:
+      if (skillsData && skillsData.length > 0) {
+        const list = skillsData.map(s => `• ${s.name}`).join('<br> ');
+        appendCliLine(`Stack Technique Dynamic:<br> ${list}`);
+      } else {
+        appendCliLine(`Stack Technique Principal:
  ⚡ Frontend: React, Next.js, Vue.js, Tailwind CSS, TypeScript
  🚀 Backend: Node.js, Express, PHP, Laravel, REST & GraphQL
  🗄️ Database: MongoDB, PostgreSQL, Firebase
  🐳 DevOps: Docker, Vercel, Git, CI/CD`);
+      }
       break;
 
     case 'projects':
-      appendCliLine(`Projets phares:
+      if (projectsData && projectsData.length > 0) {
+        const list = projectsData.map((p, idx) => ` ${idx + 1}. <span class="neon-green">${p.title}</span> (${p.categoryLabel || p.category}) - ${p.technologies ? p.technologies.join(', ') : ''}`).join('<br>');
+        appendCliLine(`Projets phares (chargés depuis JSON):<br>${list}`);
+      } else {
+        appendCliLine(`Projets phares:
  1. Dashboard Analytics (React, Node.js, D3.js)
  2. Shop Premium (Next.js, Stripe, MongoDB)
  3. Task Master Pro (React Native, Firebase)
  4. Social Connect (Vue.js, GraphQL, PostgreSQL)`);
+      }
       break;
 
     case 'workflow':
@@ -206,7 +378,8 @@ function appendCliLine(htmlContent) {
 }
 
 function escapeHtml(text) {
-  return text.replace(/[&<>"']/g, function(m) {
+  if (!text) return '';
+  return String(text).replace(/[&<>"']/g, function(m) {
     return {
       '&': '&amp;',
       '<': '&lt;',
@@ -279,7 +452,6 @@ dots.forEach((dot, i) => {
 
 // ===== PROJECT CATEGORY FILTERING =====
 const filterBtns = document.querySelectorAll('.filter-btn');
-const projetCards = document.querySelectorAll('.projet-card');
 
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
@@ -287,7 +459,8 @@ filterBtns.forEach(btn => {
     btn.classList.add('active');
     const filter = btn.getAttribute('data-filter');
 
-    projetCards.forEach(card => {
+    const cards = document.querySelectorAll('#projetsGrid .projet-card');
+    cards.forEach(card => {
       const category = card.getAttribute('data-category');
       if (filter === 'all' || category === filter) {
         card.classList.remove('hidden');
@@ -461,16 +634,93 @@ if (sliderTrack) {
   updateSlider();
 }
 
-// ===== LIGHTBOX MODAL FOR VOYAGES =====
+// ===== LIGHTBOX MODAL FOR VOYAGES & PROJECTS =====
 const lightbox = document.getElementById('lightbox');
 const lightboxClose = document.getElementById('lightboxClose');
+const lightboxPrev = document.getElementById('lightboxPrev');
+const lightboxNext = document.getElementById('lightboxNext');
 const lightboxImg = document.getElementById('lightboxImg');
 const lightboxVideo = document.getElementById('lightboxVideo');
 const lightboxInfo = document.getElementById('lightboxInfo');
-const voyageItems = document.querySelectorAll('.voyage-item');
 
+// Open multi-image gallery for Projects
+function openProjectGallery(projet) {
+  if (!projet || !projet.images || projet.images.length === 0) return;
+
+  currentGalleryImages = projet.images;
+  currentGalleryIndex = 0;
+
+  updateProjectGalleryView(projet);
+
+  if (lightbox) lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function updateProjectGalleryView(projet) {
+  const imageSrc = currentGalleryImages[currentGalleryIndex];
+
+  lightboxImg.src = imageSrc;
+  lightboxImg.classList.add('active');
+  lightboxVideo.classList.remove('active');
+  if (lightboxVideo.pause) lightboxVideo.pause();
+
+  const total = currentGalleryImages.length;
+  const navDisplay = total > 1 ? 'flex' : 'none';
+  if (lightboxPrev) lightboxPrev.style.display = navDisplay;
+  if (lightboxNext) lightboxNext.style.display = navDisplay;
+
+  if (lightboxInfo) {
+    const linkButtons = `
+      <div class="lightbox-project-links">
+        ${projet.demo ? `<a href="${projet.demo}" target="_blank" rel="noopener" class="lightbox-btn">Live Demo ↗</a>` : ''}
+        ${projet.github ? `<a href="${projet.github}" target="_blank" rel="noopener" class="lightbox-btn secondary">GitHub Repo ↗</a>` : ''}
+      </div>
+    `;
+    lightboxInfo.innerHTML = `
+      <strong>${escapeHtml(projet.title)} (${currentGalleryIndex + 1}/${total})</strong><br>
+      <span>${escapeHtml(projet.description)}</span>
+      ${linkButtons}
+    `;
+  }
+}
+
+// Lightbox Nav Click Events
+if (lightboxPrev) {
+  lightboxPrev.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (currentGalleryImages.length > 1) {
+      currentGalleryIndex = (currentGalleryIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
+      lightboxImg.src = currentGalleryImages[currentGalleryIndex];
+      const projectTitle = lightboxInfo.querySelector('strong');
+      if (projectTitle) {
+        projectTitle.textContent = `${projectTitle.textContent.split('(')[0].trim()} (${currentGalleryIndex + 1}/${currentGalleryImages.length})`;
+      }
+    }
+  });
+}
+
+if (lightboxNext) {
+  lightboxNext.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (currentGalleryImages.length > 1) {
+      currentGalleryIndex = (currentGalleryIndex + 1) % currentGalleryImages.length;
+      lightboxImg.src = currentGalleryImages[currentGalleryIndex];
+      const projectTitle = lightboxInfo.querySelector('strong');
+      if (projectTitle) {
+        projectTitle.textContent = `${projectTitle.textContent.split('(')[0].trim()} (${currentGalleryIndex + 1}/${currentGalleryImages.length})`;
+      }
+    }
+  });
+}
+
+// Voyages Items Click Handler
+const voyageItems = document.querySelectorAll('.voyage-item');
 voyageItems.forEach(item => {
   item.addEventListener('click', () => {
+    currentGalleryImages = [];
+    if (lightboxPrev) lightboxPrev.style.display = 'none';
+    if (lightboxNext) lightboxNext.style.display = 'none';
+
     const type = item.getAttribute('data-type');
     const img = item.querySelector('.voyage-img');
     const location = item.querySelector('.voyage-location')?.textContent || '';
@@ -492,7 +742,7 @@ voyageItems.forEach(item => {
     }
 
     if (lightboxInfo) {
-      lightboxInfo.innerHTML = `<strong>${location}</strong><br>${title}`;
+      lightboxInfo.innerHTML = `<strong>${escapeHtml(location)}</strong><br>${escapeHtml(title)}`;
     }
     if (lightbox) lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
