@@ -69,7 +69,7 @@ if (window.innerWidth > 768 && cursor && ring) {
   }
   animateRing();
 
-  document.querySelectorAll('a, button, .filter-btn, .projet-card, .voyage-item, .dock-item, .social-link').forEach(el => {
+  document.querySelectorAll('a, button, .filter-btn, .projet-card, .voyage-item, .dock-item, .social-link, .bento-card, .skill-chip').forEach(el => {
     el.addEventListener('mouseenter', () => {
       ring.style.width = '55px';
       ring.style.height = '55px';
@@ -115,6 +115,107 @@ document.addEventListener('keydown', (e) => {
     toggleMenu();
   }
 });
+
+// ===== INTERACTIVE TERMINAL CLI (TECH LAB) =====
+const cliInput = document.getElementById('cliInput');
+const cliOutput = document.getElementById('cliOutput');
+
+if (cliInput && cliOutput) {
+  cliInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const command = cliInput.value.trim().toLowerCase();
+      cliInput.value = '';
+
+      // Append user command line
+      appendCliLine(`<span class="cli-prompt">marc@portfolio:~$</span> ${escapeHtml(command)}`);
+
+      // Process command
+      processCliCommand(command);
+    }
+  });
+}
+
+function processCliCommand(cmd) {
+  switch (cmd) {
+    case 'help':
+      appendCliLine(`Commandes disponibles:
+ - <span class="neon-green">about</span> : À propos de Marc Dip FAYE
+ - <span class="neon-green">skills</span> : Matrice de compétences & technologies
+ - <span class="neon-green">projects</span> : Liste des projets récents
+ - <span class="neon-green">workflow</span> : Étapes de développement
+ - <span class="neon-green">contact</span> : Coordonnées directes
+ - <span class="neon-green">matrix</span> : Activer la pluie de code
+ - <span class="neon-green">clear</span> : Effacer la console`);
+      break;
+
+    case 'about':
+      appendCliLine(`Marc Dip FAYE — Fullstack Developer & Creative Tech baséd à Dakar.
+Spécialisé en React, Next.js, Node.js, PHP & Architectures Web/Mobile performantes.`);
+      break;
+
+    case 'skills':
+      appendCliLine(`Stack Technique Principal:
+ ⚡ Frontend: React, Next.js, Vue.js, Tailwind CSS, TypeScript
+ 🚀 Backend: Node.js, Express, PHP, Laravel, REST & GraphQL
+ 🗄️ Database: MongoDB, PostgreSQL, Firebase
+ 🐳 DevOps: Docker, Vercel, Git, CI/CD`);
+      break;
+
+    case 'projects':
+      appendCliLine(`Projets phares:
+ 1. Dashboard Analytics (React, Node.js, D3.js)
+ 2. Shop Premium (Next.js, Stripe, MongoDB)
+ 3. Task Master Pro (React Native, Firebase)
+ 4. Social Connect (Vue.js, GraphQL, PostgreSQL)`);
+      break;
+
+    case 'workflow':
+      appendCliLine(`Workflow 4 Phases:
+ 01. Découverte & Strategy ➔ 02. UI/UX Design Tech ➔ 03. Développement Agile ➔ 04. Déploiement CI/CD`);
+      break;
+
+    case 'contact':
+      appendCliLine(`Email: marcfaye457@gmail.com | Github & Linkedin disponibles ci-dessous.`);
+      break;
+
+    case 'matrix':
+      appendCliLine(`<span class="neon-green">01001101 01000001 01010010 01000011 -- SYSTEM ONLINE -- 01000110 01000001 01011001 01000101</span>`);
+      break;
+
+    case 'clear':
+      cliOutput.innerHTML = '';
+      return;
+
+    case '':
+      break;
+
+    default:
+      appendCliLine(`Commande non reconnue: '${escapeHtml(cmd)}'. Tapez <span class="neon-green">'help'</span>.`);
+      break;
+  }
+
+  // Scroll to bottom of terminal
+  cliOutput.scrollTop = cliOutput.scrollHeight;
+}
+
+function appendCliLine(htmlContent) {
+  const line = document.createElement('p');
+  line.className = 'cli-line';
+  line.innerHTML = htmlContent;
+  cliOutput.appendChild(line);
+}
+
+function escapeHtml(text) {
+  return text.replace(/[&<>"']/g, function(m) {
+    return {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;'
+    }[m];
+  });
+}
 
 // ===== SCROLL REVEAL & SECTION TRACKING =====
 const revealElements = document.querySelectorAll('.reveal');

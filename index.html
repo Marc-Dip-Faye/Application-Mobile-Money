@@ -42,7 +42,9 @@
 
   <ul id="navMenu">
     <li><a href="#hero">Accueil</a></li>
+    <li><a href="#tech-lab">Tech Lab</a></li>
     <li><a href="#projets">Projets</a></li>
+    <li><a href="#workflow">Workflow</a></li>
     <li><a href="#voyages">Voyages</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -56,9 +58,11 @@
 <!-- Section Indicator Dots (Desktop) -->
 <div class="section-counter">
   <div class="dot active" data-section="0" title="Accueil"></div>
-  <div class="dot" data-section="1" title="Projets"></div>
-  <div class="dot" data-section="2" title="Voyages"></div>
-  <div class="dot" data-section="3" title="Contact"></div>
+  <div class="dot" data-section="1" title="Tech Lab"></div>
+  <div class="dot" data-section="2" title="Projets"></div>
+  <div class="dot" data-section="3" title="Workflow"></div>
+  <div class="dot" data-section="4" title="Voyages"></div>
+  <div class="dot" data-section="5" title="Contact"></div>
 </div>
 
 <!-- HERO SECTION -->
@@ -151,12 +155,110 @@
   </div>
 </section>
 
+<!-- TECH LAB & BENTO GRID SECTION -->
+<section id="tech-lab">
+  <div class="tech-lab-bg"></div>
+  <div class="tech-lab-content">
+    <div class="section-header reveal">
+      <div class="section-label">// 02 — TECH LAB & BENTO GRID</div>
+      <h2 class="section-title">Espace d'expérimentation<br>& <span class="neon-green">Performance.</span></h2>
+      <p class="section-subtitle">Découvrez mon écosystème technique, ma console interactive CLI et ma matrice de compétences.</p>
+    </div>
+
+    <!-- Bento Grid Container -->
+    <div class="bento-grid">
+
+      <!-- Bento Item 1: Interactive Terminal CLI -->
+      <div class="bento-card bento-cli reveal">
+        <div class="bento-badge">INTERACTIVE CLI</div>
+        <div class="cli-window">
+          <div class="cli-header">
+            <div class="terminal-dots">
+              <span class="dot-red"></span>
+              <span class="dot-yellow"></span>
+              <span class="dot-green"></span>
+            </div>
+            <span class="cli-title">bash — marc-cli v2.4</span>
+          </div>
+          <div class="cli-body" id="cliOutput">
+            <p class="cli-line"><span class="cli-prompt">marc@portfolio:~$</span> type <span class="neon-green">'help'</span> pour voir les commandes disponibles.</p>
+          </div>
+          <div class="cli-input-wrapper">
+            <span class="cli-prompt">marc@portfolio:~$</span>
+            <input type="text" id="cliInput" class="cli-input" placeholder="Entrez une commande (ex: skills, projects, contact)..." autocomplete="off" spellcheck="false">
+          </div>
+        </div>
+      </div>
+
+      <!-- Bento Item 2: Performance Metrics & Lighthouse Score -->
+      <div class="bento-card bento-metrics reveal">
+        <div class="bento-badge">METRICS</div>
+        <h3 class="bento-title">Score de Performance</h3>
+        <div class="lighthouse-score">
+          <div class="score-circle">
+            <svg viewBox="0 0 36 36" class="circular-chart green">
+              <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <text x="18" y="20.35" class="percentage">100</text>
+            </svg>
+          </div>
+          <div class="score-details">
+            <div class="metric-item"><span class="metric-dot"></span> Performance: 100%</div>
+            <div class="metric-item"><span class="metric-dot"></span> Accessibilité: 100%</div>
+            <div class="metric-item"><span class="metric-dot"></span> Best Practices: 100%</div>
+            <div class="metric-item"><span class="metric-dot"></span> SEO & Security: A+</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bento Item 3: Skills Radar & Matrix -->
+      <div class="bento-card bento-skills reveal">
+        <div class="bento-badge">STACK MATRIX</div>
+        <h3 class="bento-title">Technologies Maîtrisées</h3>
+        <div class="skills-chips">
+          <span class="skill-chip active"><i class="skill-icon">⚡</i> React / Next.js</span>
+          <span class="skill-chip active"><i class="skill-icon">🚀</i> Node.js & Express</span>
+          <span class="skill-chip active"><i class="skill-icon">🐘</i> PHP & Laravel</span>
+          <span class="skill-chip active"><i class="skill-icon">🎨</i> Tailwind & CSS Architecture</span>
+          <span class="skill-chip"><i class="skill-icon">🗄️</i> MongoDB & PostgreSQL</span>
+          <span class="skill-chip"><i class="skill-icon">🐳</i> Docker & CI/CD</span>
+          <span class="skill-chip"><i class="skill-icon">📱</i> React Native</span>
+          <span class="skill-chip"><i class="skill-icon">⚡</i> GraphQL & REST APIs</span>
+        </div>
+      </div>
+
+      <!-- Bento Item 4: Career & Experience Timeline -->
+      <div class="bento-card bento-experience reveal">
+        <div class="bento-badge">PARCOURS</div>
+        <h3 class="bento-title">Expérience & Chronologie</h3>
+        <div class="timeline-compact">
+          <div class="timeline-entry active">
+            <span class="entry-year">2024 — PRÉSENT</span>
+            <div class="entry-content">
+              <strong>Fullstack Developer Freelance</strong>
+              <p>Conception d'applications web sur mesure & consulting tech.</p>
+            </div>
+          </div>
+          <div class="timeline-entry">
+            <span class="entry-year">2023 — 2024</span>
+            <div class="entry-content">
+              <strong>Développeur Web & Mobile @ Orange Digital Center</strong>
+              <p>Projets à fort impact, intégrations API & architectures moderne.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- PROJETS SECTION -->
 <section id="projets">
   <div class="projets-bg"></div>
   <div class="projets-content">
     <div class="section-header reveal">
-      <div class="section-label">// 02 — MES PROJETS</div>
+      <div class="section-label">// 03 — MES PROJETS</div>
       <h2 class="section-title">Des réalisations<br>qui font la<br><span class="neon-green">différence.</span></h2>
     </div>
 
@@ -228,12 +330,66 @@
   </div>
 </section>
 
+<!-- WORKFLOW CRÉATIF SECTION -->
+<section id="workflow">
+  <div class="workflow-bg"></div>
+  <div class="workflow-content">
+    <div class="section-header reveal">
+      <div class="section-label">// 04 — WORKFLOW CRÉATIF</div>
+      <h2 class="section-title">De l'idée au<br><span class="neon-green">Déploiement.</span></h2>
+      <p class="section-subtitle">Un processus structuré et agile pour transformer vos concepts en produits d'exception.</p>
+    </div>
+
+    <div class="workflow-pipeline">
+      <div class="workflow-step reveal" data-step="1">
+        <div class="step-number">01</div>
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+        <h3 class="step-title">Découverte & Strategy</h3>
+        <p class="step-desc">Analyse approfondie des besoins, définition de l'architecture, étude utilisateur et choix du stack technique optimal.</p>
+        <span class="step-tag">Phase 1 — Focus Specs</span>
+      </div>
+
+      <div class="workflow-step reveal" data-step="2">
+        <div class="step-number">02</div>
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+        </div>
+        <h3 class="step-title">UI/UX Design Tech</h3>
+        <p class="step-desc">Création de wireframes, prototypes interactifs et design systems modernes avec micro-interactions cyber/futuristes.</p>
+        <span class="step-tag">Phase 2 — Figma & Code Prototypes</span>
+      </div>
+
+      <div class="workflow-step reveal" data-step="3">
+        <div class="step-number">03</div>
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+        </div>
+        <h3 class="step-title">Développement Agile</h3>
+        <p class="step-desc">Codage propre, typé et modulaire. Intégration continue, API REST/GraphQL et tests rigoureux de performance.</p>
+        <span class="step-tag">Phase 3 — Clean Code & Testing</span>
+      </div>
+
+      <div class="workflow-step reveal" data-step="4">
+        <div class="step-number">04</div>
+        <div class="step-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <h3 class="step-title">Lancement & Suivi</h3>
+        <p class="step-desc">Déploiement Cloud (Vercel/AWS/Docker), optimisation SEO/Lighthouse 100% et accompagnement continu.</p>
+        <span class="step-tag">Phase 4 — CI/CD & Production</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- VOYAGES SECTION -->
 <section id="voyages">
   <div class="voyages-bg"></div>
   <div class="voyages-content">
     <div class="section-header reveal">
-      <div class="section-label">// 03 — MES VOYAGES</div>
+      <div class="section-label">// 05 — MES VOYAGES</div>
       <h2 class="section-title">Explorer le<br>monde, une<br><span class="neon-green">destination</span> à la fois.</h2>
       <p class="voyages-subtitle reveal">
         Collection de moments capturés à travers le monde. Chaque photo raconte une histoire,
@@ -290,7 +446,7 @@
   <div class="contact-grid-bg"></div>
 
   <div class="contact-content">
-    <div class="section-label reveal">// 04 — CONTACT</div>
+    <div class="section-label reveal">// 06 — CONTACT</div>
 
     <h2 class="contact-title reveal">
       Vous avez un projet ?<br>
@@ -334,28 +490,42 @@
 <div class="mobile-app-dock" id="mobileAppDock">
   <a href="#hero" class="dock-item active" data-dock="hero">
     <div class="dock-icon">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
     </div>
     <span class="dock-label">Accueil</span>
     <span class="dock-indicator"></span>
   </a>
+  <a href="#tech-lab" class="dock-item" data-dock="tech-lab">
+    <div class="dock-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+    </div>
+    <span class="dock-label">Lab</span>
+    <span class="dock-indicator"></span>
+  </a>
   <a href="#projets" class="dock-item" data-dock="projets">
     <div class="dock-icon">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
     </div>
     <span class="dock-label">Projets</span>
     <span class="dock-indicator"></span>
   </a>
+  <a href="#workflow" class="dock-item" data-dock="workflow">
+    <div class="dock-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+    </div>
+    <span class="dock-label">Workflow</span>
+    <span class="dock-indicator"></span>
+  </a>
   <a href="#voyages" class="dock-item" data-dock="voyages">
     <div class="dock-icon">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
     </div>
     <span class="dock-label">Voyages</span>
     <span class="dock-indicator"></span>
   </a>
   <a href="#contact" class="dock-item" data-dock="contact">
     <div class="dock-icon">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
     </div>
     <span class="dock-label">Contact</span>
     <span class="dock-indicator"></span>
