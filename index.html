@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marc Dip FAYE — Fullstack Developer & Designer</title>
+
+  <!-- Google Fonts for High-Tech Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Syne:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Loader -->
+<div class="loader" id="loader">
+  <div class="loader-content">
+    <div class="loader-terminal-tag">&lt;SYSTEM_INIT /&gt;</div>
+    <div class="loader-text">
+      <span style="animation-delay:0s">M</span><span style="animation-delay:0.05s">A</span><span style="animation-delay:0.1s">R</span><span style="animation-delay:0.15s">C</span><span style="animation-delay:0.2s">&nbsp;</span><span style="animation-delay:0.25s" class="neon-green">D</span><span style="animation-delay:0.3s" class="neon-green">I</span><span style="animation-delay:0.35s" class="neon-green">P</span><span style="animation-delay:0.4s">&nbsp;</span><span style="animation-delay:0.45s">F</span><span style="animation-delay:0.5s">A</span><span style="animation-delay:0.55s">Y</span><span style="animation-delay:0.6s">E</span>
+    </div>
+    <div class="loader-progress"><div class="loader-bar"></div></div>
+  </div>
+</div>
+
+<!-- Custom Cursor (Desktop) -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Top Navigation / App Header Bar -->
+<nav id="topNav">
+  <div class="logo">
+    <span class="logo-symbol">&lt;/&gt;</span> Marc Dip<span class="neon-dot">.</span>FAYE
+  </div>
+
+  <div class="status-badge header-status">
+    <span class="status-pulse"></span>
+    <span class="status-text">DISPONIBLE — DAKAR / REMOTE</span>
+  </div>
+
+  <ul id="navMenu">
+    <li><a href="#hero">Accueil</a></li>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#voyages">Voyages</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<!-- Section Indicator Dots (Desktop) -->
+<div class="section-counter">
+  <div class="dot active" data-section="0" title="Accueil"></div>
+  <div class="dot" data-section="1" title="Projets"></div>
+  <div class="dot" data-section="2" title="Voyages"></div>
+  <div class="dot" data-section="3" title="Contact"></div>
+</div>
+
+<!-- HERO SECTION -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="cyber-grid"></div>
+  <div class="hero-particles" id="heroParticles"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="section-label reveal">// 01 — WHO AM I</div>
+
+      <h1 class="hero-title">
+        <span class="line reveal"><span>Développeur</span></span>
+        <span class="line reveal neon-green"><span>passionné,</span></span>
+        <span class="line reveal"><span>créatif &</span></span>
+        <span class="line reveal neon-green"><span>voyageur.</span></span>
+      </h1>
+
+      <div class="hero-text-wrapper reveal">
+        <p class="hero-text">
+          <span id="typewriter-text"></span><span class="typing-cursor"></span>
+        </p>
+      </div>
+
+      <!-- Developer Terminal / Tech stack card -->
+      <div class="dev-terminal reveal">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="dot-red"></span>
+            <span class="dot-yellow"></span>
+            <span class="dot-green"></span>
+          </div>
+          <span class="terminal-title">tech_stack.config.js</span>
+        </div>
+        <div class="terminal-body">
+          <p><span class="code-keyword">const</span> <span class="code-var">developer</span> = {</p>
+          <p class="indent-1"><span class="code-prop">name</span>: <span class="code-string">'Marc Dip FAYE'</span>,</p>
+          <p class="indent-1"><span class="code-prop">role</span>: <span class="code-string">'Fullstack Developer & Creative Tech'</span>,</p>
+          <p class="indent-1"><span class="code-prop">stack</span>: [<span class="code-string">'React'</span>, <span class="code-string">'Next.js'</span>, <span class="code-string">'Node.js'</span>, <span class="code-string">'PHP'</span>, <span class="code-string">'Tailwind'</span>],</p>
+          <p class="indent-1"><span class="code-prop">location</span>: <span class="code-string">'Dakar, Sénégal 🇸🇳'</span></p>
+          <p>};</p>
+        </div>
+      </div>
+
+      <div class="hero-stats reveal">
+        <div class="stat">
+          <div class="stat-value">
+            <span class="stat-number" data-target="3">0</span>
+            <span class="stat-suffix">+</span>
+          </div>
+          <span class="stat-label">Projets</span>
+        </div>
+        <div class="stat">
+          <div class="stat-value">
+            <span class="stat-number" data-target="1">0</span>
+            <span class="stat-suffix">+</span>
+          </div>
+          <span class="stat-label">Années d'exp.</span>
+        </div>
+        <div class="stat">
+          <div class="stat-value">
+            <span class="stat-number" data-target="3">0</span>
+            <span class="stat-suffix">+</span>
+          </div>
+          <span class="stat-label">Clients</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="portrait-frame" id="portraitFrame">
+        <div class="portrait-image-wrapper">
+          <img src="marc/marc.jpeg" alt="Marc Dip FAYE" class="portrait-image" id="portraitImg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&q=80';">
+          <div class="portrait-overlay"></div>
+          <div class="portrait-badge">ODC DEV</div>
+        </div>
+        <div class="portrait-border"></div>
+        <div class="portrait-corner tl"></div>
+        <div class="portrait-corner tr"></div>
+        <div class="portrait-corner bl"></div>
+        <div class="portrait-corner br"></div>
+      </div>
+      <div class="portrait-caption reveal">
+        <span class="caption-line"></span>
+        <span>Marc Dip FAYE — Fullstack Developer, Sénégal 2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETS SECTION -->
+<section id="projets">
+  <div class="projets-bg"></div>
+  <div class="projets-content">
+    <div class="section-header reveal">
+      <div class="section-label">// 02 — MES PROJETS</div>
+      <h2 class="section-title">Des réalisations<br>qui font la<br><span class="neon-green">différence.</span></h2>
+    </div>
+
+    <div class="projets-filters reveal">
+      <button class="filter-btn active" data-filter="all">Tous</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <button class="filter-btn" data-filter="app">Applications</button>
+      <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+      <button class="filter-btn" data-filter="design">Design</button>
+    </div>
+
+    <div class="projets-grid">
+      <div class="projet-card reveal" data-category="web">
+        <div class="projet-image">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="Dashboard Analytics">
+          <div class="projet-overlay">
+            <div class="projet-info">
+              <span class="projet-category">Web App</span>
+              <h3 class="projet-name">Dashboard Analytics</h3>
+              <p class="projet-desc">Plateforme de visualisation de données en temps réel avec interface responsive.</p>
+              <div class="projet-tech"><span>React</span><span>Node.js</span><span>D3.js</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="projet-card reveal" data-category="ecommerce">
+        <div class="projet-image">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="Shop Premium">
+          <div class="projet-overlay">
+            <div class="projet-info">
+              <span class="projet-category">E-commerce</span>
+              <h3 class="projet-name">Shop Premium</h3>
+              <p class="projet-desc">Boutique en ligne moderne avec système de paiement sécurisé et gestion des stocks.</p>
+              <div class="projet-tech"><span>Next.js</span><span>Stripe</span><span>MongoDB</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="projet-card reveal" data-category="app">
+        <div class="projet-image">
+          <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80" alt="Task Master Pro">
+          <div class="projet-overlay">
+            <div class="projet-info">
+              <span class="projet-category">Mobile App</span>
+              <h3 class="projet-name">Task Master Pro</h3>
+              <p class="projet-desc">Application mobile de gestion de tâches collaborative avec notifications instantanées.</p>
+              <div class="projet-tech"><span>React Native</span><span>Firebase</span><span>Redux</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="projet-card reveal" data-category="web">
+        <div class="projet-image">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Social Connect">
+          <div class="projet-overlay">
+            <div class="projet-info">
+              <span class="projet-category">Web App</span>
+              <h3 class="projet-name">Social Connect</h3>
+              <p class="projet-desc">Réseau social professionnel innovant axé sur le partage d'expériences et d'opportunités.</p>
+              <div class="projet-tech"><span>Vue.js</span><span>GraphQL</span><span>PostgreSQL</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOYAGES SECTION -->
+<section id="voyages">
+  <div class="voyages-bg"></div>
+  <div class="voyages-content">
+    <div class="section-header reveal">
+      <div class="section-label">// 03 — MES VOYAGES</div>
+      <h2 class="section-title">Explorer le<br>monde, une<br><span class="neon-green">destination</span> à la fois.</h2>
+      <p class="voyages-subtitle reveal">
+        Collection de moments capturés à travers le monde. Chaque photo raconte une histoire,
+        chaque voyage nourrit ma créativité technique.
+      </p>
+    </div>
+
+    <div class="voyages-gallery">
+      <div class="voyage-item reveal" data-type="image">
+        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80" alt="Kyoto" class="voyage-img">
+        <div class="voyage-overlay">
+          <div class="voyage-info">
+            <span class="voyage-location">Kyoto, Japon</span>
+            <h3 class="voyage-title">Temples millénaires</h3>
+            <span class="voyage-date">Mars 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="voyage-item reveal" data-type="video" data-video="https://www.w3schools.com/html/mov_bbb.mp4">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Alpes Suisses" class="voyage-img">
+        <div class="voyage-overlay">
+          <div class="voyage-info">
+            <span class="voyage-location">Alpes Suisses</span>
+            <h3 class="voyage-title">Randonnée alpine</h3>
+            <span class="voyage-date">Juillet 2024</span>
+          </div>
+        </div>
+        <div class="voyage-play">
+          <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="30" r="30" fill="var(--neon-green)" fill-opacity="0.3" stroke="var(--neon-green)" stroke-width="2"/>
+            <path d="M24 20L42 30L24 40V20Z" fill="var(--black)"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="voyage-item reveal" data-type="image">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&q=80" alt="Santorini" class="voyage-img">
+        <div class="voyage-overlay">
+          <div class="voyage-info">
+            <span class="voyage-location">Santorini, Grèce</span>
+            <h3 class="voyage-title">Coucher de soleil</h3>
+            <span class="voyage-date">Août 2024</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact">
+  <div class="contact-ambient-glow glow-green"></div>
+  <div class="contact-grid-bg"></div>
+
+  <div class="contact-content">
+    <div class="section-label reveal">// 04 — CONTACT</div>
+
+    <h2 class="contact-title reveal">
+      Vous avez un projet ?<br>
+      <span class="highlight-text">Construisons-le ensemble.</span>
+    </h2>
+
+    <p class="contact-sub reveal">
+      Disponible pour des missions freelance, des collaborations ou des opportunités en CDI.<br>
+      Basé à Dakar, opérationnel partout dans le monde.
+    </p>
+
+    <!-- Interactive Copy Email Button -->
+    <a href="mailto:marcfaye457@gmail.com" class="contact-btn reveal" id="magneticBtn" data-email="marcfaye457@gmail.com">
+      <span class="btn-text">marcfaye457@gmail.com</span>
+      <span class="btn-copy-feedback">Email copié dans le presse-papier !</span>
+      <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+      <div class="btn-glow"></div>
+    </a>
+
+    <div class="socials reveal">
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        <span>GitHub</span>
+      </a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        <span>LinkedIn</span>
+      </a>
+    </div>
+
+    <div class="contact-footer reveal">
+      <p>© 2026 Marc Dip FAYE. Conçu et développé avec passion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MOBILE APP FLOATING BOTTOM DOCK NAVIGATION -->
+<div class="mobile-app-dock" id="mobileAppDock">
+  <a href="#hero" class="dock-item active" data-dock="hero">
+    <div class="dock-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+    </div>
+    <span class="dock-label">Accueil</span>
+    <span class="dock-indicator"></span>
+  </a>
+  <a href="#projets" class="dock-item" data-dock="projets">
+    <div class="dock-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+    </div>
+    <span class="dock-label">Projets</span>
+    <span class="dock-indicator"></span>
+  </a>
+  <a href="#voyages" class="dock-item" data-dock="voyages">
+    <div class="dock-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+    </div>
+    <span class="dock-label">Voyages</span>
+    <span class="dock-indicator"></span>
+  </a>
+  <a href="#contact" class="dock-item" data-dock="contact">
+    <div class="dock-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+    </div>
+    <span class="dock-label">Contact</span>
+    <span class="dock-indicator"></span>
+  </a>
+</div>
+
+<!-- Lightbox Modal -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Fermer">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </button>
+  <div class="lightbox-content">
+    <img src="" alt="" class="lightbox-img" id="lightboxImg">
+    <video class="lightbox-video" id="lightboxVideo" controls>
+      <source src="" type="video/mp4">
+    </video>
+  </div>
+  <div class="lightbox-info" id="lightboxInfo"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
