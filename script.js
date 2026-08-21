@@ -332,6 +332,135 @@ function animateCounters() {
   });
 }
 
+// ===== TRAVEL PHOTO SLIDER CAROUSEL =====
+const sliderTrack = document.getElementById('voyagesSliderTrack');
+const sliderPrevBtn = document.getElementById('sliderPrevBtn');
+const sliderNextBtn = document.getElementById('sliderNextBtn');
+const currentSlideNum = document.getElementById('currentSlideNum');
+const totalSlidesNum = document.getElementById('totalSlidesNum');
+const sliderDotsContainer = document.getElementById('sliderDots');
+
+if (sliderTrack) {
+  const slides = sliderTrack.querySelectorAll('.voyage-slide');
+  let currentSlideIndex = 0;
+  let isDraggingSlider = false;
+  let dragStartX = 0;
+  let dragDistance = 0;
+
+  const getSlidesPerView = () => {
+    if (window.innerWidth <= 600) return 1;
+    if (window.innerWidth <= 968) return 2;
+    return 3;
+  };
+
+  const getMaxSlideIndex = () => Math.max(0, slides.length - getSlidesPerView());
+
+  // Render pagination dots
+  function renderSliderDots() {
+    if (!sliderDotsContainer) return;
+    sliderDotsContainer.innerHTML = '';
+    const maxIdx = getMaxSlideIndex();
+
+    for (let i = 0; i <= maxIdx; i++) {
+      const dot = document.createElement('div');
+      dot.className = `slider-dot ${i === currentSlideIndex ? 'active' : ''}`;
+      dot.addEventListener('click', () => goToSlide(i));
+      sliderDotsContainer.appendChild(dot);
+    }
+  }
+
+  function updateSlider() {
+    const maxIdx = getMaxSlideIndex();
+    if (currentSlideIndex > maxIdx) currentSlideIndex = maxIdx;
+    if (currentSlideIndex < 0) currentSlideIndex = 0;
+
+    const firstSlide = slides[0];
+    if (firstSlide) {
+      const gap = 25; // CSS flex gap
+      const slideWidth = firstSlide.getBoundingClientRect().width;
+      const moveDistance = (slideWidth + gap) * currentSlideIndex;
+      sliderTrack.style.transform = `translateX(-${moveDistance}px)`;
+    }
+
+    // Update numbers
+    if (currentSlideNum) {
+      currentSlideNum.textContent = String(currentSlideIndex + 1).padStart(2, '0');
+    }
+    if (totalSlidesNum) {
+      totalSlidesNum.textContent = String(slides.length).padStart(2, '0');
+    }
+
+    // Update buttons
+    if (sliderPrevBtn) sliderPrevBtn.disabled = currentSlideIndex === 0;
+    if (sliderNextBtn) sliderNextBtn.disabled = currentSlideIndex >= maxIdx;
+
+    // Update dots
+    if (sliderDotsContainer) {
+      const dots = sliderDotsContainer.querySelectorAll('.slider-dot');
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentSlideIndex);
+      });
+    }
+  }
+
+  function goToSlide(index) {
+    currentSlideIndex = index;
+    updateSlider();
+  }
+
+  if (sliderPrevBtn) {
+    sliderPrevBtn.addEventListener('click', () => {
+      if (currentSlideIndex > 0) {
+        currentSlideIndex--;
+        updateSlider();
+      }
+    });
+  }
+
+  if (sliderNextBtn) {
+    sliderNextBtn.addEventListener('click', () => {
+      if (currentSlideIndex < getMaxSlideIndex()) {
+        currentSlideIndex++;
+        updateSlider();
+      }
+    });
+  }
+
+  // Touch and drag support for mobile & desktop swipe
+  sliderTrack.addEventListener('touchstart', (e) => {
+    isDraggingSlider = true;
+    dragStartX = e.touches[0].clientX;
+    dragDistance = 0;
+  }, { passive: true });
+
+  sliderTrack.addEventListener('touchmove', (e) => {
+    if (!isDraggingSlider) return;
+    dragDistance = e.touches[0].clientX - dragStartX;
+  }, { passive: true });
+
+  sliderTrack.addEventListener('touchend', () => {
+    if (!isDraggingSlider) return;
+    isDraggingSlider = false;
+    if (dragDistance < -40 && currentSlideIndex < getMaxSlideIndex()) {
+      currentSlideIndex++;
+      updateSlider();
+    } else if (dragDistance > 40 && currentSlideIndex > 0) {
+      currentSlideIndex--;
+      updateSlider();
+    }
+  });
+
+  // Handle window resize
+  window.addEventListener('resize', () => {
+    renderSliderDots();
+    updateSlider();
+  });
+
+  // Initial setup
+  renderSliderDots();
+  updateSlider();
+}
+
 // ===== LIGHTBOX MODAL FOR VOYAGES =====
 const lightbox = document.getElementById('lightbox');
 const lightboxClose = document.getElementById('lightboxClose');

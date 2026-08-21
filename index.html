@@ -397,45 +397,104 @@
       </p>
     </div>
 
-    <div class="voyages-gallery">
-      <div class="voyage-item reveal" data-type="image">
-        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80" alt="Kyoto" class="voyage-img">
-        <div class="voyage-overlay">
-          <div class="voyage-info">
-            <span class="voyage-location">Kyoto, Japon</span>
-            <h3 class="voyage-title">Temples millénaires</h3>
-            <span class="voyage-date">Mars 2024</span>
-          </div>
+    <!-- Voyages Photo Slider / Carousel Wrapper -->
+    <div class="voyages-slider-wrapper reveal">
+      <div class="slider-controls-top">
+        <div class="slider-counter">
+          <span class="current-slide" id="currentSlideNum">01</span>
+          <span class="slide-divider">/</span>
+          <span class="total-slides" id="totalSlidesNum">06</span>
+        </div>
+        <div class="slider-arrows">
+          <button class="slider-arrow prev-btn" id="sliderPrevBtn" aria-label="Photo précédente">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <button class="slider-arrow next-btn" id="sliderNextBtn" aria-label="Photo suivante">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
         </div>
       </div>
 
-      <div class="voyage-item reveal" data-type="video" data-video="https://www.w3schools.com/html/mov_bbb.mp4">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Alpes Suisses" class="voyage-img">
-        <div class="voyage-overlay">
-          <div class="voyage-info">
-            <span class="voyage-location">Alpes Suisses</span>
-            <h3 class="voyage-title">Randonnée alpine</h3>
-            <span class="voyage-date">Juillet 2024</span>
+      <div class="voyages-slider-container" id="voyagesSliderContainer">
+        <div class="voyages-slider-track" id="voyagesSliderTrack">
+
+          <div class="voyage-item voyage-slide" data-type="image">
+            <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80" alt="Kyoto" class="voyage-img">
+            <div class="voyage-overlay">
+              <div class="voyage-info">
+                <span class="voyage-location">Kyoto, Japon</span>
+                <h3 class="voyage-title">Temples millénaires</h3>
+                <span class="voyage-date">Mars 2024</span>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="voyage-play">
-          <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
-            <circle cx="30" cy="30" r="30" fill="var(--neon-green)" fill-opacity="0.3" stroke="var(--neon-green)" stroke-width="2"/>
-            <path d="M24 20L42 30L24 40V20Z" fill="var(--black)"/>
-          </svg>
+
+          <div class="voyage-item voyage-slide" data-type="video" data-video="https://www.w3schools.com/html/mov_bbb.mp4">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Alpes Suisses" class="voyage-img">
+            <div class="voyage-overlay">
+              <div class="voyage-info">
+                <span class="voyage-location">Alpes Suisses</span>
+                <h3 class="voyage-title">Randonnée alpine</h3>
+                <span class="voyage-date">Juillet 2024</span>
+              </div>
+            </div>
+            <div class="voyage-play">
+              <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
+                <circle cx="30" cy="30" r="30" fill="var(--neon-green)" fill-opacity="0.3" stroke="var(--neon-green)" stroke-width="2"/>
+                <path d="M24 20L42 30L24 40V20Z" fill="var(--black)"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="voyage-item voyage-slide" data-type="image">
+            <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&q=80" alt="Santorini" class="voyage-img">
+            <div class="voyage-overlay">
+              <div class="voyage-info">
+                <span class="voyage-location">Santorini, Grèce</span>
+                <h3 class="voyage-title">Coucher de soleil</h3>
+                <span class="voyage-date">Août 2024</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="voyage-item voyage-slide" data-type="image">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="Dakar" class="voyage-img">
+            <div class="voyage-overlay">
+              <div class="voyage-info">
+                <span class="voyage-location">Dakar, Sénégal</span>
+                <h3 class="voyage-title">Côte Atlantique & Les Mamelles</h3>
+                <span class="voyage-date">Novembre 2024</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="voyage-item voyage-slide" data-type="image">
+            <img src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?w=800&q=80" alt="New York" class="voyage-img">
+            <div class="voyage-overlay">
+              <div class="voyage-info">
+                <span class="voyage-location">New York, USA</span>
+                <h3 class="voyage-title">Skyline & Tech Hub</h3>
+                <span class="voyage-date">Janvier 2025</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="voyage-item voyage-slide" data-type="image">
+            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80" alt="Bali" class="voyage-img">
+            <div class="voyage-overlay">
+              <div class="voyage-info">
+                <span class="voyage-location">Bali, Indonésie</span>
+                <h3 class="voyage-title">Rizières & Sérénité</h3>
+                <span class="voyage-date">Mai 2025</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <div class="voyage-item reveal" data-type="image">
-        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&q=80" alt="Santorini" class="voyage-img">
-        <div class="voyage-overlay">
-          <div class="voyage-info">
-            <span class="voyage-location">Santorini, Grèce</span>
-            <h3 class="voyage-title">Coucher de soleil</h3>
-            <span class="voyage-date">Août 2024</span>
-          </div>
-        </div>
-      </div>
+      <!-- Slider Dots / Indicators -->
+      <div class="slider-dots" id="sliderDots"></div>
     </div>
   </div>
 </section>
