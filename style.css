@@ -29,6 +29,20 @@
   --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* HIGH-CONTRAST LIGHT THEME VARIABLE OVERRIDES */
+body.light-theme {
+  --black: #f5f8f6;
+  --bg-dark: #eaf1ed;
+  --bg-card: rgba(255, 255, 255, 0.88);
+  --white: #0f1d17;
+  --text-muted: rgba(15, 29, 23, 0.72);
+  --neon-green: #008f4c;
+  --neon-green-bright: #00ab5b;
+  --neon-green-glow: rgba(0, 143, 76, 0.25);
+  --neon-green-subtle: rgba(0, 143, 76, 0.12);
+  --neon-green-dark: #006b39;
+}
+
 /* Native Normal Scrolling */
 html {
   scroll-behavior: smooth;
@@ -45,6 +59,7 @@ body {
   overflow-x: hidden;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ============================================
@@ -259,6 +274,170 @@ nav a::after {
 
 nav a:hover::after {
   width: 100%;
+}
+
+.theme-toggle {
+  position: relative;
+  width: 54px;
+  height: 30px;
+  flex-shrink: 0;
+  padding: 3px;
+  border: 1px solid rgba(0, 255, 102, 0.45);
+  border-radius: 18px;
+  background: rgba(0, 255, 102, 0.1);
+  color: var(--neon-green);
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--neon-green);
+  box-shadow: 0 0 12px var(--neon-green-glow);
+  transition: transform 0.35s var(--transition-smooth), background 0.3s ease;
+}
+
+.theme-toggle[aria-pressed="true"]::before {
+  transform: translateX(24px);
+}
+
+.theme-icon {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  transform: translateY(-50%);
+  font-size: 14px;
+  line-height: 1;
+  transition: color 0.3s ease;
+}
+
+.theme-icon-moon { left: 8px; color: var(--black); }
+.theme-icon-sun { right: 8px; color: rgba(255, 255, 255, 0.55); }
+
+.theme-toggle[aria-pressed="true"] .theme-icon-moon { color: rgba(16, 32, 25, 0.45); }
+.theme-toggle[aria-pressed="true"] .theme-icon-sun { color: var(--black); }
+
+/* LIGHT THEME SPECIFIC OVERRIDES */
+body.light-theme nav#topNav {
+  background: rgba(245, 248, 246, 0.9);
+  border-bottom-color: rgba(0, 143, 76, 0.2);
+}
+
+body.light-theme #hero {
+  background: var(--black);
+}
+
+body.light-theme #hero .hero-bg {
+  background: radial-gradient(circle at 15% 30%, rgba(0, 143, 76, 0.1) 0%, transparent 50%), radial-gradient(circle at 85% 70%, rgba(0, 169, 90, 0.07) 0%, transparent 50%), linear-gradient(180deg, #ffffff 0%, #edf5f0 100%);
+}
+
+body.light-theme #hero .cyber-grid {
+  background-image: linear-gradient(rgba(0, 143, 76, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 143, 76, 0.06) 1px, transparent 1px);
+}
+
+body.light-theme #hero .hero-glow {
+  background: radial-gradient(circle, rgba(0, 169, 90, 0.16) 0%, transparent 70%);
+}
+
+body.light-theme #tech-lab,
+body.light-theme #workflow,
+body.light-theme #contact {
+  background: var(--bg-dark);
+}
+
+body.light-theme #projets,
+body.light-theme #voyages {
+  background: var(--black);
+}
+
+body.light-theme nav a,
+body.light-theme .section-subtitle,
+body.light-theme .hero-text,
+body.light-theme .portrait-caption,
+body.light-theme .bento-title,
+body.light-theme .entry-content strong,
+body.light-theme .projet-name,
+body.light-theme .contact-title,
+body.light-theme .social-link {
+  color: var(--white);
+}
+
+body.light-theme .terminal-body,
+body.light-theme .cli-body,
+body.light-theme .cli-title,
+body.light-theme .metric-item,
+body.light-theme .step-desc,
+body.light-theme .projet-desc,
+body.light-theme .voyage-title {
+  color: rgba(15, 29, 23, 0.85);
+}
+
+body.light-theme .filter-btn,
+body.light-theme .slider-counter {
+  color: rgba(15, 29, 23, 0.75);
+}
+
+body.light-theme .filter-btn:hover,
+body.light-theme .filter-btn.active {
+  color: #ffffff;
+}
+
+body.light-theme .projet-overlay,
+body.light-theme .voyage-overlay {
+  background: linear-gradient(180deg, transparent 20%, rgba(245, 248, 246, 0.96) 100%);
+}
+
+body.light-theme .projet-tech span,
+body.light-theme .skill-chip,
+body.light-theme .social-link,
+body.light-theme .filter-btn {
+  background: rgba(0, 143, 76, 0.08);
+  border-color: rgba(0, 143, 76, 0.24);
+}
+
+body.light-theme .cli-input {
+  color: var(--white);
+}
+
+body.light-theme .bento-card,
+body.light-theme .projet-card,
+body.light-theme .workflow-step,
+body.light-theme .voyage-item,
+body.light-theme .dev-terminal,
+body.light-theme .cli-window,
+body.light-theme .hero-stats {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(0, 143, 76, 0.22);
+  box-shadow: 0 15px 35px rgba(15, 29, 23, 0.08);
+}
+
+body.light-theme .terminal-header,
+body.light-theme .cli-header {
+  background: rgba(15, 29, 23, 0.06);
+}
+
+body.light-theme .contact-grid-bg {
+  opacity: 0.6;
+}
+
+body.light-theme .mobile-app-dock {
+  background: rgba(245, 248, 246, 0.94);
+  border-color: rgba(0, 143, 76, 0.28);
+  box-shadow: 0 10px 30px rgba(15, 29, 23, 0.15), 0 0 20px var(--neon-green-subtle);
+}
+
+body.light-theme .dock-item {
+  color: rgba(15, 29, 23, 0.55);
+}
+
+body.light-theme .dock-item.active {
+  color: var(--neon-green);
 }
 
 .menu-toggle, .menu-overlay {

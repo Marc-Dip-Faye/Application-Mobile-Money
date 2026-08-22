@@ -49,6 +49,11 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
 
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Activer le mode clair" aria-pressed="false">
+    <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+    <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+  </button>
+
   <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
@@ -79,9 +84,9 @@
       <div class="hero-title-container">
         <h1 class="hero-title">
           <span class="line reveal"><span>Développeur</span></span>
-          <span class="line reveal neon-green"><span>passionné,</span></span>
+          <span class="line reveal neon-green"><span>Fullstack,</span></span>
           <span class="line reveal"><span>créatif &</span></span>
-          <span class="line reveal neon-green"><span>voyageur.</span></span>
+          <span class="line reveal neon-green"><span>passionné.</span></span>
         </h1>
         <div class="hero-mobile-avatar reveal">
           <div class="avatar-frame">
@@ -223,16 +228,7 @@
       <div class="bento-card bento-skills reveal">
         <div class="bento-badge">STACK MATRIX</div>
         <h3 class="bento-title">Technologies Maîtrisées</h3>
-      <div class="skills-chips" id="skillsChips">
-          <span class="skill-chip active"><i class="skill-icon">⚡</i> React / Next.js</span>
-          <span class="skill-chip active"><i class="skill-icon">🚀</i> Node.js & Express</span>
-          <span class="skill-chip active"><i class="skill-icon">🐘</i> PHP & Laravel</span>
-          <span class="skill-chip active"><i class="skill-icon">🎨</i> Tailwind & CSS Architecture</span>
-          <span class="skill-chip"><i class="skill-icon">🗄️</i> MongoDB & PostgreSQL</span>
-          <span class="skill-chip"><i class="skill-icon">🐳</i> Docker & CI/CD</span>
-          <span class="skill-chip"><i class="skill-icon">📱</i> React Native</span>
-          <span class="skill-chip"><i class="skill-icon">⚡</i> GraphQL & REST APIs</span>
-        </div>
+        <div class="skills-chips" id="skillsChips"></div>
       </div>
 
       <!-- Bento Item 4: Career & Experience Timeline -->
@@ -371,79 +367,6 @@
 
       <div class="voyages-slider-container" id="voyagesSliderContainer">
         <div class="voyages-slider-track" id="voyagesSliderTrack">
-
-          <div class="voyage-item voyage-slide" data-type="image">
-            <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80" alt="Kyoto" class="voyage-img">
-            <div class="voyage-overlay">
-              <div class="voyage-info">
-                <span class="voyage-location">Kyoto, Japon</span>
-                <h3 class="voyage-title">Temples millénaires</h3>
-                <span class="voyage-date">Mars 2024</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="voyage-item voyage-slide" data-type="video" data-video="https://www.w3schools.com/html/mov_bbb.mp4">
-            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Alpes Suisses" class="voyage-img">
-            <div class="voyage-overlay">
-              <div class="voyage-info">
-                <span class="voyage-location">Alpes Suisses</span>
-                <h3 class="voyage-title">Randonnée alpine</h3>
-                <span class="voyage-date">Juillet 2024</span>
-              </div>
-            </div>
-            <div class="voyage-play">
-              <svg width="40" height="40" viewBox="0 0 60 60" fill="none">
-                <circle cx="30" cy="30" r="30" fill="var(--neon-green)" fill-opacity="0.3" stroke="var(--neon-green)" stroke-width="2"/>
-                <path d="M24 20L42 30L24 40V20Z" fill="var(--black)"/>
-              </svg>
-            </div>
-          </div>
-
-          <div class="voyage-item voyage-slide" data-type="image">
-            <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&q=80" alt="Santorini" class="voyage-img">
-            <div class="voyage-overlay">
-              <div class="voyage-info">
-                <span class="voyage-location">Santorini, Grèce</span>
-                <h3 class="voyage-title">Coucher de soleil</h3>
-                <span class="voyage-date">Août 2024</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="voyage-item voyage-slide" data-type="image">
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="Dakar" class="voyage-img">
-            <div class="voyage-overlay">
-              <div class="voyage-info">
-                <span class="voyage-location">Dakar, Sénégal</span>
-                <h3 class="voyage-title">Côte Atlantique & Les Mamelles</h3>
-                <span class="voyage-date">Novembre 2024</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="voyage-item voyage-slide" data-type="image">
-            <img src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?w=800&q=80" alt="New York" class="voyage-img">
-            <div class="voyage-overlay">
-              <div class="voyage-info">
-                <span class="voyage-location">New York, USA</span>
-                <h3 class="voyage-title">Skyline & Tech Hub</h3>
-                <span class="voyage-date">Janvier 2025</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="voyage-item voyage-slide" data-type="image">
-            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80" alt="Bali" class="voyage-img">
-            <div class="voyage-overlay">
-              <div class="voyage-info">
-                <span class="voyage-location">Bali, Indonésie</span>
-                <h3 class="voyage-title">Rizières & Sérénité</h3>
-                <span class="voyage-date">Mai 2025</span>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
 

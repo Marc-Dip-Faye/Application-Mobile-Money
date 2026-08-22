@@ -11,6 +11,30 @@ let voyagesData = [];
 let currentGalleryImages = [];
 let currentGalleryIndex = 0;
 
+// ===== COLOR THEME =====
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('portfolio-theme');
+const prefersLightTheme = window.matchMedia('(prefers-color-scheme: light)').matches;
+
+function setTheme(isLight) {
+  document.body.classList.toggle('light-theme', isLight);
+  if (themeToggle) {
+    themeToggle.setAttribute('aria-pressed', String(isLight));
+    themeToggle.setAttribute('aria-label', isLight ? 'Activer le mode sombre' : 'Activer le mode clair');
+    themeToggle.title = isLight ? 'Mode sombre' : 'Mode clair';
+  }
+}
+
+setTheme(savedTheme ? savedTheme === 'light' : prefersLightTheme);
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const isLight = !document.body.classList.contains('light-theme');
+    setTheme(isLight);
+    localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+  });
+}
+
 // ===== LOADER & INITIALIZATION =====
 window.addEventListener('load', async () => {
   // Load Dynamic Data First
@@ -19,6 +43,7 @@ window.addEventListener('load', async () => {
     loadSkillsData(),
     loadVoyagesData()
   ]);
+  initializeTravelSlider();
 
   setTimeout(() => {
     const loader = document.getElementById('loader');
@@ -53,47 +78,8 @@ async function loadProjectsData() {
     projectsData = await response.json();
     renderProjects(projectsData);
   } catch (error) {
-    console.warn('Could not load data/projects.json, using fallback data:', error);
-    // Fallback static projects
-    projectsData = [
-      {
-        id: 1,
-        title: "Dashboard Analytics",
-        category: "web",
-        categoryLabel: "Web App",
-        description: "Plateforme de visualisation de données en temps réel avec interface responsive.",
-        images: ["https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"],
-        technologies: ["React", "Node.js", "D3.js"]
-      },
-      {
-        id: 2,
-        title: "Shop Premium",
-        category: "ecommerce",
-        categoryLabel: "E-commerce",
-        description: "Boutique en ligne moderne avec système de paiement sécurisé et gestion des stocks.",
-        images: ["https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80"],
-        technologies: ["Next.js", "Stripe", "MongoDB"]
-      },
-      {
-        id: 3,
-        title: "Task Master Pro",
-        category: "app",
-        categoryLabel: "Mobile App",
-        description: "Application mobile de gestion de tâches collaborative avec notifications instantanées.",
-        images: ["https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80"],
-        technologies: ["React Native", "Firebase", "Redux"]
-      },
-      {
-        id: 4,
-        title: "Social Connect",
-        category: "web",
-        categoryLabel: "Web App",
-        description: "Réseau social professionnel innovant axé sur le partage d'expériences et d'opportunités.",
-        images: ["https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"],
-        technologies: ["Vue.js", "GraphQL", "PostgreSQL"]
-      }
-    ];
-    renderProjects(projectsData);
+    console.warn('Could not load data/projects.json:', error);
+    container.innerHTML = '<p class="data-empty">Les projets sont momentanément indisponibles.</p>';
   }
 }
 
@@ -174,17 +160,41 @@ function renderSkills(skills) {
 
 // 3. Load Voyages from data/voyages.json
 async function loadVoyagesData() {
+  const container = document.getElementById('voyagesSliderTrack');
+  if (!container) return;
+
   try {
     const response = await fetch('data/voyages.json');
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     voyagesData = await response.json();
+    renderVoyages(voyagesData);
   } catch (error) {
     console.warn('Could not load data/voyages.json:', error);
+    container.innerHTML = '<p class="data-empty">Les voyages sont momentanément indisponibles.</p>';
   }
 }
 
+function renderVoyages(voyages) {
+  const container = document.getElementById('voyagesSliderTrack');
+  if (!container) return;
+
+  container.innerHTML = voyages.map(voyage => `
+    <div class="voyage-item voyage-slide" data-type="${escapeHtml(voyage.type || 'image')}" data-video="${escapeHtml(voyage.video || '')}">
+      <img src="${escapeHtml(voyage.image)}" alt="${escapeHtml(voyage.location)}" class="voyage-img">
+      <div class="voyage-overlay">
+        <div class="voyage-info">
+          <span class="voyage-location">${escapeHtml(voyage.location)}</span>
+          <h3 class="voyage-title">${escapeHtml(voyage.title)}</h3>
+          <span class="voyage-date">${escapeHtml(voyage.date)}</span>
+        </div>
+      </div>
+      ${voyage.type === 'video' ? `<div class="voyage-play"><svg width="40" height="40" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="30" fill="var(--neon-green)" fill-opacity="0.3" stroke="var(--neon-green)" stroke-width="2"/><path d="M24 20L42 30L24 40V20Z" fill="var(--black)"/></svg></div>` : ''}
+    </div>
+  `).join('');
+}
+
 // ===== TYPEWRITER EFFECT =====
-const textToType = "Développeur Fullstack & Designer spécialisé dans la création d'applications web et mobiles modernes, performantes et élégantes.";
+const textToType = "Développeur Fullstack & Designer spécialisé dans la création d'applications web et mobiles modernes.";
 const typewriterElement = document.getElementById('typewriter-text');
 const typingSpeed = 30;
 let charIndex = 0;
@@ -513,7 +523,8 @@ const currentSlideNum = document.getElementById('currentSlideNum');
 const totalSlidesNum = document.getElementById('totalSlidesNum');
 const sliderDotsContainer = document.getElementById('sliderDots');
 
-if (sliderTrack) {
+function initializeTravelSlider() {
+  if (!sliderTrack) return;
   const slides = sliderTrack.querySelectorAll('.voyage-slide');
   let currentSlideIndex = 0;
   let isDraggingSlider = false;
@@ -565,7 +576,7 @@ if (sliderTrack) {
 
     // Update buttons
     if (sliderPrevBtn) sliderPrevBtn.disabled = currentSlideIndex === 0;
-    if (sliderNextBtn) sliderNextBtn.disabled = currentSlideIndex >= maxIdx;
+    if (sliderNextBtn) sliderNextBtn.disabled = currentSlideIndex >= getMaxSlideIndex();
 
     // Update dots
     if (sliderDotsContainer) {
@@ -714,9 +725,11 @@ if (lightboxNext) {
 }
 
 // Voyages Items Click Handler
-const voyageItems = document.querySelectorAll('.voyage-item');
-voyageItems.forEach(item => {
-  item.addEventListener('click', () => {
+if (sliderTrack) {
+  sliderTrack.addEventListener('click', (event) => {
+    const item = event.target.closest('.voyage-item');
+    if (!item) return;
+
     currentGalleryImages = [];
     if (lightboxPrev) lightboxPrev.style.display = 'none';
     if (lightboxNext) lightboxNext.style.display = 'none';
@@ -747,7 +760,7 @@ voyageItems.forEach(item => {
     if (lightbox) lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
   });
-});
+}
 
 function closeLightbox() {
   if (lightbox) lightbox.classList.remove('active');
