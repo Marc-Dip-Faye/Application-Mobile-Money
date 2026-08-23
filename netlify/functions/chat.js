@@ -1,51 +1,166 @@
-// Netlify Function for Marc Dip FAYE Portfolio AI Assistant
+// Netlify Function for Marc Dip FAYE Portfolio Conversational AI Agent with Tool Calling & Memory
 const fs = require('fs');
 const path = require('path');
 
-const SYSTEM_PROMPT = `Tu es l'assistante IA officielle du portfolio de Marc Dip FAYE, Développeur Fullstack & Creative Tech basé à Dakar, Sénégal.
-Ton rôle est de répondre de manière courtoise, professionnelle, enthousiaste et synthétique aux visiteurs (recruteurs, clients potentiels, collaborateurs) au sujet de Marc, de ses compétences, de ses projets et de ses coordonnées.
+// System Prompt with Agent Identity & Instructions
+const SYSTEM_PROMPT = `Tu es l'agent IA conversationnel officiel du portfolio de Marc Dip FAYE (Développeur Fullstack & Creative Tech basé à Dakar, Sénégal).
 
-INFORMATIONS COMPLÈTES SUR MARC DIP FAYE:
-- Nom: Marc Dip FAYE
-- Titre: Développeur Fullstack & Designer / Creative Tech
-- Localisation: Dakar, Sénégal 🇸🇳 (Disponible en local & remote)
-- Disponibilité: Ouvert aux opportunités en freelance, CDI, et projets innovants.
-- Email: marcfaye457@gmail.com
-- LinkedIn: https://linkedin.com
-- GitHub: https://github.com
+RÔLE ET CAPACITÉS:
+- Tu disposes d'outils officiels (tools / function calling) pour accéder en temps réel aux données réelles de Marc : projets, compétences, voyages et profil.
+- Quand un utilisateur te pose une question sur les projets, les compétences, les voyages ou le parcours de Marc, utilise TOUJOURS tes outils pour consulter les données exactes avant de répondre.
+- Conserve la mémoire de conversation grâce à l'historique fourni.
+- Réponds de manière vivante, professionnelle, enthousiaste et concise (ton cyber/neon green).
+- Ne fabrique jamais d'informations. Si une donnée n'est pas trouvée par les outils, indique-le poliment.`;
 
-COMPÉTENCES & TECH STACK:
-- Frontend: React, Next.js, Vue.js, TypeScript, Tailwind CSS, HTML5/CSS3.
-- Backend: Node.js, Express, PHP, Laravel, REST APIs, GraphQL.
-- Bases de données: MongoDB, PostgreSQL, Firebase.
-- Mobile & DevOps: React Native, Docker, Vercel, Git, CI/CD.
-- Spécialités: Performance web (Lighthouse 100%), Design Systems modern cyber-futuristes, UI/UX réactif.
+// Tools Schema for OpenAI Function Calling
+const AGENT_TOOLS = [
+  {
+    type: 'function',
+    function: {
+      name: 'get_projects',
+      description: 'Consulte et filtre les projets du portfolio de Marc Dip FAYE à partir de data/projects.json',
+      parameters: {
+        type: 'object',
+        properties: {
+          category: {
+            type: 'string',
+            description: 'Filtre par catégorie facultatif (ex: web, app, ecommerce, design, all)'
+          },
+          search: {
+            type: 'string',
+            description: 'Mot-clé de recherche facultatif'
+          }
+        }
+      }
+    }
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'get_skills',
+      description: 'Récupère la liste des compétences et technologies maîtrisées par Marc à partir de data/skills.json',
+      parameters: {
+        type: 'object',
+        properties: {}
+      }
+    }
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'get_voyages',
+      description: 'Récupère les voyages et galeries photos de Marc à partir de data/voyages.json',
+      parameters: {
+        type: 'object',
+        properties: {}
+      }
+    }
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'get_profile_info',
+      description: 'Obtient les informations détaillées de profil de Marc (contact, bio, workflow, expérience, disponibilité)',
+      parameters: {
+        type: 'object',
+        properties: {
+          section: {
+            type: 'string',
+            description: 'Section spécifique facultative (ex: contact, experience, workflow, general)'
+          }
+        }
+      }
+    }
+  }
+];
 
-PARCOURS ET EXPÉRIENCE:
-- 2024 — PRÉSENT: Fullstack Developer Freelance (Conception d'applications web sur mesure & consulting tech).
-- 2023 — 2024: Développeur Web & Mobile @ Orange Digital Center (ODC DEV - Projets à fort impact, API & architectures modernes).
+// Local Tool Implementations reading real portfolio files
+function executeToolCall(name, args) {
+  try {
+    if (name === 'get_projects') {
+      const filePath = path.join(__dirname, '../../data/projects.json');
+      let projects = [];
+      if (fs.existsSync(filePath)) {
+        projects = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+      } else {
+        projects = [
+          { id: 1, title: 'Dashboard Analytics', category: 'web', categoryLabel: 'Web App', description: 'Plateforme de visualisation de données temps réel.', technologies: ['React', 'Node.js', 'D3.js'] },
+          { id: 2, title: 'Shop Premium', category: 'ecommerce', categoryLabel: 'E-commerce', description: 'Boutique en ligne moderne avec paiement Stripe.', technologies: ['Next.js', 'Stripe', 'MongoDB'] },
+          { id: 3, title: 'Task Master Pro', category: 'app', categoryLabel: 'Mobile App', description: 'Application collaborative de gestion de tâches.', technologies: ['React Native', 'Firebase'] },
+          { id: 4, title: 'Social Connect', category: 'web', categoryLabel: 'Web App', description: 'Réseau social professionnel axé sur le partage.', technologies: ['Vue.js', 'GraphQL', 'PostgreSQL'] }
+        ];
+      }
 
-WORKFLOW EN 4 ÉTAPES:
-1. Découverte & Strategy (Analyse des besoins & choix d'architecture)
-2. UI/UX Design Tech (Wireframes & prototypes interactifs Figma/code)
-3. Développement Agile (Clean code, typé, tests & API REST/GraphQL)
-4. Lancement & Suivi (Déploiement Cloud Vercel/AWS/Docker, SEO & Lighthouse 100%)
+      if (args && args.category && args.category !== 'all') {
+        projects = projects.filter(p => p.category === args.category || p.categoryLabel.toLowerCase().includes(args.category.toLowerCase()));
+      }
+      if (args && args.search) {
+        const q = args.search.toLowerCase();
+        projects = projects.filter(p => p.title.toLowerCase().includes(q) || p.description.toLowerCase().includes(q));
+      }
+      return JSON.stringify(projects);
+    }
 
-PROJETS RÉALISÉS:
-1. Dashboard Analytics (Web App): Plateforme de visualisation de données en temps réel (React, Node.js, D3.js).
-2. Shop Premium (E-commerce): Boutique en ligne moderne avec paiement sécurisé Stripe & gestion des stocks (Next.js, Stripe, MongoDB).
-3. Task Master Pro (Mobile App): Application mobile collaborative avec notifications instantanées (React Native, Firebase, Redux).
-4. Social Connect (Web App): Réseau social professionnel axé sur le partage d'expériences (Vue.js, GraphQL, PostgreSQL).
+    if (name === 'get_skills') {
+      const filePath = path.join(__dirname, '../../data/skills.json');
+      if (fs.existsSync(filePath)) {
+        return fs.readFileSync(filePath, 'utf8');
+      }
+      return JSON.stringify([
+        { name: 'React / Next.js', active: true },
+        { name: 'Node.js / Express', active: true },
+        { name: 'PHP / Laravel', active: true },
+        { name: 'TypeScript', active: true },
+        { name: 'Tailwind CSS', active: true },
+        { name: 'MongoDB / PostgreSQL', active: true },
+        { name: 'Docker / Vercel', active: true }
+      ]);
+    }
 
-CONSIGNES DE RÉPONSE:
-- Sois fluide, claire, professionnelle et amicale.
-- Utilise un ton moderne et passionné par la tech (thématique cyber/neon green).
-- Ne fabrique JAMAIS de fausses informations qui ne figurent pas ci-dessus.
-- Si une question sort complètement du contexte professionnel de Marc, ramène gentiment l'utilisateur aux sujets du portfolio (projets, compétences, contact).
-- Reste concise (2 à 4 phrases généralement, sauf si l'utilisateur demande une explication détaillée).`;
+    if (name === 'get_voyages') {
+      const filePath = path.join(__dirname, '../../data/voyages.json');
+      if (fs.existsSync(filePath)) {
+        return fs.readFileSync(filePath, 'utf8');
+      }
+      return JSON.stringify([
+        { location: 'Dakar, Sénégal', title: 'Silicon Dakar Tech Summit', date: '2025' },
+        { location: 'Paris, France', title: 'Exploration UI/UX & Web3', date: '2024' }
+      ]);
+    }
+
+    if (name === 'get_profile_info') {
+      const profile = {
+        name: 'Marc Dip FAYE',
+        role: 'Fullstack Developer & Creative Tech',
+        location: 'Dakar, Sénégal 🇸🇳 (Disponible local & remote)',
+        email: 'marcfaye457@gmail.com',
+        github: 'https://github.com',
+        linkedin: 'https://linkedin.com',
+        availability: 'Disponible pour missions freelance, projets sur mesure & CDI.',
+        experience: [
+          { period: '2024 — PRÉSENT', role: 'Fullstack Developer Freelance', desc: 'Conception d\'applications web/mobile sur mesure & consulting tech.' },
+          { period: '2023 — 2024', role: 'Développeur Web & Mobile @ Orange Digital Center', desc: 'Projets à fort impact, API & architectures modernes.' }
+        ],
+        workflow: [
+          '01. Découverte & Strategy',
+          '02. UI/UX Design Tech',
+          '03. Développement Agile Clean Code',
+          '04. Lancement, CI/CD & Performance 100%'
+        ]
+      };
+      if (args && args.section && profile[args.section]) {
+        return JSON.stringify(profile[args.section]);
+      }
+      return JSON.stringify(profile);
+    }
+
+    return JSON.stringify({ error: `Tool ${name} non reconnu.` });
+  } catch (err) {
+    return JSON.stringify({ error: `Erreur lors de l'exécution de ${name}: ${err.message}` });
+  }
+}
 
 exports.handler = async function(event, context) {
-  // CORS Headers
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
@@ -54,19 +169,11 @@ exports.handler = async function(event, context) {
   };
 
   if (event.httpMethod === 'OPTIONS') {
-    return {
-      statusCode: 200,
-      headers,
-      body: JSON.stringify({ message: 'CORS preflight successful' })
-    };
+    return { statusCode: 200, headers, body: JSON.stringify({ message: 'CORS preflight ok' }) };
   }
 
   if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      headers,
-      body: JSON.stringify({ error: 'Méthode non autorisée' })
-    };
+    return { statusCode: 405, headers, body: JSON.stringify({ error: 'Méthode non autorisée' }) };
   }
 
   try {
@@ -75,98 +182,160 @@ exports.handler = async function(event, context) {
     const history = body.history || [];
 
     if (!userMessage || typeof userMessage !== 'string' || userMessage.trim() === '') {
-      return {
-        statusCode: 400,
-        headers,
-        body: JSON.stringify({ error: 'Message requis' })
-      };
+      return { statusCode: 400, headers, body: JSON.stringify({ error: 'Message requis' }) };
     }
 
     const apiKey = process.env.OPENAI_API_KEY || process.env.GEMINI_API_KEY || process.env.AI_API_KEY;
 
-    // Fallback response generator if API Key is not set in environment
-    if (!apiKey) {
-      console.warn('API Key not set in environment variables. Using smart fallback.');
-      const fallbackReply = generateFallbackResponse(userMessage.trim().toLowerCase());
-      return {
-        statusCode: 200,
-        headers,
-        body: JSON.stringify({ reply: fallbackReply, fallback: true })
-      };
-    }
-
-    // Call OpenAI Chat Completions API
+    // Build initial message list for OpenAI Chat Completion with tools
     const messages = [
-      { role: 'system', content: SYSTEM_PROMPT },
-      ...history.map(msg => ({
-        role: msg.sender === 'user' ? 'user' : 'assistant',
-        content: msg.text
-      })),
-      { role: 'user', content: userMessage }
+      { role: 'system', content: SYSTEM_PROMPT }
     ];
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
-        messages: messages,
-        max_tokens: 350,
-        temperature: 0.7
-      })
+    // Reconstruct valid OpenAI chat history format
+    history.forEach(item => {
+      if (item.sender === 'user') {
+        messages.push({ role: 'user', content: item.text });
+      } else if (item.sender === 'bot') {
+        messages.push({ role: 'assistant', content: item.text });
+      }
     });
 
-    if (!response.ok) {
-      const errData = await response.text();
-      console.error('OpenAI API Error:', errData);
-      const fallbackReply = generateFallbackResponse(userMessage.trim().toLowerCase());
+    messages.push({ role: 'user', content: userMessage });
+
+    // Fallback if no API key is configured
+    if (!apiKey) {
+      console.warn('API Key missing. Running simulated AI Agent Tool Calling loop locally.');
+      const simulatedAgentResponse = runSimulatedAgentLoop(userMessage, messages);
       return {
         statusCode: 200,
         headers,
-        body: JSON.stringify({ reply: fallbackReply, fallback: true })
+        body: JSON.stringify(simulatedAgentResponse)
       };
     }
 
-    const data = await response.json();
-    const reply = data.choices && data.choices[0] && data.choices[0].message
-      ? data.choices[0].message.content
-      : generateFallbackResponse(userMessage.trim().toLowerCase());
+    // Call OpenAI API with Tool Calling Loop
+    let currentTurn = 0;
+    const maxTurns = 5;
+    let toolCallsExecuted = [];
+
+    while (currentTurn < maxTurns) {
+      currentTurn++;
+
+      const apiRes = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+          model: 'gpt-3.5-turbo',
+          messages: messages,
+          tools: AGENT_TOOLS,
+          tool_choice: 'auto',
+          max_tokens: 450,
+          temperature: 0.6
+        })
+      });
+
+      if (!apiRes.ok) {
+        const errText = await apiRes.text();
+        console.error('OpenAI API Error:', errText);
+        const fallback = runSimulatedAgentLoop(userMessage, messages);
+        return { statusCode: 200, headers, body: JSON.stringify(fallback) };
+      }
+
+      const resData = await apiRes.json();
+      const choice = resData.choices && resData.choices[0];
+
+      if (!choice) break;
+
+      const responseMessage = choice.message;
+      messages.push(responseMessage);
+
+      // Check if model requested tool execution
+      if (responseMessage.tool_calls && responseMessage.tool_calls.length > 0) {
+        for (const toolCall of responseMessage.tool_calls) {
+          const fnName = toolCall.function.name;
+          let fnArgs = {};
+          try {
+            fnArgs = JSON.parse(toolCall.function.arguments || '{}');
+          } catch (e) {}
+
+          const toolResult = executeToolCall(fnName, fnArgs);
+          toolCallsExecuted.push({ name: fnName, args: fnArgs });
+
+          // Append tool message to conversation thread
+          messages.push({
+            role: 'tool',
+            tool_call_id: toolCall.id,
+            name: fnName,
+            content: toolResult
+          });
+        }
+        // Continue loop to send tool results back to OpenAI
+      } else {
+        // Model provided final answer
+        return {
+          statusCode: 200,
+          headers,
+          body: JSON.stringify({
+            reply: responseMessage.content,
+            toolsUsed: toolCallsExecuted
+          })
+        };
+      }
+    }
 
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ reply })
+      body: JSON.stringify({
+        reply: messages[messages.length - 1].content || "Je reste à votre disposition !",
+        toolsUsed: toolCallsExecuted
+      })
     };
 
   } catch (error) {
-    console.error('Error in chat handler:', error);
+    console.error('Agent handler error:', error);
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({ error: 'Erreur interne de traitement' })
+      body: JSON.stringify({ error: 'Erreur lors du traitement par l\'agent IA' })
     };
   }
 };
 
-// Smart local fallback generator for query handling when live API key is pending
-function generateFallbackResponse(q) {
-  if (q.includes('projet') || q.includes('réalisation') || q.includes('création')) {
-    return "Marc a réalisé plusieurs projets majeurs : \n1. **Dashboard Analytics** (React, Node.js, D3.js)\n2. **Shop Premium** (Next.js, Stripe, MongoDB)\n3. **Task Master Pro** (React Native, Firebase)\n4. **Social Connect** (Vue.js, GraphQL, PostgreSQL).\nVous pouvez consulter la section 'Projets' du site pour plus de détails !";
+// Simulated Local AI Agent when live API Key is not set
+function runSimulatedAgentLoop(userMsg, messageThread) {
+  const q = userMsg.toLowerCase();
+  let toolsUsed = [];
+  let reply = '';
+
+  if (q.includes('projet') || q.includes('créat') || q.includes('réalis') || q.includes('app') || q.includes('web')) {
+    const data = executeToolCall('get_projects', {});
+    toolsUsed.push({ name: 'get_projects', args: {} });
+    const projects = JSON.parse(data);
+    const listStr = projects.map(p => `• **${p.title}** (${p.categoryLabel || p.category}) : ${p.description}`).join('\n');
+    reply = `J'ai consulté la base de données des projets de Marc via mon outil \`get_projects\` !\nVoici ses réalisations phares :\n\n${listStr}\n\nLequel souhaitez-vous explorer davantage ?`;
+  } else if (q.includes('compétence') || q.includes('tech') || q.includes('stack') || q.includes('langage') || q.includes('sait faire')) {
+    const data = executeToolCall('get_skills', {});
+    toolsUsed.push({ name: 'get_skills', args: {} });
+    const skills = JSON.parse(data);
+    const skillsList = skills.map(s => s.name).join(', ');
+    reply = `En consultant l'outil \`get_skills\`, voici les technologies principales maîtrisées par Marc :\n⚡ **${skillsList}**.\n\nIl conçoit des architectures modernes, typées et ultra-performantes (Lighthouse 100%).`;
+  } else if (q.includes('voyage') || q.includes('photo') || q.includes('pays') || q.includes('déplacement')) {
+    const data = executeToolCall('get_voyages', {});
+    toolsUsed.push({ name: 'get_voyages', args: {} });
+    reply = `J'ai exécuté l'outil \`get_voyages\` ! Marc aime explorer le monde pour nourrir sa créativité. Vous pouvez consulter les clichés de ses voyages dans la section dedicated du site !`;
+  } else if (q.includes('contact') || q.includes('mail') || q.includes('recruter') || q.includes('joindre') || q.includes('qui')) {
+    const data = executeToolCall('get_profile_info', {});
+    toolsUsed.push({ name: 'get_profile_info', args: {} });
+    const p = JSON.parse(data);
+    reply = `D'après l'outil \`get_profile_info\`, Marc Dip FAYE est **${p.role}** basé à ${p.location}.\n📧 Email : **${p.email}**\n💼 ${p.availability}\n\nSouhaitez-vous échanger directement avec lui ?`;
+  } else {
+    reply = `Bonjour ! Je suis l'agent IA conversationnel du portfolio de Marc Dip FAYE. Je possède des outils intégrés (\`get_projects\`, \`get_skills\`, \`get_profile_info\`, \`get_voyages\`) pour répondre avec précision à vos questions sur ses projets, son stack ou ses coordonnées !`;
   }
-  if (q.includes('compétence') || q.includes('stack') || q.includes('techno') || q.includes('langage')) {
-    return "Marc maîtrise les technologies Fullstack modernes : React, Next.js, Vue.js, Node.js, PHP / Laravel, TypeScript, Tailwind CSS, MongoDB, PostgreSQL, Docker et React Native. Il se concentre sur des applications rapides et esthétiques !";
-  }
-  if (q.includes('contact') || q.includes('mail') || q.includes('joindre') || q.includes('email') || q.includes('hiring') || q.includes('recruter')) {
-    return "Vous pouvez contacter Marc directement par email à **marcfaye457@gmail.com** ou via ses réseaux LinkedIn & GitHub en bas de page. Il est actuellement disponible pour des missions freelance ou opportunités en CDI à Dakar ou à distance !";
-  }
-  if (q.includes('parcours') || q.includes('expérience') || q.includes('qui') || q.includes('présent')) {
-    return "Marc Dip FAYE est Développeur Fullstack & Creative Tech basé à Dakar, Sénégal. Ancien Développeur Web & Mobile chez Orange Digital Center (2023-2024), il travaille actuellement en tant que Développeur Freelance sur des projets web et mobiles à fort impact.";
-  }
-  if (q.includes('workflow') || q.includes('méthode') || q.includes('process')) {
-    return "Le workflow de Marc comporte 4 étapes claires : 1. Découverte & Strategy, 2. UI/UX Design Tech, 3. Développement Agile Clean Code, et 4. Lancement, CI/CD & suivi SEO/Lighthouse 100%.";
-  }
-  return "Bonjour ! Je suis l'assistante virtuelle de Marc Dip FAYE. Marc est Développeur Fullstack à Dakar (React, Next.js, Node.js, PHP). N'hésitez pas à me poser des questions sur ses projets, ses compétences ou la façon de le contacter !";
+
+  return { reply, toolsUsed, fallback: true };
 }

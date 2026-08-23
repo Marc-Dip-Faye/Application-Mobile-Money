@@ -853,7 +853,7 @@ function toggleAiChatDrawer() {
 if (aiChatToggle) aiChatToggle.addEventListener('click', toggleAiChatDrawer);
 if (aiChatClose) aiChatClose.addEventListener('click', toggleAiChatDrawer);
 
-function appendChatMessage(sender, text) {
+function appendChatMessage(sender, text, toolsUsed = []) {
   if (!aiChatMessages) return;
 
   const msgDiv = document.createElement('div');
@@ -862,12 +862,20 @@ function appendChatMessage(sender, text) {
   const now = new Date();
   const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
 
-  // Simple markdown conversion for **bold** text and linebreaks
+  // Simple markdown conversion for **bold** text, `code` tags and linebreaks
   let formattedText = escapeHtml(text)
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/`(.*?)`/g, '<code>$1</code>')
     .replace(/\n/g, '<br>');
 
+  let toolsHtml = '';
+  if (toolsUsed && toolsUsed.length > 0) {
+    const toolBadgeNames = toolsUsed.map(t => escapeHtml(t.name)).join(', ');
+    toolsHtml = `<div class="ai-tool-indicator">⚡ Agent Tool Called: <span>${toolBadgeNames}</span></div>`;
+  }
+
   msgDiv.innerHTML = `
+    ${toolsHtml}
     <div class="ai-msg-bubble">${formattedText}</div>
     <span class="ai-msg-time">${timeStr}</span>
   `;
@@ -875,9 +883,9 @@ function appendChatMessage(sender, text) {
   aiChatMessages.appendChild(msgDiv);
   aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
 
-  // Track conversation history
+  // Track conversation thread memory
   chatHistory.push({ sender, text });
-  if (chatHistory.length > 10) chatHistory.shift();
+  if (chatHistory.length > 12) chatHistory.shift();
 }
 
 async function handleAiChatSubmit(e) {
@@ -912,7 +920,7 @@ async function handleAiChatSubmit(e) {
 
     const data = await response.json();
     const botReply = data.reply || "Désolé, je n'ai pas pu traiter votre demande. N'hésitez pas à envoyer un email à marcfaye457@gmail.com !";
-    appendChatMessage('bot', botReply);
+    appendChatMessage('bot', botReply, data.toolsUsed || []);
 
   } catch (error) {
     console.warn('AI Chat API Error/Fallback:', error);
@@ -920,7 +928,7 @@ async function handleAiChatSubmit(e) {
 
     // Smart Client-side Fallback Response
     const fallbackMsg = getLocalFallbackResponse(userMsg.toLowerCase());
-    appendChatMessage('bot', fallbackMsg);
+    appendChatMessage('bot', fallbackMsg, [{ name: 'client_fallback' }]);
   }
 }
 
