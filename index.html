@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraAfrika - Plateforme Moderne du Tourisme au Sénégal</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand-logo">
+                <span class="logo-icon"><i class="fa-solid fa-compass"></i></span>
+                <span class="logo-text">Terra<span class="accent-text">Afrika</span></span>
+            </a>
+
+            <div class="search-bar-header">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="global-search" placeholder="Rechercher un hôtel, guide, artisan au Sénégal..." aria-label="Rechercher">
+            </div>
+
+            <div class="nav-actions">
+                <button class="wallet-pill-btn" id="open-wallet-btn">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span class="wallet-label">Pass Touristique</span>
+                    <span class="wallet-balance-badge" id="nav-balance">0 CFA</span>
+                </button>
+                <button class="theme-toggle-btn" id="theme-toggle" aria-label="Changer le thème">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-layout">
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fa-solid fa-location-dot"></i> Destination Sénégal</div>
+                <h1 class="hero-title">Explorez le Sénégal avec ses <span class="neon-glow">Acteurs Locaux</span></h1>
+                <p class="hero-subtitle">
+                    Hébergements éco-responsables, guides certifiés, artisans d'art et gastronomie sénégalaise.
+                    Soutenez l'économie locale du Teranga en direct.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">150+</span>
+                        <span class="stat-label">Acteurs certifiés</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">14</span>
+                        <span class="stat-label">Régions couvertes</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Impact local direct</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Controls & Filters Section -->
+        <section class="filter-section">
+            <div class="filter-wrapper">
+                <!-- Search & Region Select bar -->
+                <div class="filter-top-bar">
+                    <div class="inline-search">
+                        <i class="fa-solid fa-search"></i>
+                        <input type="text" id="actor-search" placeholder="Nom, spécialité ou mot-clé...">
+                    </div>
+                    <div class="region-selector">
+                        <i class="fa-solid fa-map-marked-alt"></i>
+                        <select id="region-filter">
+                            <option value="all">Toutes les régions</option>
+                            <option value="Dakar">Dakar & Gorée</option>
+                            <option value="Saint-Louis">Saint-Louis & Nord</option>
+                            <option value="Saly/Thiès">Petite-Côte (Saly, Somone)</option>
+                            <option value="Casamance">Casamance (Ziguinchor, Cap Skirring)</option>
+                            <option value="Sine Saloum">Sine Saloum & Delta</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Category Chips -->
+                <div class="category-chips" id="category-chips">
+                    <button class="chip active" data-category="all">
+                        <i class="fa-solid fa-border-all"></i> Tous les Acteurs
+                    </button>
+                    <button class="chip" data-category="hotel">
+                        <i class="fa-solid fa-hotel"></i> Hôtels & Écolodges
+                    </button>
+                    <button class="chip" data-category="guide">
+                        <i class="fa-solid fa-person-hiking"></i> Guides & Agences
+                    </button>
+                    <button class="chip" data-category="artisan">
+                        <i class="fa-solid fa-palette"></i> Artisans & Culture
+                    </button>
+                    <button class="chip" data-category="restaurant">
+                        <i class="fa-solid fa-utensils"></i> Gastronomie & Maquis
+                    </button>
+                    <button class="chip" data-category="transport">
+                        <i class="fa-solid fa-bus"></i> Excursions & Transports
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Actors Directory Grid -->
+        <section class="actors-section">
+            <div class="section-header">
+                <div>
+                    <h2>Acteurs du Tourisme Remarquables</h2>
+                    <p class="section-subtext">Découvrez nos partenaires locaux vérifiés</p>
+                </div>
+                <div class="grid-counter" id="actor-count">Chargement des acteurs...</div>
+            </div>
+
+            <div class="actors-grid" id="actors-grid">
+                <!-- JS dynamic injection of actor cards -->
+            </div>
+        </section>
+
+        <!-- Featured Experience Showcase -->
+        <section class="featured-banner">
+            <div class="featured-content">
+                <span class="badge-accent"><i class="fa-solid fa-star"></i> Expérience Teranga</span>
+                <h2>Paiements Simplifiés & Sécurisés au Sénégal</h2>
+                <p>Grâce au Pass Touristique TerraAfrika, effectuez vos réservations et règlements chez nos artisans, hôtes et guides locaux sans frais de conversion.</p>
+                <button class="btn-primary-neon" id="banner-wallet-trigger">
+                    <i class="fa-solid fa-wallet"></i> Activer mon Wallet Touristique
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Actor Detail Modal -->
+    <div class="modal-backdrop" id="actor-modal" aria-hidden="true">
+        <div class="modal-card">
+            <button class="modal-close-btn" id="modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header-img" id="modal-img-wrapper">
+                <img id="modal-img" src="" alt="">
+                <div class="modal-category-badge" id="modal-category"></div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-title-row">
+                    <h2 id="modal-title"></h2>
+                    <div class="modal-rating" id="modal-rating"></div>
+                </div>
+                <p class="modal-location" id="modal-location"><i class="fa-solid fa-location-dot"></i> <span></span></p>
+
+                <p class="modal-description" id="modal-desc"></p>
+
+                <div class="modal-highlights">
+                    <h3>Points Forts & Services</h3>
+                    <div class="tags-container" id="modal-tags"></div>
+                </div>
+
+                <div class="modal-contact-box">
+                    <div>
+                        <span class="price-label">Tarif indicatif</span>
+                        <div class="price-value" id="modal-price"></div>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn-secondary" id="modal-pay-btn"><i class="fa-solid fa-paper-plane"></i> Payer via Wallet</button>
+                        <button class="btn-primary" id="modal-book-btn"><i class="fa-solid fa-calendar-check"></i> Réserver / Contacter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pass Touristique / Digital Wallet Modal -->
+    <div class="modal-backdrop" id="wallet-modal-backdrop" aria-hidden="true">
+        <div class="modal-card wallet-modal">
+            <button class="modal-close-btn" id="wallet-modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <div class="wallet-header">
+                <i class="fa-solid fa-wallet wallet-header-icon"></i>
+                <h2>Pass Touristique TerraAfrika</h2>
+                <p>Portefeuille numérique d'expériences touristiques au Sénégal</p>
+            </div>
+
+            <!-- Wallet State: Unregistered vs Registered -->
+            <div class="wallet-body">
+
+                <!-- Account Info Display -->
+                <div class="wallet-card-visual" id="wallet-card-display">
+                    <div class="visual-top">
+                        <span class="visual-brand">TerraAfrika Pass</span>
+                        <span class="visual-chip"><i class="fa-solid fa-microchip"></i></span>
+                    </div>
+                    <div class="visual-balance" id="visual-balance">0 CFA</div>
+                    <div class="visual-bottom">
+                        <div>
+                            <div class="v-label">TITULAIRE</div>
+                            <div class="v-val" id="visual-holder">Non Enregistré</div>
+                        </div>
+                        <div>
+                            <div class="v-label">TÉLÉPHONE</div>
+                            <div class="v-val" id="visual-phone">-- -- -- --</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Registration Form if no wallet -->
+                <div id="wallet-create-section">
+                    <h3 class="form-section-title"><i class="fa-solid fa-user-plus"></i> Créer / Associer un Portefeuille</h3>
+                    <form id="create-wallet-form" class="styled-form">
+                        <div class="form-group">
+                            <label for="w-name">Nom complet du titulaire</label>
+                            <input type="text" id="w-name" placeholder="Ex: Aminata Diallo" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="w-phone">Téléphone (Format Sénégal: 77XXXXXXX)</label>
+                                <input type="tel" id="w-phone" placeholder="771234567" required maxlength="9">
+                            </div>
+                            <div class="form-group">
+                                <label for="w-code">Code secret (4 chiffres)</label>
+                                <input type="password" id="w-code" placeholder="1234" maxlength="4" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="w-balance">Dépôt initial (CFA)</label>
+                            <input type="number" id="w-balance" value="50000" min="0" step="1000">
+                        </div>
+                        <button type="submit" class="btn-primary-neon full-width"><i class="fa-solid fa-plus-circle"></i> Créer mon Portefeuille</button>
+                    </form>
+                </div>
+
+                <!-- Operations Section (if wallet exists) -->
+                <div id="wallet-operations-section" style="display: none;">
+                    <div class="tabs-nav">
+                        <button class="tab-btn active" data-tab="tab-depot"><i class="fa-solid fa-arrow-down-left"></i> Recharger</button>
+                        <button class="tab-btn" data-tab="tab-retrait"><i class="fa-solid fa-arrow-up-right"></i> Payer / Retirer</button>
+                        <button class="tab-btn" data-tab="tab-history"><i class="fa-solid fa-clock-rotate-left"></i> Historique</button>
+                    </div>
+
+                    <!-- Recharge Tab -->
+                    <div class="tab-content active" id="tab-depot">
+                        <form id="depot-form" class="styled-form">
+                            <div class="form-group">
+                                <label for="depot-montant">Montant à ajouter (CFA)</label>
+                                <input type="number" id="depot-montant" placeholder="Ex: 25000" min="500" step="500" required>
+                            </div>
+                            <button type="submit" class="btn-primary-neon full-width"><i class="fa-solid fa-circle-check"></i> Confirmer le Rechargement</button>
+                        </form>
+                    </div>
+
+                    <!-- Retrait Tab -->
+                    <div class="tab-content" id="tab-retrait">
+                        <form id="retrait-form" class="styled-form">
+                            <div class="form-group">
+                                <label for="retrait-montant">Montant du Paiement / Retrait (CFA)</label>
+                                <input type="number" id="retrait-montant" placeholder="Ex: 15000" min="500" step="500" required>
+                            </div>
+                            <div class="fee-notice" id="fee-calculator-notice">
+                                <i class="fa-solid fa-circle-info"></i> Frais de transaction estimés: <strong>200 CFA</strong>
+                            </div>
+                            <button type="submit" class="btn-primary-neon full-width"><i class="fa-solid fa-paper-plane"></i> Effectuer le Paiement</button>
+                        </form>
+                    </div>
+
+                    <!-- History Tab -->
+                    <div class="tab-content" id="tab-history">
+                        <div class="history-list" id="transactions-history-list">
+                            <p class="empty-state">Aucune transaction pour le moment.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Toast -->
+                <div id="wallet-message" class="wallet-alert" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Dock Navigation -->
+    <nav class="mobile-bottom-dock">
+        <a href="#" class="dock-item active" id="dock-home">
+            <i class="fa-solid fa-compass"></i>
+            <span>Accueil</span>
+        </a>
+        <a href="#actors-grid" class="dock-item" id="dock-explore">
+            <i class="fa-solid fa-grid-2"></i>
+            <span>Acteurs</span>
+        </a>
+        <button class="dock-item dock-wallet-btn" id="dock-wallet">
+            <i class="fa-solid fa-wallet"></i>
+            <span>Wallet</span>
+        </button>
+        <button class="dock-item" id="dock-theme">
+            <i class="fa-solid fa-moon"></i>
+            <span>Thème</span>
+        </button>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#" class="brand-logo">
+                    <span class="logo-icon"><i class="fa-solid fa-compass"></i></span>
+                    <span class="logo-text">Terra<span class="accent-text">Afrika</span></span>
+                </a>
+                <p>Valoriser les acteurs locaux du tourisme au Sénégal. Promotion du tourisme durable, culturel et solidaire.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Destinations Phares</h4>
+                <ul>
+                    <li><a href="#">Dakar & Île de Gorée</a></li>
+                    <li><a href="#">Saint-Louis & Parc de Djoudj</a></li>
+                    <li><a href="#">Petite-Côte & Saly</a></li>
+                    <li><a href="#">Delta du Sine Saloum</a></li>
+                    <li><a href="#">Casamance & Cap Skirring</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Acteurs Touristiques</h4>
+                <ul>
+                    <li><a href="#">Hôtels & Écolodges</a></li>
+                    <li><a href="#">Guides Certifiés</a></li>
+                    <li><a href="#">Artisans & Galerie d'Art</a></li>
+                    <li><a href="#">Gastronomie & Teranga</a></li>
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Sénégal Teranga Pass</h4>
+                <p>Inscrivez-vous pour bénéficier d'offres exclusives des acteurs du tourisme.</p>
+                <div class="newsletter-input-group">
+                    <input type="email" placeholder="Votre e-mail...">
+                    <button class="btn-primary"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 TerraAfrika Sénégal. Tous droits réservés. Développé pour la promotion du tourisme sénégalais.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
