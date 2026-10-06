@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teranga Tourisme & Pass Sénégal - Portail Officiel & Pass Digital</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="brand-logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-compass"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="brand-title">Teranga <span class="accent-text">Tourisme</span></span>
+                    <span class="brand-subtitle"><i class="fa-solid fa-flag"></i> Sénégal Pass Digital</span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="#hero" class="nav-link active"><i class="fa-solid fa-house"></i> Accueil</a>
+                <a href="#acteurs" class="nav-link"><i class="fa-solid fa-users"></i> Acteurs du Tourisme</a>
+                <a href="#destinations" class="nav-link"><i class="fa-solid fa-map-location-dot"></i> Destinations</a>
+                <a href="#pass-section" class="nav-link"><i class="fa-solid fa-wallet"></i> Pass Tourisme</a>
+                <a href="#transactions-section" class="nav-link"><i class="fa-solid fa-clock-rotate-left"></i> Transactions</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Changer de thème">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="btn btn-primary-glow btn-sm" id="btnQuickPass" onclick="openWalletModal()">
+                    <i class="fa-solid fa-qrcode"></i> Mon Pass
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span> Portail Officiel du Tourisme au Sénégal
+                </div>
+                <h1 class="hero-title">
+                    Explorez la Terre de la <span class="gradient-text">Téranga</span> avec Fluidité
+                </h1>
+                <p class="hero-description">
+                    Connectez-vous directement aux meilleurs hôtes, guides certifiés, transports et artisans sénégalais. Payez en toute simplicité grâce à votre Pass Tourisme Digital unifié.
+                </p>
+
+                <!-- Hero Search Bar -->
+                <div class="hero-search-box">
+                    <div class="search-input-wrapper">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="heroSearchInput" placeholder="Rechercher un hôtel, guide, restaurant, taxi à Dakar, Saly, Gorée...">
+                    </div>
+                    <div class="select-wrapper">
+                        <i class="fa-solid fa-location-dot select-icon"></i>
+                        <select id="heroRegionSelect">
+                            <option value="all">Toutes les régions</option>
+                            <option value="Dakar">Dakar & Gorée</option>
+                            <option value="Saly">Saly & Petite-Côte</option>
+                            <option value="Saint-Louis">Saint-Louis</option>
+                            <option value="Casamance">Ziguinchor & Casamance</option>
+                            <option value="Sine-Saloum">Delta du Saloum</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-emerald btn-lg" onclick="triggerSearch()">
+                        <i class="fa-solid fa-sliders"></i> Filtrer
+                    </button>
+                </div>
+
+                <!-- Hero Quick Stats -->
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" id="countHotels">120+</div>
+                        <div class="stat-label">Hôtels & Lodges</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="countGuides">85+</div>
+                        <div class="stat-label">Guides Agrées</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="countTransports">200+</div>
+                        <div class="stat-label">Taxis & Transports</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Paiement Sécurisé</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Acteurs du Tourisme -->
+        <section id="acteurs" class="section-container">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag"><i class="fa-solid fa-store"></i> Écosystème Touristique</span>
+                    <h2 class="section-title">Les Acteurs du Tourisme Sénégalais</h2>
+                    <p class="section-subtitle">Retrouvez les professionnels certifiés pour un séjour inoubliable</p>
+                </div>
+                <div class="active-count-badge" id="activeFilterCount">
+                    <i class="fa-solid fa-check-circle"></i> <span id="actorsFoundCount">12</span> acteurs disponibles
+                </div>
+            </div>
+
+            <!-- Filter Pills Tabs -->
+            <div class="filter-pills-scroll">
+                <div class="filter-pills" id="categoryPills">
+                    <button class="pill-btn active" data-category="all">
+                        <i class="fa-solid fa-border-all"></i> Tous
+                    </button>
+                    <button class="pill-btn" data-category="hotel">
+                        <i class="fa-solid fa-hotel"></i> Hôtels & Lodges
+                    </button>
+                    <button class="pill-btn" data-category="guide">
+                        <i class="fa-solid fa-person-hiking"></i> Guides & Excursions
+                    </button>
+                    <button class="pill-btn" data-category="restaurant">
+                        <i class="fa-solid fa-utensils"></i> Restaurants & Gastronomie
+                    </button>
+                    <button class="pill-btn" data-category="transport">
+                        <i class="fa-solid fa-taxi"></i> Transport & Taxis
+                    </button>
+                    <button class="pill-btn" data-category="artisanat">
+                        <i class="fa-solid fa-palette"></i> Artisanat & Culture
+                    </button>
+                </div>
+            </div>
+
+            <!-- Grid of Tourism Actors -->
+            <div class="actors-grid" id="actorsGrid">
+                <!-- Dynamically populated via script.js -->
+            </div>
+        </section>
+
+        <!-- Section Destinations Phares -->
+        <section id="destinations" class="section-container destinations-section">
+            <div class="section-header text-center">
+                <span class="section-tag"><i class="fa-solid fa-compass"></i> Incontournables</span>
+                <h2 class="section-title">Destinations d'Exception au Sénégal</h2>
+                <p class="section-subtitle">Découvrez la richesse culturelle et naturelle du pays de la Téranga</p>
+            </div>
+
+            <div class="destinations-grid">
+                <div class="destination-card" onclick="filterByRegion('Gorée')">
+                    <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=800&q=80" alt="Île de Gorée" class="dest-img" loading="lazy">
+                    <div class="dest-overlay">
+                        <span class="dest-badge">Histoire & Mémoire</span>
+                        <h3 class="dest-title">Île de Gorée</h3>
+                        <p class="dest-location"><i class="fa-solid fa-location-dot"></i> Dakar, Sénégal</p>
+                    </div>
+                </div>
+
+                <div class="destination-card" onclick="filterByRegion('Saly')">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Saly Portudal" class="dest-img" loading="lazy">
+                    <div class="dest-overlay">
+                        <span class="dest-badge">Plage & Balnéaire</span>
+                        <h3 class="dest-title">Saly Portudal</h3>
+                        <p class="dest-location"><i class="fa-solid fa-location-dot"></i> Petite-Côte, Mbour</p>
+                    </div>
+                </div>
+
+                <div class="destination-card" onclick="filterByRegion('Saint-Louis')">
+                    <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80" alt="Saint-Louis" class="dest-img" loading="lazy">
+                    <div class="dest-overlay">
+                        <span class="dest-badge">Patrimoine UNESCO</span>
+                        <h3 class="dest-title">Saint-Louis (Ndar)</h3>
+                        <p class="dest-location"><i class="fa-solid fa-location-dot"></i> Nord Sénégal</p>
+                    </div>
+                </div>
+
+                <div class="destination-card" onclick="filterByRegion('Casamance')">
+                    <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80" alt="Casamance" class="dest-img" loading="lazy">
+                    <div class="dest-overlay">
+                        <span class="dest-badge">Nature & Mangroves</span>
+                        <h3 class="dest-title">Cap Skirring & Casamance</h3>
+                        <p class="dest-location"><i class="fa-solid fa-location-dot"></i> Sud du Sénégal</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Pass Tourisme & Wallet -->
+        <section id="pass-section" class="section-container wallet-section">
+            <div class="wallet-wrapper">
+                <!-- Left Column: Pass Card & Quick Actions -->
+                <div class="wallet-card-col">
+                    <div class="wallet-digital-card">
+                        <div class="card-chip">
+                            <i class="fa-solid fa-microchip"></i>
+                            <span class="card-brand"><i class="fa-solid fa-compass"></i> TERANGA PASS</span>
+                        </div>
+                        <div class="card-balance-box">
+                            <span class="balance-label">Solde disponible</span>
+                            <div class="balance-amount">
+                                <span id="walletSoldeDisplay">0</span> <span class="currency">FCFA</span>
+                            </div>
+                        </div>
+                        <div class="card-details">
+                            <div>
+                                <span class="detail-label">Titulaire</span>
+                                <span class="detail-val" id="walletClientDisplay">Aucun wallet actif</span>
+                            </div>
+                            <div>
+                                <span class="detail-label">Téléphone</span>
+                                <span class="detail-val" id="walletPhoneDisplay">-- -- -- --</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pass Action Buttons -->
+                    <div class="wallet-action-buttons">
+                        <button class="btn btn-outline" onclick="openCreateWalletModal()">
+                            <i class="fa-solid fa-user-plus"></i> Créer Wallet
+                        </button>
+                        <button class="btn btn-primary-glow" onclick="openDepotModal()">
+                            <i class="fa-solid fa-arrow-down-left"></i> Dépôt
+                        </button>
+                        <button class="btn btn-warning-glow" onclick="openRetraitModal()">
+                            <i class="fa-solid fa-arrow-up-right"></i> Retrait
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column: Pass Advantages & QR Code Generator -->
+                <div class="wallet-info-col">
+                    <span class="section-tag"><i class="fa-solid fa-shield-halved"></i> Pass Unifié Sans Frais Exorbitants</span>
+                    <h2 class="section-title">Le Pass Tourisme Sénégal</h2>
+                    <p class="section-subtitle">
+                        Réglez vos réservations d'hôtels, excursions, repas et courses de taxi instantanément. Rechargez facilement par <strong>Wave</strong>, <strong>Orange Money</strong> ou carte bancaire.
+                    </p>
+
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+                            <div>
+                                <h4>Paiements instantanés</h4>
+                                <p>Réglez les artisans et guides agréés d'un simple scan QR Code sans monnaie liquide.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fa-solid fa-percent"></i></div>
+                            <div>
+                                <h4>Frais Réduits & Clairs</h4>
+                                <p>Structure de frais transparente (ex: 200 FCFA ≤ 10 000 F, max 5000 FCFA).</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><i class="fa-solid fa-ticket"></i></div>
+                            <div>
+                                <h4>Avantages & Réductions Exclusives</h4>
+                                <p>Jusqu'à -15% sur les billets de traversée Gorée et visites guidées avec le Pass.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="qr-showcase-box">
+                        <div class="qr-code-placeholder">
+                            <i class="fa-solid fa-qrcode"></i>
+                        </div>
+                        <div>
+                            <div class="qr-title">Code QR Pass Touristique</div>
+                            <div class="qr-desc">Présentez ce code aux commerçants et guides partenaires.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Transactions Log -->
+        <section id="transactions-section" class="section-container">
+            <div class="section-header">
+                <div>
+                    <span class="section-tag"><i class="fa-solid fa-list-check"></i> Historique</span>
+                    <h2 class="section-title">Dernières Transactions</h2>
+                    <p class="section-subtitle">Consultez en temps réel le détail de vos dépôts, retraits et paiements touristiques</p>
+                </div>
+                <button class="btn btn-ghost btn-sm" onclick="clearTransactionsLog()">
+                    <i class="fa-solid fa-trash"></i> Réinitialiser
+                </button>
+            </div>
+
+            <div class="table-responsive">
+                <table class="transactions-table">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Type</th>
+                            <th>Titulaire / Destinataire</th>
+                            <th>Montant</th>
+                            <th>Frais</th>
+                            <th>Statut</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionsTableBody">
+                        <!-- Populated by script.js -->
+                        <tr class="empty-row">
+                            <td colspan="7">
+                                <i class="fa-solid fa-folder-open"></i> Aucune transaction enregistrée pour le moment.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="brand-logo footer-logo">
+                    <div class="logo-icon"><i class="fa-solid fa-compass"></i></div>
+                    <div class="logo-text">
+                        <span class="brand-title">Teranga <span class="accent-text">Tourisme</span></span>
+                    </div>
+                </div>
+                <p class="footer-desc">
+                    Plateforme officielle de valorisation et de numérisation des services touristiques du Sénégal.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Acteurs Touristiques</h4>
+                <ul>
+                    <li><a href="#acteurs" onclick="filterCategory('hotel')">Hôtels & Lodges</a></li>
+                    <li><a href="#acteurs" onclick="filterCategory('guide')">Guides Agrées</a></li>
+                    <li><a href="#acteurs" onclick="filterCategory('restaurant')">Restaurants & Gastronomie</a></li>
+                    <li><a href="#acteurs" onclick="filterCategory('transport')">Taxis & Transports</a></li>
+                    <li><a href="#acteurs" onclick="filterCategory('artisanat')">Artisanat & Souvenirs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Destinations</h4>
+                <ul>
+                    <li><a href="#destinations">Dakar & Île de Gorée</a></li>
+                    <li><a href="#destinations">Saly & Somone</a></li>
+                    <li><a href="#destinations">Saint-Louis Ndar</a></li>
+                    <li><a href="#destinations">Cap Skirring Casamance</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Moyens de Paiement</h4>
+                <div class="payment-badges">
+                    <span class="pay-badge wave-bg">Wave</span>
+                    <span class="pay-badge om-bg">Orange Money</span>
+                    <span class="pay-badge free-bg">Free Money</span>
+                    <span class="pay-badge visa-bg">CB / Visa</span>
+                </div>
+                <p class="footer-contact"><i class="fa-solid fa-phone"></i> +221 33 800 00 00</p>
+                <p class="footer-contact"><i class="fa-solid fa-envelope"></i> contact@teranga-tourisme.sn</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Teranga Tourisme & Pass Sénégal. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation Dock -->
+    <div class="mobile-bottom-dock">
+        <a href="#hero" class="dock-item active">
+            <i class="fa-solid fa-house"></i>
+            <span>Accueil</span>
+        </a>
+        <a href="#acteurs" class="dock-item">
+            <i class="fa-solid fa-users"></i>
+            <span>Acteurs</span>
+        </a>
+        <a href="#pass-section" class="dock-item">
+            <i class="fa-solid fa-wallet"></i>
+            <span>Pass Wallet</span>
+        </a>
+        <a href="#transactions-section" class="dock-item">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Historique</span>
+        </a>
+    </div>
+
+    <!-- Modals -->
+
+    <!-- Modal: Detail / Booking Actor -->
+    <div class="modal-backdrop" id="actorModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('actorModal')"><i class="fa-solid fa-xmark"></i></button>
+            <div id="actorModalContent">
+                <!-- Filled dynamically by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Créer un Wallet -->
+    <div class="modal-backdrop" id="createWalletModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('createWalletModal')"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-user-plus text-emerald"></i> Créer votre Pass Tourisme</h3>
+                <p>Ouvrez votre compte digital pour régler rapidement vos prestations au Sénégal.</p>
+            </div>
+            <form id="createWalletForm" onsubmit="handleCreateWallet(event)">
+                <div class="form-group">
+                    <label for="clientNom">Nom complet / Nom du touriste</label>
+                    <input type="text" id="clientNom" placeholder="Ex: Mariama Diallo ou John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="clientTel">Numéro de Téléphone (Sénégal: 70, 75, 76, 77, 78)</label>
+                    <input type="tel" id="clientTel" placeholder="Ex: 771234567" required maxlength="9">
+                </div>
+                <div class="form-group">
+                    <label for="clientCode">Code secret (4 chiffres)</label>
+                    <input type="password" id="clientCode" placeholder="Ex: 1234" required maxlength="4">
+                </div>
+                <div class="form-group">
+                    <label for="clientSolde">Solde Initial (FCFA)</label>
+                    <input type="number" id="clientSolde" placeholder="Ex: 50000" min="0" value="25000" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-ghost" onclick="closeModal('createWalletModal')">Annuler</button>
+                    <button type="submit" class="btn btn-primary-glow">Créer mon Pass</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Faire un Dépôt -->
+    <div class="modal-backdrop" id="depotModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('depotModal')"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-arrow-down-left text-emerald"></i> Recharger mon Pass Tourisme</h3>
+                <p>Rechargez via Wave, Orange Money ou Carte Bancaire sans frais de dépôt.</p>
+            </div>
+            <form id="depotForm" onsubmit="handleDepot(event)">
+                <div class="form-group">
+                    <label for="depotTel">Numéro du compte / Wallet</label>
+                    <input type="tel" id="depotTel" placeholder="Ex: 771234567" required maxlength="9">
+                </div>
+                <div class="form-group">
+                    <label for="depotMontant">Montant du Dépôt (FCFA)</label>
+                    <input type="number" id="depotMontant" placeholder="Ex: 10000" min="1000" required>
+                </div>
+                <div class="form-group">
+                    <label>Méthode de recharge</label>
+                    <div class="payment-method-selector">
+                        <label class="pay-option active">
+                            <input type="radio" name="payMethod" value="Wave" checked>
+                            <span><i class="fa-solid fa-water"></i> Wave</span>
+                        </label>
+                        <label class="pay-option">
+                            <input type="radio" name="payMethod" value="Orange Money">
+                            <span><i class="fa-solid fa-mobile-screen"></i> Orange Money</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-ghost" onclick="closeModal('depotModal')">Annuler</button>
+                    <button type="submit" class="btn btn-primary-glow">Valider le Dépôt</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Faire un Retrait -->
+    <div class="modal-backdrop" id="retraitModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('retraitModal')"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-arrow-up-right text-orange"></i> Effectuer un Retrait</h3>
+                <p>Retirez de l'argent vers votre compte Mobile Money habituel.</p>
+            </div>
+            <form id="retraitForm" onsubmit="handleRetrait(event)">
+                <div class="form-group">
+                    <label for="retraitTel">Numéro du Pass / Wallet</label>
+                    <input type="tel" id="retraitTel" placeholder="Ex: 771234567" required maxlength="9">
+                </div>
+                <div class="form-group">
+                    <label for="retraitMontant">Montant du Retrait (FCFA)</label>
+                    <input type="number" id="retraitMontant" placeholder="Ex: 15000" min="500" required>
+                </div>
+                <div class="fee-estimate-box" id="feeEstimateBox">
+                    <i class="fa-solid fa-circle-info"></i> Frais estimés : <strong id="feeEstimateValue">0 FCFA</strong>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-ghost" onclick="closeModal('retraitModal')">Annuler</button>
+                    <button type="submit" class="btn btn-warning-glow">Confirmer le Retrait</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
