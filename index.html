@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teranga Tourisme Sénégal — Portail des Acteurs Touristiques & Pass Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <!-- Background Ambient Glows -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
+
+    <!-- Top Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <div class="logo-badge">
+                    <i class="fa-solid fa-compass"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="brand-title">Teranga<span class="text-neon">Tourisme</span></span>
+                    <span class="brand-sub">Sénégal • Portail des Acteurs</span>
+                </div>
+            </a>
+
+            <div class="nav-search-bar">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Rechercher un acteur, un hôtel, un guide, un circuit..." autocomplete="off">
+                <span class="search-badge"><kbd>⌘K</kbd></span>
+            </div>
+
+            <div class="nav-actions">
+                <div class="wallet-chip" id="navWalletChip" onclick="openWalletModal()">
+                    <div class="wallet-chip-icon">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                    <div class="wallet-chip-info">
+                        <span class="wallet-chip-label">Pass Tourisme</span>
+                        <span class="wallet-chip-amount" id="navWalletBalance">50 000 CFA</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right chip-arrow"></i>
+                </div>
+                <button class="btn btn-neon btn-sm" onclick="openReservationModal()">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span>Réserver un Acteur</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-wrapper">
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="hero-pill">
+                    <span class="pill-dot"></span>
+                    <span class="pill-text">Portail Officiel des Acteurs du Tourisme au Sénégal</span>
+                </div>
+                <h1 class="hero-title">
+                    Découvrez l'Authenticité de la <span class="gradient-text">Teranga Sénégalaise</span>
+                </h1>
+                <p class="hero-description">
+                    Connectez-vous directement avec nos agences certifiées, guides d'exception, hébergements éco-responsables, chauffeurs privés et artisans locaux. Payez vos prestations en toute sécurité grâce au **Pass Tourisme Digital**.
+                </p>
+
+                <!-- Search & Filter Bar -->
+                <div class="hero-filter-box">
+                    <div class="filter-field">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        <select id="regionFilter">
+                            <option value="">Toutes les Régions</option>
+                            <option value="Dakar">Dakar & Île de Gorée</option>
+                            <option value="Saint-Louis">Saint-Louis & Fleuve Sénégal</option>
+                            <option value="Thies">Thiès, Saly & Somone</option>
+                            <option value="Casamance">Casamance & Ziguinchor</option>
+                            <option value="Kédougou">Kédougou & Pays Bassari</option>
+                            <option value="Sine-Saloum">Delta du Sine-Saloum</option>
+                        </select>
+                    </div>
+                    <div class="filter-divider"></div>
+                    <div class="filter-field">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <select id="categoryFilter">
+                            <option value="">Toutes les Catégories</option>
+                            <option value="agence">Agences & Excursions</option>
+                            <option value="hotel">Hôtels & Éco-Lodges</option>
+                            <option value="guide">Guides Touristiques</option>
+                            <option value="transport">Transport & Chauffeurs</option>
+                            <option value="artisanat">Artisans & Restauration</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-neon hero-search-btn" id="searchBtn">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span>Filtrer les Acteurs</span>
+                    </button>
+                </div>
+
+                <!-- Key Metrics Badges -->
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">180+</span>
+                        <span class="stat-label">Acteurs Certifiés</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">14</span>
+                        <span class="stat-label">Régions Couvertes</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">4.9 ★</span>
+                        <span class="stat-label">Satisfaction Voyageurs</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Paiement Sécurisé Pass</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stakeholders Category Tabs Navigation -->
+        <section class="categories-section" id="acteurs">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Les Acteurs Touristiques du Sénégal</h2>
+                    <p class="section-subtitle">Sélection de partenaires qualifiés pour vivre des expériences inoubliables</p>
+                </div>
+                <div class="category-count">
+                    <span id="actorCountBadge" class="count-badge">0 Acteurs disponibles</span>
+                </div>
+            </div>
+
+            <div class="category-tabs" id="categoryTabs">
+                <button class="tab-btn active" data-category="all">
+                    <i class="fa-solid fa-border-all"></i>
+                    <span>Tous les Acteurs</span>
+                </button>
+                <button class="tab-btn" data-category="agence">
+                    <i class="fa-solid fa-compass-drafting"></i>
+                    <span>Agences de Voyage</span>
+                </button>
+                <button class="tab-btn" data-category="hotel">
+                    <i class="fa-solid fa-hotel"></i>
+                    <span>Hôtels & Éco-Lodges</span>
+                </button>
+                <button class="tab-btn" data-category="guide">
+                    <i class="fa-solid fa-person-hiking"></i>
+                    <span>Guides Agréés</span>
+                </button>
+                <button class="tab-btn" data-category="transport">
+                    <i class="fa-solid fa-car-side"></i>
+                    <span>Transporteurs Private</span>
+                </button>
+                <button class="tab-btn" data-category="artisanat">
+                    <i class="fa-solid fa-utensils"></i>
+                    <span>Artisans & Restaurants</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Stakeholders Cards Grid -->
+        <section class="stakeholders-grid-section">
+            <div class="actors-grid" id="actorsGrid">
+                <!-- Dynamically populated via script.js -->
+            </div>
+            <div id="noResults" class="no-results hidden">
+                <i class="fa-solid fa-magnifying-glass-location"></i>
+                <h3>Aucun acteur touristique ne correspond à votre recherche</h3>
+                <p>Essayez de recharger les critères de recherche ou de sélectionner une autre catégorie.</p>
+                <button class="btn btn-outline" onclick="resetFilters()">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    Réinitialiser les filtres
+                </button>
+            </div>
+        </section>
+
+        <!-- Tourist Pass Digital Wallet Feature Section -->
+        <section class="pass-wallet-banner" id="pass-tourisme">
+            <div class="pass-card-wrapper">
+                <div class="pass-visual">
+                    <div class="pass-digital-card">
+                        <div class="card-header">
+                            <span class="card-chip"></span>
+                            <span class="card-brand"><i class="fa-solid fa-bolt"></i> PASS TERANGA</span>
+                        </div>
+                        <div class="card-number">•••• •••• •••• 7789</div>
+                        <div class="card-footer">
+                            <div class="card-holder">
+                                <small>Titulaire</small>
+                                <span>Voyageur International</span>
+                            </div>
+                            <div class="card-balance">
+                                <small>Solde Actuel</small>
+                                <strong id="walletDisplayAmount">50 000 CFA</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pass-info">
+                    <div class="hero-pill neon-pill">
+                        <i class="fa-solid fa-shield-halved"></i> Pass Tourisme 100% Sécurisé
+                    </div>
+                    <h2>Payez directement tous vos acteurs touristiques en FCFA</h2>
+                    <p>
+                        Simplifiez vos voyages au Sénégal ! Alimentez votre porte-monnaie virtuel touristique et réglez instantanément vos nuitées d'hôtels, excursions en pirogue, guides locaux, souvenirs artisanaux et courses de chauffeurs sans frais de change cachés.
+                    </p>
+
+                    <div class="pass-features-list">
+                        <div class="feature-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Zéro frais de commission sur le règlement des prestataires</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Transfert direct instantané sur le téléphone de l'acteur</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Historique clair de vos dépenses de voyage</span>
+                        </div>
+                    </div>
+
+                    <div class="pass-actions">
+                        <button class="btn btn-neon" onclick="openDepositModal()">
+                            <i class="fa-solid fa-plus-circle"></i>
+                            Recharger mon Pass
+                        </button>
+                        <button class="btn btn-outline" onclick="openTransactionsModal()">
+                            <i class="fa-solid fa-receipt"></i>
+                            Voir mes Transactions
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curated Tourism Experiences & Circuit Section -->
+        <section class="experiences-section" id="circuits">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Circuits & Expériences Incontournables</h2>
+                    <p class="section-subtitle">Packs combinant plusieurs acteurs certifiés (Guide + Hébergement + Transport)</p>
+                </div>
+            </div>
+
+            <div class="experiences-slider">
+                <div class="exp-card">
+                    <div class="exp-image" style="background-image: url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=800&q=80');">
+                        <span class="exp-badge">3 Jours / 2 Nuits</span>
+                    </div>
+                    <div class="exp-content">
+                        <h3>Escape Sauvage au Sine-Saloum</h3>
+                        <p>Balade en pirogue parmi les mangroves, île aux coquillages de Fadiouth et nuitée sous lodge écologique à Toubacouta.</p>
+                        <div class="exp-meta">
+                            <span><i class="fa-solid fa-user-group"></i> Agence Teranga Safari</span>
+                            <span class="price-tag">145 000 CFA</span>
+                        </div>
+                        <button class="btn btn-sm btn-neon btn-block" onclick="bookCircuit('Escape Sauvage au Sine-Saloum', 145000)">
+                            Réserver avec mon Pass
+                        </button>
+                    </div>
+                </div>
+
+                <div class="exp-card">
+                    <div class="exp-image" style="background-image: url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=800&q=80');">
+                        <span class="exp-badge">1 Journée Intense</span>
+                    </div>
+                    <div class="exp-content">
+                        <h3>Histoire & Mémoire à l'Île de Gorée</h3>
+                        <p>Traversée en chaloupe, visite guidée de la Maison des Esclaves par M. Ndiaye, déjeuner de Thieboudienne face à la mer.</p>
+                        <div class="exp-meta">
+                            <span><i class="fa-solid fa-person-hiking"></i> Guide Gorée Authentique</span>
+                            <span class="price-tag">35 000 CFA</span>
+                        </div>
+                        <button class="btn btn-sm btn-neon btn-block" onclick="bookCircuit('Histoire & Mémoire à l\'Île de Gorée', 35000)">
+                            Réserver avec mon Pass
+                        </button>
+                    </div>
+                </div>
+
+                <div class="exp-card">
+                    <div class="exp-image" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80');">
+                        <span class="exp-badge">2 Jours</span>
+                    </div>
+                    <div class="exp-content">
+                        <h3>Magie du Désert de Lompoul</h3>
+                        <p>Nuit féérique sous tente mauritanienne, randonnée à dos de dromadaire au coucher de soleil et musique traditionnelle autour du feu.</p>
+                        <div class="exp-meta">
+                            <span><i class="fa-solid fa-campground"></i> Lompoul Ecolodge</span>
+                            <span class="price-tag">85 000 CFA</span>
+                        </div>
+                        <button class="btn btn-sm btn-neon btn-block" onclick="bookCircuit('Magie du Désert de Lompoul', 85000)">
+                            Réserver avec mon Pass
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col brand-col">
+                <div class="nav-logo">
+                    <div class="logo-badge"><i class="fa-solid fa-compass"></i></div>
+                    <span class="brand-title">Teranga<span class="text-neon">Tourisme</span></span>
+                </div>
+                <p>
+                    Plateforme d'interconnexion entre les visiteurs internationaux/nationaux et l'écosystème professionnel du tourisme au Sénégal.
+                </p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Acteurs Touristiques</h4>
+                <ul>
+                    <li><a href="#acteurs">Agences de Voyage</a></li>
+                    <li><a href="#acteurs">Hôtels & Éco-Lodges</a></li>
+                    <li><a href="#acteurs">Guides Touristiques</a></li>
+                    <li><a href="#acteurs">Transport & Chauffeurs</a></li>
+                    <li><a href="#acteurs">Restaurants & Artisans</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Services aux Touristes</h4>
+                <ul>
+                    <li><a href="#pass-tourisme">Pass Tourisme Digital</a></li>
+                    <li><a href="#" onclick="openDepositModal()">Recharger mon Solde</a></li>
+                    <li><a href="#circuits">Circuits Clé en Main</a></li>
+                    <li><a href="#" onclick="openTransactionsModal()">Historique des Paiements</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Ministère & Partenaires</h4>
+                <p class="partner-note">
+                    <i class="fa-solid fa-award"></i> Répertoire agréé et aligné sur les normes de qualité Teranga du Sénégal.
+                </p>
+                <div class="support-contact">
+                    <i class="fa-solid fa-headset"></i>
+                    <div>
+                        <small>Assistance Voyageurs 24/7</small>
+                        <strong>+221 33 800 00 00</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Teranga Tourisme Sénégal — Tous droits réservés. Développé avec passion pour le Tourisme Sénégalais.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation Dock -->
+    <nav class="mobile-dock-nav">
+        <a href="#" class="dock-item active" data-dock="home">
+            <i class="fa-solid fa-house"></i>
+            <span>Accueil</span>
+        </a>
+        <a href="#acteurs" class="dock-item" data-dock="actors">
+            <i class="fa-solid fa-users-viewfinder"></i>
+            <span>Acteurs</span>
+        </a>
+        <a href="javascript:void(0)" class="dock-item wallet-dock" onclick="openWalletModal()">
+            <div class="dock-wallet-icon">
+                <i class="fa-solid fa-wallet"></i>
+            </div>
+            <span>Pass</span>
+        </a>
+        <a href="#circuits" class="dock-item" data-dock="circuits">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Circuits</span>
+        </a>
+        <a href="javascript:void(0)" class="dock-item" onclick="openReservationModal()">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>Réserver</span>
+        </a>
+    </nav>
+
+    <!-- Modal: Actor Details -->
+    <div class="modal-backdrop" id="actorModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('actorModal')"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header-banner" id="modalActorBanner">
+                <span class="actor-category-tag" id="modalActorCategoryTag">Catégorie</span>
+            </div>
+            <div class="modal-body">
+                <div class="actor-modal-header">
+                    <div>
+                        <h2 id="modalActorName">Nom de l'Acteur</h2>
+                        <p id="modalActorRegion" class="actor-region-text"><i class="fa-solid fa-location-dot"></i> Dakar, Sénégal</p>
+                    </div>
+                    <div class="actor-rating-badge" id="modalActorRating">
+                        <i class="fa-solid fa-star"></i> 4.9 (42 avis)
+                    </div>
+                </div>
+
+                <div class="modal-description" id="modalActorDesc">
+                    Description complète de l'acteur...
+                </div>
+
+                <div class="modal-highlights">
+                    <h3>Prestations & Services inclus</h3>
+                    <ul class="highlights-list" id="modalActorServices">
+                        <!-- Hydrated by JS -->
+                    </ul>
+                </div>
+
+                <div class="actor-contact-box">
+                    <div class="contact-info">
+                        <div><i class="fa-solid fa-phone"></i> <span id="modalActorPhone">+221 77 000 00 00</span></div>
+                        <div><i class="fa-solid fa-envelope"></i> <span id="modalActorEmail">contact@acteur.sn</span></div>
+                        <div><i class="fa-solid fa-shield-check"></i> <span class="text-neon">Agréé par Teranga Tourisme</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('actorModal')">Fermer</button>
+                <button class="btn btn-neon" id="modalActorBookBtn">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Payer avec mon Pass
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Reservation & Direct Payment -->
+    <div class="modal-backdrop" id="reservationModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('reservationModal')"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-title-bar">
+                <h2><i class="fa-solid fa-calendar-check text-neon"></i> Réservation & Paiement Prestataire</h2>
+                <p>Réglez directement votre prestation via le Pass Tourisme Sénégal</p>
+            </div>
+            <form id="reservationForm" onsubmit="handleReservationSubmit(event)">
+                <div class="form-group">
+                    <label>Sélectionner un Acteur / Prestataire</label>
+                    <select id="resActorSelect" required onchange="updateReservationAmount()">
+                        <option value="">Choisissez un acteur...</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Date de Prestation</label>
+                        <input type="date" id="resDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre de personnes</label>
+                        <input type="number" id="resGuests" min="1" max="20" value="1" required onchange="updateReservationAmount()">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Montant total (CFA)</label>
+                    <div class="input-with-symbol">
+                        <input type="number" id="resAmount" placeholder="Montant en FCFA" required readonly>
+                        <span class="currency-symbol">CFA</span>
+                    </div>
+                </div>
+
+                <div class="wallet-payment-summary">
+                    <div class="summary-line">
+                        <span>Solde de votre Pass :</span>
+                        <strong id="resWalletBalance">50 000 CFA</strong>
+                    </div>
+                    <div class="summary-line">
+                        <span>Frais de Transaction :</span>
+                        <strong class="text-neon">0 CFA (Offerts)</strong>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="closeModal('reservationModal')">Annuler</button>
+                    <button type="submit" class="btn btn-neon">
+                        <i class="fa-solid fa-lock"></i>
+                        Confirmer et Payer le Prestataire
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Wallet Deposit -->
+    <div class="modal-backdrop" id="depositModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('depositModal')"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-title-bar">
+                <h2><i class="fa-solid fa-circle-plus text-neon"></i> Recharger votre Pass Tourisme</h2>
+                <p>Alimentez votre compte en FCFA par carte bancaire ou Mobile Money</p>
+            </div>
+            <form id="depositForm" onsubmit="handleDepositSubmit(event)">
+                <div class="form-group">
+                    <label>Montant de la recharge (CFA)</label>
+                    <div class="input-with-symbol">
+                        <input type="number" id="depositAmount" min="2000" step="1000" value="25000" required>
+                        <span class="currency-symbol">CFA</span>
+                    </div>
+                </div>
+
+                <div class="preset-amounts">
+                    <button type="button" class="preset-btn" onclick="setDepositAmount(10000)">10 000 F</button>
+                    <button type="button" class="preset-btn" onclick="setDepositAmount(25000)">25 000 F</button>
+                    <button type="button" class="preset-btn" onclick="setDepositAmount(50000)">50 000 F</button>
+                    <button type="button" class="preset-btn" onclick="setDepositAmount(100000)">100 000 F</button>
+                </div>
+
+                <div class="form-group">
+                    <label>Moyen de recharge</label>
+                    <div class="payment-methods-grid">
+                        <label class="method-card active">
+                            <input type="radio" name="payMethod" value="wave" checked>
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                            <span>Wave Senegal</span>
+                        </label>
+                        <label class="method-card">
+                            <input type="radio" name="payMethod" value="orange">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>Orange Money</span>
+                        </label>
+                        <label class="method-card">
+                            <input type="radio" name="payMethod" value="card">
+                            <i class="fa-solid fa-credit-card"></i>
+                            <span>Carte Visa / Mastercard</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="closeModal('depositModal')">Annuler</button>
+                    <button type="submit" class="btn btn-neon">
+                        <i class="fa-solid fa-bolt"></i>
+                        Valider la Recharge
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Transactions History -->
+    <div class="modal-backdrop" id="transactionsModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('transactionsModal')"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-title-bar">
+                <h2><i class="fa-solid fa-clock-rotate-left text-neon"></i> Historique du Pass Tourisme</h2>
+                <p>Vos recharges et paiements effectués auprès des acteurs touristiques</p>
+            </div>
+
+            <div class="wallet-balance-banner">
+                <div>
+                    <small>Solde Disponible</small>
+                    <h3 id="txModalBalance">50 000 CFA</h3>
+                </div>
+                <button class="btn btn-sm btn-neon" onclick="closeModal('transactionsModal'); openDepositModal();">
+                    <i class="fa-solid fa-plus"></i> Recharger
+                </button>
+            </div>
+
+            <div class="transactions-list" id="transactionsList">
+                <!-- Hydrated via JS -->
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-outline btn-block" onclick="closeModal('transactionsModal')">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
