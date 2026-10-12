@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teranga Tourism Senegal | Portail Officiel des Acteurs du Tourisme</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand">
+                <span class="brand-badge"><i class="fa-solid fa-compass"></i></span>
+                <div class="brand-text">
+                    <span class="brand-title">Teranga<span class="highlight">Tourism</span></span>
+                    <span class="brand-subtitle">SÉNÉGAL</span>
+                </div>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#hero" class="nav-link active"><i class="fa-solid fa-house"></i> Accueil</a>
+                <a href="#acteurs" class="nav-link"><i class="fa-solid fa-users-viewfinder"></i> Acteurs</a>
+                <a href="#regions" class="nav-link"><i class="fa-solid fa-map-location-dot"></i> Destinations</a>
+                <a href="#engagements" class="nav-link"><i class="fa-solid fa-leaf"></i> Éco-Tourisme</a>
+                <a href="#contact" class="nav-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="btn btn-outline" id="theme-toggle" aria-label="Changer de thème">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="#acteurs" class="btn btn-primary">
+                    <i class="fa-solid fa-magnifying-glass"></i> Explorer
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-badge"><i class="fa-solid fa-star"></i> Annuaire Officiel des Acteurs du Tourisme au Sénégal</span>
+            <h1 class="hero-title">Vivez l'Authenticité de la <span class="text-gradient">Teranga Sénégalaise</span></h1>
+            <p class="hero-description">
+                Hôtels d'exception, guides passionnés, éco-lodges en Casamance et gastronomie locale.
+                Trouvez et contactez directement les meilleurs professionnels certifiés.
+            </p>
+
+            <!-- Search Bar inside Hero -->
+            <div class="hero-search-box">
+                <div class="search-input-group">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Rechercher un hôtel, guide, restaurant, excursion..." />
+                </div>
+                <div class="search-select-group">
+                    <i class="fa-solid fa-location-dot select-icon"></i>
+                    <select id="region-filter">
+                        <option value="all">Toutes les régions</option>
+                        <option value="Dakar">Dakar & Gorée</option>
+                        <option value="Thies">Saly / Mbour / Thiès</option>
+                        <option value="Saint-Louis">Saint-Louis & Nord</option>
+                        <option value="Casamance">Ziguinchor & Casamance</option>
+                        <option value="Sine-Saloum">Sine-Saloum & Delta</option>
+                        <option value="Kedougou">Kédougou & Pays Bassari</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary btn-search" id="btn-search-trigger">
+                    <i class="fa-solid fa-sliders"></i> Filtrer
+                </button>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">250+</span>
+                    <span class="stat-label">Acteurs Certifiés</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">14</span>
+                    <span class="stat-label">Régions Couvertes</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Teranga Garantis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Pills Section -->
+    <section class="categories-section" id="acteurs">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-subtitle">Catégories d'Acteurs</span>
+                <h2 class="section-title">Découvrez les Professionnels du Tourisme</h2>
+                <p class="section-desc">Sélectionnez une catégorie pour filtrer les acteurs de l'écosystème touristique sénégalais.</p>
+            </div>
+
+            <div class="category-pills" id="category-pills">
+                <button class="pill active" data-category="all">
+                    <i class="fa-solid fa-border-all"></i> Tous
+                </button>
+                <button class="pill" data-category="hotel">
+                    <i class="fa-solid fa-hotel"></i> Hôtels & Resorts
+                </button>
+                <button class="pill" data-category="guide">
+                    <i class="fa-solid fa-person-hiking"></i> Guides Touristiques
+                </button>
+                <button class="pill" data-category="restaurant">
+                    <i class="fa-solid fa-utensils"></i> Restaurants & Gastronomie
+                </button>
+                <button class="pill" data-category="transport">
+                    <i class="fa-solid fa-van-shuttle"></i> Transport & Safaris
+                </button>
+                <button class="pill" data-category="ecolodge">
+                    <i class="fa-solid fa-tree"></i> Éco-Lodges & Artisanat
+                </button>
+            </div>
+
+            <!-- Search Feedback / Results Bar -->
+            <div class="results-bar">
+                <span id="results-count">Chargement des acteurs...</span>
+                <div class="sort-wrapper">
+                    <label for="sort-select"><i class="fa-solid fa-arrow-down-short-wide"></i> Trier par :</label>
+                    <select id="sort-select">
+                        <option value="recommended">Recommandés</option>
+                        <option value="rating">Note la plus élevée</option>
+                        <option value="name">Nom (A - Z)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Main Actors Cards Grid -->
+            <div class="actors-grid" id="actors-grid">
+                <!-- Dynamic cards populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Regional Highlights Section -->
+    <section class="regions-section" id="regions">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Destinations Incontournables</span>
+                <h2 class="section-title">Explorez le Sénégal par Régions</h2>
+            </div>
+
+            <div class="regions-grid">
+                <div class="region-card" data-region="Dakar">
+                    <div class="region-img" style="background-image: url('https://images.unsplash.com/photo-1572252821143-0259e2b1d09e?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="region-overlay">
+                        <h3>Dakar & Gorée</h3>
+                        <p>Capital dynamique, île mémoire de Gorée et plages du cap Vert.</p>
+                        <span class="badge-region">45+ Acteurs</span>
+                    </div>
+                </div>
+
+                <div class="region-card" data-region="Thies">
+                    <div class="region-img" style="background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="region-overlay">
+                        <h3>Saly & Mbour</h3>
+                        <p>Station balnéaire, sports nautiques, réserve de Bandia.</p>
+                        <span class="badge-region">38+ Acteurs</span>
+                    </div>
+                </div>
+
+                <div class="region-card" data-region="Saint-Louis">
+                    <div class="region-img" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="region-overlay">
+                        <h3>Saint-Louis & Djoudj</h3>
+                        <p>Ville historique, architecture coloniale, parc aux oiseaux du Djoudj.</p>
+                        <span class="badge-region">29+ Acteurs</span>
+                    </div>
+                </div>
+
+                <div class="region-card" data-region="Casamance">
+                    <div class="region-img" style="background-image: url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="region-overlay">
+                        <h3>Ziguinchor & Cap Skirring</h3>
+                        <p>Forêts luxuriantes, bolongs sacrés, plages paradisiaques de Casamance.</p>
+                        <span class="badge-region">34+ Acteurs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Teranga / Commitments Section -->
+    <section class="commitments-section" id="engagements">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-subtitle">Savoir-Faire & Qualité</span>
+                <h2 class="section-title">Pourquoi Choisir Nos Acteurs Touristiques ?</h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-award"></i></div>
+                    <h3>Acteurs Certifiés</h3>
+                    <p>Tous les établissements, guides et agences enregistrés sont agréés par le Ministère du Tourisme du Sénégal.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                    <h3>Contact Direct Sans Intermédiaire</h3>
+                    <p>Échangez directement avec les professionnels locaux pour un tarif équitable et un service personnalisé.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-leaf"></i></div>
+                    <h3>Tourisme Éco-Responsable</h3>
+                    <p>Promotion des initiatives durables, préservation de la biodiversité et soutien aux communautés locales.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <h3>L'Esprit de la Teranga</h3>
+                    <p>Un accueil chaleureux et authentique garanti à chaque étape de votre voyage au Sénégal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Quick Request Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <div class="contact-info">
+                    <h2>Besoin d'aide pour organiser votre séjour au Sénégal ?</h2>
+                    <p>Envoyez une demande globale aux acteurs certifiés selon vos préférences (Hôtel, Guide, Excursion, Transport).</p>
+                    <ul class="contact-checklist">
+                        <li><i class="fa-solid fa-circle-check"></i> Réponse rapide sous 24h</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Devis sur-mesure gratuit</li>
+                        <li><i class="fa-solid fa-circle-check"></i> 100% d'acteurs agréés au Sénégal</li>
+                    </ul>
+                </div>
+                <form class="contact-form" id="global-contact-form">
+                    <h3>Demande de Contact Express</h3>
+                    <div class="form-group">
+                        <label for="form-name">Nom complet</label>
+                        <input type="text" id="form-name" required placeholder="Ex: Awa Diop">
+                    </div>
+                    <div class="form-group">
+                        <label for="form-email">Adresse E-mail / WhatsApp</label>
+                        <input type="text" id="form-email" required placeholder="email@exemple.sn ou +221 77 ...">
+                    </div>
+                    <div class="form-group">
+                        <label for="form-service">Type de Service Requis</label>
+                        <select id="form-service" required>
+                            <option value="">Sélectionnez un service</option>
+                            <option value="hotel">Hébergement / Hôtel</option>
+                            <option value="guide">Guide Touristique Privé</option>
+                            <option value="excursion">Circuit / Safari Excursion</option>
+                            <option value="transport">Location Véhicule & Chauffeur</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-message">Votre Projet de Voyage</label>
+                        <textarea id="form-message" rows="3" placeholder="Dates, nombre de personnes, région souhaitée..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fa-solid fa-paper-plane"></i> Envoyer ma Demande
+                    </button>
+                    <div id="form-feedback" class="form-feedback hidden"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="brand">
+                        <span class="brand-badge"><i class="fa-solid fa-compass"></i></span>
+                        <div class="brand-text">
+                            <span class="brand-title">Teranga<span class="highlight">Tourism</span></span>
+                            <span class="brand-subtitle">SÉNÉGAL</span>
+                        </div>
+                    </div>
+                    <p>Le portail référence de valorisation des acteurs et professionnels du tourisme sénégalais.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#hero">Accueil</a></li>
+                        <li><a href="#acteurs">Nos Acteurs</a></li>
+                        <li><a href="#regions">Destinations</a></li>
+                        <li><a href="#engagements">Engagement Durabilité</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Catégories</h4>
+                    <ul>
+                        <li><a href="#acteurs">Hôtels & Résidences</a></li>
+                        <li><a href="#acteurs">Guides Officiels</a></li>
+                        <li><a href="#acteurs">Restaurants Authentiques</a></li>
+                        <li><a href="#acteurs">Agences de Voyage</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Suivez le Sénégal</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TerangaTourism Sénégal - Plateforme des Acteurs du Tourisme. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Actor Detail Modal Popup -->
+    <div class="modal-overlay" id="actor-modal" aria-hidden="true">
+        <div class="modal-container">
+            <button class="modal-close" id="modal-close-btn" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-body" id="modal-content">
+                <!-- Dynamically populated content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Native Mobile Navigation Dock (Bottom Bar) -->
+    <nav class="mobile-dock">
+        <a href="#hero" class="dock-item active" data-target="hero">
+            <i class="fa-solid fa-compass"></i>
+            <span>Accueil</span>
+        </a>
+        <a href="#acteurs" class="dock-item" data-target="acteurs">
+            <i class="fa-solid fa-list-check"></i>
+            <span>Acteurs</span>
+        </a>
+        <a href="#regions" class="dock-item" data-target="regions">
+            <i class="fa-solid fa-map"></i>
+            <span>Régions</span>
+        </a>
+        <a href="#contact" class="dock-item" data-target="contact">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>Contact</span>
+        </a>
+    </nav>
+
+    <script src="app.js"></script>
+</body>
+</html>
