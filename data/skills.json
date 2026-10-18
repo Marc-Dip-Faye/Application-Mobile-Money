@@ -1,0 +1,42 @@
+[
+  {
+    "name": "React / Next.js",
+    "icon": "⚡",
+    "active": true
+  },
+  {
+    "name": "Node.js & Express",
+    "icon": "🚀",
+    "active": true
+  },
+  {
+    "name": "PHP & Laravel",
+    "icon": "🐘",
+    "active": true
+  },
+  {
+    "name": "Tailwind & CSS Architecture",
+    "icon": "🎨",
+    "active": true
+  },
+  {
+    "name": "MongoDB & PostgreSQL",
+    "icon": "🗄️",
+    "active": false
+  },
+  {
+    "name": "Docker & CI/CD",
+    "icon": "🐳",
+    "active": false
+  },
+  {
+    "name": "React Native",
+    "icon": "📱",
+    "active": false
+  },
+  {
+    "name": "GraphQL & REST APIs",
+    "icon": "⚡",
+    "active": false
+  }
+]

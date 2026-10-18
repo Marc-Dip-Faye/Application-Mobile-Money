@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "title": "Dashboard Analytics",
+    "category": "web",
+    "categoryLabel": "Web App",
+    "description": "Plateforme de visualisation de données en temps réel avec interface responsive.",
+    "images": [
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+    ],
+    "technologies": ["React", "Node.js", "D3.js"],
+    "github": "https://github.com/marcdipfaye/dashboard-analytics",
+    "demo": "https://dashboard-analytics-demo.com"
+  },
+  {
+    "id": 2,
+    "title": "Shop Premium",
+    "category": "ecommerce",
+    "categoryLabel": "E-commerce",
+    "description": "Boutique en ligne moderne avec système de paiement sécurisé et gestion des stocks.",
+    "images": [
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
+      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&q=80"
+    ],
+    "technologies": ["Next.js", "Stripe", "MongoDB"],
+    "github": "https://github.com/marcdipfaye/shop-premium",
+    "demo": "https://shoppremium-demo.com"
+  },
+  {
+    "id": 3,
+    "title": "Task Master Pro",
+    "category": "app",
+    "categoryLabel": "Mobile App",
+    "description": "Application mobile de gestion de tâches collaborative avec notifications instantanées.",
+    "images": [
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
+      "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=800&q=80"
+    ],
+    "technologies": ["React Native", "Firebase", "Redux"],
+    "github": "https://github.com/marcdipfaye/task-master-pro",
+    "demo": "https://taskmaster-demo.com"
+  },
+  {
+    "id": 4,
+    "title": "Social Connect",
+    "category": "web",
+    "categoryLabel": "Web App",
+    "description": "Réseau social professionnel innovant axé sur le partage d'expériences et d'opportunités.",
+    "images": [
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+    ],
+    "technologies": ["Vue.js", "GraphQL", "PostgreSQL"],
+    "github": "https://github.com/marcdipfaye/social-connect",
+    "demo": "https://socialconnect-demo.com"
+  }
+]

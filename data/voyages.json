@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "type": "image",
+    "location": "Kyoto, Japon",
+    "title": "Temples millénaires",
+    "date": "Mars 2024",
+    "image": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80"
+  },
+  {
+    "id": 2,
+    "type": "video",
+    "location": "Alpes Suisses",
+    "title": "Randonnée alpine",
+    "date": "Juillet 2024",
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+    "video": "https://www.w3schools.com/html/mov_bbb.mp4"
+  },
+  {
+    "id": 3,
+    "type": "image",
+    "location": "Santorini, Grèce",
+    "title": "Coucher de soleil",
+    "date": "Août 2024",
+    "image": "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&q=80"
+  },
+  {
+    "id": 4,
+    "type": "image",
+    "location": "Dakar, Sénégal",
+    "title": "Côte Atlantique & Les Mamelles",
+    "date": "Novembre 2024",
+    "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80"
+  },
+  {
+    "id": 5,
+    "type": "image",
+    "location": "New York, USA",
+    "title": "Skyline & Tech Hub",
+    "date": "Janvier 2025",
+    "image": "https://images.unsplash.com/photo-1518391846015-55a9cc003b25?w=800&q=80"
+  },
+  {
+    "id": 6,
+    "type": "image",
+    "location": "Bali, Indonésie",
+    "title": "Rizières & Sérénité",
+    "date": "Mai 2025",
+    "image": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80"
+  }
+]
