@@ -1,0 +1,69 @@
+/* Custom CSS for Senegal Teranga Tourism & Wallet */
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(0, 255, 135, 0.25);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(0, 255, 135, 0.5);
+    }
+}
+
+.neon-button {
+    transition: all 0.3s ease;
+}
+
+.neon-button:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 135, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Glassmorphism background effect */
+.glass-panel {
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #090d16;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #10b981;
+}
+
+/* Category Filter active state */
+.cat-filter.active {
+    background-color: #10b981 !important;
+    color: #020617 !important;
+    font-weight: 700 !important;
+    border-color: #00ff87 !important;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+/* Wallet Form Tab active state */
+.wallet-tab.active {
+    background-color: #10b981 !important;
+    color: #020617 !important;
+    font-weight: 800 !important;
+    border-color: #10b981 !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+}
+
+/* Responsive card image overlay */
+.card-gradient-overlay {
+    background: linear-gradient(0deg, rgba(2, 6, 23, 0.95) 0%, rgba(2, 6, 23, 0.2) 60%, rgba(2, 6, 23, 0) 100%);
+}

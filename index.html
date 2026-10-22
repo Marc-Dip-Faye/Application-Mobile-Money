@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teranga Tourism & Digital Wallet | Sénégal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0b132b',
+                            card: '#1c2541',
+                            accent: '#10b981', // emerald
+                            neon: '#00ff87',   // glowing neon green
+                            gold: '#fbbf24',   // warm senegalese gold
+                            terracotta: '#e05638',
+                            blue: '#3a86ef'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col selection:bg-emerald-500 selection:text-slate-950 pb-20 md:pb-0">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-amber-600 via-emerald-600 to-teal-700 text-white text-xs py-2 px-4 text-center font-medium shadow-sm">
+        <span class="inline-block mr-2 bg-white/20 px-2 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-bold">Bienvenue au Sénégal</span>
+        Explorez le pays de la Teranga & gérez vos paiements touristiques en toute sécurité avec le <strong class="underline decoration-neon decoration-2">Teranga Wallet</strong>.
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 backdrop-blur-xl bg-slate-950/80 border-b border-slate-800/80 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-500 via-teal-400 to-amber-400 p-0.5 shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+                        <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
+                            <i class="fa-solid fa-compass text-neon text-xl group-hover:rotate-45 transition-transform duration-300"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">TERANGA</span>
+                        <span class="text-xs font-semibold text-neon block -mt-1 tracking-widest uppercase">Tourisme & Wallet</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800/80">
+                    <a href="#destinations" class="px-4 py-2 rounded-full text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all">
+                        <i class="fa-solid fa-map-location-dot mr-1.5 text-amber-400"></i>Destinations
+                    </a>
+                    <a href="#acteurs" class="px-4 py-2 rounded-full text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all">
+                        <i class="fa-solid fa-users-gear mr-1.5 text-teal-400"></i>Acteurs du Tourisme
+                    </a>
+                    <a href="#wallet" class="px-4 py-2 rounded-full text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all">
+                        <i class="fa-solid fa-wallet mr-1.5 text-neon"></i>Teranga Wallet
+                    </a>
+                    <a href="#circuits" class="px-4 py-2 rounded-full text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all">
+                        <i class="fa-solid fa-route mr-1.5 text-sky-400"></i>Circuits
+                    </a>
+                </nav>
+
+                <!-- Right Action / Quick Balance Badge -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <a href="#wallet" class="neon-button inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl shadow-lg shadow-emerald-500/25 transition-all text-sm">
+                        <i class="fa-solid fa-circle-plus"></i>
+                        <span>Accéder au Wallet</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow">
+
+        <!-- Hero Section -->
+        <section class="relative py-20 lg:py-28 overflow-hidden border-b border-slate-800/60">
+            <!-- Background Decorative Glows -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-emerald-500/15 rounded-full blur-[120px] pointer-events-none"></div>
+            <div class="absolute top-1/3 right-10 w-[300px] h-[300px] bg-amber-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+                    <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 bg-slate-900/90 border border-emerald-500/30 px-4 py-2 rounded-full text-xs font-semibold text-emerald-400 shadow-inner">
+                            <span class="w-2 h-2 rounded-full bg-neon animate-pulse"></span>
+                            Portail Officiel du Tourisme & des Acteurs Touristiques du Sénégal
+                        </div>
+
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                            Découvrez le <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent">Sénégal</span> & voyagez en toute sérénité.
+                        </h1>
+
+                        <p class="text-lg text-slate-300 max-w-2xl font-light leading-relaxed mx-auto lg:mx-0">
+                            Connectez-vous directement avec les meilleurs hôtels, guides certifiés, agences de transport et écolodges. Payez vos prestations instantanément grâce au portefeuille numérique sécurisé <strong class="text-emerald-400 font-semibold">Teranga Wallet</strong>.
+                        </p>
+
+                        <!-- Search & Quick Filter Bar -->
+                        <div class="bg-slate-900/90 p-2.5 rounded-2xl border border-slate-800 shadow-2xl backdrop-blur-md max-w-xl mx-auto lg:mx-0">
+                            <div class="flex flex-col sm:flex-row gap-2">
+                                <div class="relative flex-grow">
+                                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                                    <input type="text" id="searchInput" placeholder="Rechercher un hôtel, guide, ville (ex: Gorée, Saly)..." class="w-full bg-slate-950/80 border border-slate-800 rounded-xl pl-11 pr-4 py-3 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-neon transition">
+                                </div>
+                                <button id="searchBtn" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition text-sm flex items-center justify-center gap-2">
+                                    <span>Explorer</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Stats Quick Overview -->
+                        <div class="grid grid-cols-3 gap-4 pt-4 border-t border-slate-800/80 max-w-lg mx-auto lg:mx-0">
+                            <div>
+                                <p class="text-2xl font-bold text-white">150+</p>
+                                <p class="text-xs text-slate-400">Acteurs Référencés</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold text-amber-400">14</p>
+                                <p class="text-xs text-slate-400">Régions Couvertes</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold text-neon">100%</p>
+                                <p class="text-xs text-slate-400">Paiement Sécurisé</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Hero Visual Card / Interactive Preview Widget -->
+                    <div class="lg:col-span-5">
+                        <div class="relative mx-auto max-w-md">
+                            <!-- Glow frame -->
+                            <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-amber-500 rounded-3xl blur-xl opacity-30 group-hover:opacity-100 transition duration-1000"></div>
+
+                            <div class="relative bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl space-y-6">
+                                <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">
+                                            <i class="fa-solid fa-passport"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-sm font-bold text-white">Pass Teranga Voyageur</h3>
+                                            <p class="text-xs text-slate-400">Sénégal Tourism Card</p>
+                                        </div>
+                                    </div>
+                                    <span class="bg-emerald-500/10 text-neon text-xs px-2.5 py-1 rounded-full border border-emerald-500/20 font-mono">ACTIF</span>
+                                </div>
+
+                                <!-- Virtual Card -->
+                                <div class="bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950/60 p-6 rounded-2xl border border-emerald-500/30 relative overflow-hidden shadow-inner">
+                                    <div class="absolute right-[-20px] top-[-20px] w-32 h-32 bg-neon/10 rounded-full blur-2xl"></div>
+                                    <div class="flex justify-between items-start mb-6">
+                                        <div>
+                                            <p class="text-[10px] uppercase tracking-widest text-slate-400 font-semibold">Portefeuille Numérique</p>
+                                            <p class="text-xl font-bold text-white mt-1" id="heroCardOwner">Samba Diallo</p>
+                                        </div>
+                                        <i class="fa-solid fa-wifi text-slate-500 text-lg"></i>
+                                    </div>
+
+                                    <div class="space-y-1 mb-6">
+                                        <p class="text-xs text-slate-400">Solde Disponible</p>
+                                        <p class="text-3xl font-extrabold text-neon font-mono" id="heroCardBalance">250 000 FCFA</p>
+                                    </div>
+
+                                    <div class="flex justify-between items-end text-xs text-slate-400 font-mono">
+                                        <div>
+                                            <span class="block text-[9px] uppercase text-slate-500">Téléphone</span>
+                                            <span id="heroCardPhone">77 845 12 90</span>
+                                        </div>
+                                        <div class="text-right">
+                                            <span class="block text-[9px] uppercase text-slate-500">Devise</span>
+                                            <span class="text-amber-400 font-bold">XOF (FCFA)</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-3 text-xs">
+                                    <a href="#wallet" class="bg-slate-800 hover:bg-slate-700 text-slate-200 py-2.5 px-3 rounded-xl text-center font-semibold border border-slate-700 transition flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-arrow-down text-emerald-400"></i> Dépôt
+                                    </a>
+                                    <a href="#wallet" class="bg-slate-800 hover:bg-slate-700 text-slate-200 py-2.5 px-3 rounded-xl text-center font-semibold border border-slate-700 transition flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-arrow-up text-amber-400"></i> Retrait
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Destinations Highlight Section -->
+        <section id="destinations" class="py-20 border-b border-slate-800/60 bg-slate-950/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                    <div>
+                        <div class="text-neon text-xs font-bold tracking-widest uppercase mb-2">
+                            <i class="fa-solid fa-location-dot mr-1"></i> Sites Incontournables
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Grandes Destinations du Sénégal</h2>
+                    </div>
+                    <p class="text-slate-400 text-sm max-w-md">Explorez les trésors naturels et historiques du Sénégal, du patrimoine mondial de l'UNESCO aux plages paradisiaques de la Petite-Côte.</p>
+                </div>
+
+                <!-- Destinations Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="destinationsGrid">
+
+                    <!-- Destination 1: Île de Gorée -->
+                    <div class="group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-emerald-500/50 transition duration-300 flex flex-col justify-between">
+                        <div class="relative h-48 bg-slate-800 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
+                            <img src="https://images.unsplash.com/photo-1590059302210-9b63a2417730?auto=format&fit=crop&w=800&q=80" alt="Île de Gorée" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-3 left-3 z-20 bg-amber-500/90 text-slate-950 font-bold text-xs px-2.5 py-1 rounded-lg shadow">
+                                <i class="fa-solid fa-landmark mr-1"></i>Patrimoine UNESCO
+                            </span>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold text-white group-hover:text-neon transition">Île de Gorée (Dakar)</h3>
+                                <p class="text-xs text-slate-400 mt-2 line-clamp-2">L'île mémoire face au port de Dakar avec ses maisons coloniales aux bougainvilliers colorés et la célèbre Maison des Esclaves.</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                                <span><i class="fa-solid fa-user-group text-teal-400 mr-1"></i> 18 Acteurs locaux</span>
+                                <button onclick="filterByLocation('Gorée')" class="text-emerald-400 hover:underline font-semibold">Voir les offres &rarr;</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Destination 2: Lac Rose (Lac Retba) -->
+                    <div class="group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-emerald-500/50 transition duration-300 flex flex-col justify-between">
+                        <div class="relative h-48 bg-slate-800 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
+                            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="Lac Rose" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-3 left-3 z-20 bg-pink-600/90 text-white font-bold text-xs px-2.5 py-1 rounded-lg shadow">
+                                <i class="fa-solid fa-water mr-1"></i>Site Naturel Unique
+                            </span>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold text-white group-hover:text-neon transition">Lac Rose (Retba)</h3>
+                                <p class="text-xs text-slate-400 mt-2 line-clamp-2">Lagune d'eau salée aux teintes roses légendaires, mythique étape du rallye Dakar avec activités de quad et promenades en pirogue.</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                                <span><i class="fa-solid fa-user-group text-teal-400 mr-1"></i> 12 Acteurs locaux</span>
+                                <button onclick="filterByLocation('Lac Rose')" class="text-emerald-400 hover:underline font-semibold">Voir les offres &rarr;</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Destination 3: Saly & Petite-Côte -->
+                    <div class="group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-emerald-500/50 transition duration-300 flex flex-col justify-between">
+                        <div class="relative h-48 bg-slate-800 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
+                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Saly Portudal" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-3 left-3 z-20 bg-emerald-600/90 text-white font-bold text-xs px-2.5 py-1 rounded-lg shadow">
+                                <i class="fa-solid fa-umbrella-beach mr-1"></i>Petite-Côte
+                            </span>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold text-white group-hover:text-neon transition">Saly Portudal & Somone</h3>
+                                <p class="text-xs text-slate-400 mt-2 line-clamp-2">Station balnéaire phare du Sénégal offrant complexes hôteliers de luxe, sports nautiques, golf et la réserve ornithologique de Somone.</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                                <span><i class="fa-solid fa-user-group text-teal-400 mr-1"></i> 35 Acteurs locaux</span>
+                                <button onclick="filterByLocation('Saly')" class="text-emerald-400 hover:underline font-semibold">Voir les offres &rarr;</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Destination 4: Delta du Sine Saloum -->
+                    <div class="group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-emerald-500/50 transition duration-300 flex flex-col justify-between">
+                        <div class="relative h-48 bg-slate-800 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
+                            <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80" alt="Sine Saloum" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-3 left-3 z-20 bg-teal-600/90 text-white font-bold text-xs px-2.5 py-1 rounded-lg shadow">
+                                <i class="fa-solid fa-tree mr-1"></i>Écotourisme
+                            </span>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold text-white group-hover:text-neon transition">Delta du Sine Saloum</h3>
+                                <p class="text-xs text-slate-400 mt-2 line-clamp-2">Labyrinthe de bolongs, îles de mangroves, baobabs séculaires et réserves de biodiversité d'exception.</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                                <span><i class="fa-solid fa-user-group text-teal-400 mr-1"></i> 22 Acteurs locaux</span>
+                                <button onclick="filterByLocation('Saloum')" class="text-emerald-400 hover:underline font-semibold">Voir les offres &rarr;</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Destination 5: Saint-Louis -->
+                    <div class="group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-emerald-500/50 transition duration-300 flex flex-col justify-between">
+                        <div class="relative h-48 bg-slate-800 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
+                            <img src="https://images.unsplash.com/photo-1528164344705-47542687990d?auto=format&fit=crop&w=800&q=80" alt="Saint-Louis" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-3 left-3 z-20 bg-sky-600/90 text-white font-bold text-xs px-2.5 py-1 rounded-lg shadow">
+                                <i class="fa-solid fa-bridge mr-1"></i>NORD SÉNÉGAL
+                            </span>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold text-white group-hover:text-neon transition">Saint-Louis (Ndar)</h3>
+                                <p class="text-xs text-slate-400 mt-2 line-clamp-2">Ancienne capitale coloniale, son célèbre Pont Faidherbe, son festival de Jazz et le Parc National des Oiseaux du Djoudj.</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                                <span><i class="fa-solid fa-user-group text-teal-400 mr-1"></i> 15 Acteurs locaux</span>
+                                <button onclick="filterByLocation('Saint-Louis')" class="text-emerald-400 hover:underline font-semibold">Voir les offres &rarr;</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Destination 6: Casamance -->
+                    <div class="group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-emerald-500/50 transition duration-300 flex flex-col justify-between">
+                        <div class="relative h-48 bg-slate-800 overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
+                            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80" alt="Casamance" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-3 left-3 z-20 bg-amber-600/90 text-white font-bold text-xs px-2.5 py-1 rounded-lg shadow">
+                                <i class="fa-solid fa-seedling mr-1"></i>SUD SÉNÉGAL
+                            </span>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold text-white group-hover:text-neon transition">Casamance & Cap Skirring</h3>
+                                <p class="text-xs text-slate-400 mt-2 line-clamp-2">Région verdoyante aux forêts de fromagers, rizières traditionnelles diolas et plages immaculées de Cap Skirring.</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+                                <span><i class="fa-solid fa-user-group text-teal-400 mr-1"></i> 20 Acteurs locaux</span>
+                                <button onclick="filterByLocation('Casamance')" class="text-emerald-400 hover:underline font-semibold">Voir les offres &rarr;</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Tourism Actors Section -->
+        <section id="acteurs" class="py-20 border-b border-slate-800/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-amber-400 text-xs font-bold tracking-widest uppercase mb-2 inline-block">
+                        <i class="fa-solid fa-handshake mr-1"></i> Annuaire Professionnel
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Les Acteurs du Tourisme Sénégalais</h2>
+                    <p class="text-slate-400 text-sm mt-3">
+                        Découvrez les professionnels certifiés accompagnant votre séjour au Sénégal. Tous acceptent les réserves et le paiement via <strong class="text-neon">Teranga Wallet</strong>.
+                    </p>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="flex flex-wrap items-center justify-center gap-2 mb-10" id="categoryFilters">
+                    <button data-cat="all" class="cat-filter active border border-emerald-500/40 bg-emerald-500 text-slate-950 font-bold px-4 py-2 rounded-full text-xs transition shadow-lg shadow-emerald-500/20">
+                        Tous les Acteurs
+                    </button>
+                    <button data-cat="hotel" class="cat-filter border border-slate-800 bg-slate-900 hover:bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-full text-xs transition">
+                        <i class="fa-solid fa-hotel mr-1.5 text-amber-400"></i>Hôtels & Écolodges
+                    </button>
+                    <button data-cat="transport" class="cat-filter border border-slate-800 bg-slate-900 hover:bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-full text-xs transition">
+                        <i class="fa-solid fa-van-shuttle mr-1.5 text-sky-400"></i>Transport & Shuttles
+                    </button>
+                    <button data-cat="guide" class="cat-filter border border-slate-800 bg-slate-900 hover:bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-full text-xs transition">
+                        <i class="fa-solid fa-compass-drafting mr-1.5 text-teal-400"></i>Agences & Guides
+                    </button>
+                    <button data-cat="culture" class="cat-filter border border-slate-800 bg-slate-900 hover:bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-full text-xs transition">
+                        <i class="fa-solid fa-utensils mr-1.5 text-pink-400"></i>Artisanat & Gastronomie
+                    </button>
+                    <button data-cat="institutional" class="cat-filter border border-slate-800 bg-slate-900 hover:bg-slate-800 text-slate-300 font-medium px-4 py-2 rounded-full text-xs transition">
+                        <i class="fa-solid fa-building-columns mr-1.5 text-indigo-400"></i>Institutions & Syndicats
+                    </button>
+                </div>
+
+                <!-- Acteurs Dynamic Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="acteursGrid">
+                    <!-- Javascript will render actors here -->
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Digital Wallet (Teranga Pass Wallet) Section -->
+        <section id="wallet" class="py-20 bg-slate-950 relative overflow-hidden border-b border-slate-800/60">
+            <!-- Background Neon Glows -->
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+            <div class="absolute top-10 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+                <div class="text-center max-w-3xl mx-auto mb-14">
+                    <span class="inline-flex items-center gap-2 bg-emerald-500/10 text-neon border border-emerald-500/30 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-3">
+                        <i class="fa-solid fa-wallet"></i> Solution de Paiement Touristique
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Espace Teranga Wallet</h2>
+                    <p class="text-slate-400 text-sm mt-3">
+                        Gérez votre portefeuille numérique local, effectuez des dépôts, des retraits et payez en toute simplicité vos prestataires de tourisme partout au Sénégal.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+                    <!-- Left Column: Active Wallet Status Card & Quick Select -->
+                    <div class="lg:col-span-5 space-y-6">
+
+                        <!-- Main Digital Card -->
+                        <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 p-6 rounded-3xl border border-slate-800 shadow-2xl relative overflow-hidden">
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-neon/10 text-neon flex items-center justify-center font-bold text-lg border border-neon/20">
+                                        <i class="fa-solid fa-credit-card"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-base font-bold text-white">Wallet Sélectionné</h3>
+                                        <p class="text-xs text-slate-400" id="walletStatusText">Compte Actif</p>
+                                    </div>
+                                </div>
+                                <span id="activeWalletBadge" class="bg-emerald-500/10 text-neon text-[11px] font-bold px-3 py-1 rounded-full border border-emerald-500/30">VALIDÉ</span>
+                            </div>
+
+                            <!-- Card Balance Display -->
+                            <div class="bg-slate-950/80 p-5 rounded-2xl border border-slate-800/80 mb-6 space-y-2">
+                                <span class="text-xs text-slate-400 uppercase tracking-wider font-medium">Solde Réel Disponible</span>
+                                <div class="flex items-baseline justify-between">
+                                    <span class="text-3xl font-extrabold text-neon font-mono" id="displaySolde">0 FCFA</span>
+                                    <span class="text-xs text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded font-mono font-bold">XOF</span>
+                                </div>
+                            </div>
+
+                            <!-- Account Details Grid -->
+                            <div class="grid grid-cols-2 gap-4 text-xs font-mono border-t border-slate-800 pt-4">
+                                <div>
+                                    <span class="text-slate-500 block text-[10px] uppercase">Titulaire</span>
+                                    <span class="text-slate-200 font-bold" id="displayClient">-</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500 block text-[10px] uppercase">Numéro Téléphone</span>
+                                    <span class="text-slate-200 font-bold" id="displayTelephone">-</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500 block text-[10px] uppercase">Code Secret PIN</span>
+                                    <span class="text-slate-200 font-bold" id="displayCode">****</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500 block text-[10px] uppercase">Format Préfixe</span>
+                                    <span class="text-emerald-400 font-bold">70 | 75 | 76 | 77 | 78</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Existing Wallets Switcher Card -->
+                        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl">
+                            <h4 class="text-sm font-bold text-white mb-3 flex items-center justify-between">
+                                <span><i class="fa-solid fa-users text-amber-400 mr-2"></i>Choisir un Wallet existant</span>
+                                <span class="text-xs font-normal text-slate-400" id="walletCountBadge">0 enregistrés</span>
+                            </h4>
+                            <select id="selectWalletDropdown" class="w-full bg-slate-950 border border-slate-800 text-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-neon transition">
+                                <option value="">-- Sélectionner un wallet client --</option>
+                            </select>
+                            <p class="text-[11px] text-slate-500 mt-2">
+                                <i class="fa-solid fa-circle-info mr-1 text-slate-400"></i>Sélectionnez un wallet pour effectuer des opérations de dépôt ou de retrait instantanément.
+                            </p>
+                        </div>
+
+                        <!-- Fee Structure Information Box -->
+                        <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 text-xs text-slate-400 space-y-2">
+                            <h5 class="text-slate-200 font-bold flex items-center gap-2">
+                                <i class="fa-solid fa-calculator text-teal-400"></i> Barème Officiel des Frais de Retrait
+                            </h5>
+                            <ul class="space-y-1 list-disc list-inside text-slate-400">
+                                <li>Montant &le; 10 000 FCFA : <strong class="text-slate-200">200 FCFA</strong></li>
+                                <li>Montant &le; 100 000 FCFA : <strong class="text-slate-200">500 FCFA</strong></li>
+                                <li>Montant &gt; 100 000 FCFA : <strong class="text-slate-200">1%</strong> (Plafonné à <strong class="text-amber-400">5 000 FCFA</strong>)</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Interactive Wallet Operations Forms -->
+                    <div class="lg:col-span-7">
+                        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl">
+
+                            <!-- Operations Nav Tabs -->
+                            <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-4 mb-6" id="walletActionTabs">
+                                <button data-tab="create" class="wallet-tab active bg-emerald-500 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-xs sm:text-sm transition flex items-center gap-2 shadow-lg shadow-emerald-500/20">
+                                    <i class="fa-solid fa-user-plus"></i> Créer Wallet
+                                </button>
+                                <button data-tab="depot" class="wallet-tab bg-slate-950 text-slate-300 hover:text-white font-medium px-4 py-2.5 rounded-xl text-xs sm:text-sm border border-slate-800 transition flex items-center gap-2">
+                                    <i class="fa-solid fa-money-bill-transfer text-emerald-400"></i> Dépôt
+                                </button>
+                                <button data-tab="retrait" class="wallet-tab bg-slate-950 text-slate-300 hover:text-white font-medium px-4 py-2.5 rounded-xl text-xs sm:text-sm border border-slate-800 transition flex items-center gap-2">
+                                    <i class="fa-solid fa-hand-holding-dollar text-amber-400"></i> Retrait
+                                </button>
+                                <button data-tab="transactions" class="wallet-tab bg-slate-950 text-slate-300 hover:text-white font-medium px-4 py-2.5 rounded-xl text-xs sm:text-sm border border-slate-800 transition flex items-center gap-2">
+                                    <i class="fa-solid fa-list-check text-sky-400"></i> Transactions
+                                </button>
+                            </div>
+
+                            <!-- Form Alert / Feedback Box -->
+                            <div id="walletAlert" class="hidden mb-6 p-4 rounded-xl text-xs font-semibold flex items-center gap-3">
+                                <i id="walletAlertIcon" class="fa-solid text-base"></i>
+                                <span id="walletAlertMessage"></span>
+                            </div>
+
+                            <!-- TAB 1: Créer Wallet -->
+                            <form id="formCreateWallet" class="wallet-form-pane space-y-5">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-medium text-slate-300 mb-1.5">Nom complet du Titulaire</label>
+                                        <input type="text" id="createNom" placeholder="ex: Aïssatou Ndiaye" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-neon transition">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-medium text-slate-300 mb-1.5">Numéro Téléphone (9 chiffres)</label>
+                                        <input type="text" id="createTel" placeholder="ex: 771234567" maxlength="9" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-neon font-mono transition">
+                                        <span class="text-[10px] text-slate-500 mt-1 block">Débuts valides: 70, 75, 76, 77, 78</span>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-medium text-slate-300 mb-1.5">Code Secret (4 chiffres)</label>
+                                        <input type="password" id="createCode" placeholder="ex: 1234" maxlength="4" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-neon font-mono transition">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-medium text-slate-300 mb-1.5">Solde Initial (FCFA)</label>
+                                        <input type="number" id="createSolde" placeholder="ex: 50000" min="0" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-neon font-mono transition">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold py-3.5 px-6 rounded-xl shadow-lg shadow-emerald-500/20 transition flex items-center justify-center gap-2 text-sm">
+                                    <i class="fa-solid fa-plus-circle"></i> Créer le Wallet
+                                </button>
+                            </form>
+
+                            <!-- TAB 2: Faire Dépôt -->
+                            <form id="formDepot" class="wallet-form-pane hidden space-y-5">
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-300 mb-1.5">Téléphone du Wallet Destinataire</label>
+                                    <input type="text" id="depotTel" placeholder="ex: 771234567" maxlength="9" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-neon font-mono transition">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-300 mb-1.5">Montant du Dépôt (FCFA)</label>
+                                    <input type="number" id="depotMontant" placeholder="ex: 25000" min="1" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-neon font-mono transition">
+                                </div>
+
+                                <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold py-3.5 px-6 rounded-xl shadow-lg shadow-emerald-500/20 transition flex items-center justify-center gap-2 text-sm">
+                                    <i class="fa-solid fa-arrow-down"></i> Valider le Dépôt
+                                </button>
+                            </form>
+
+                            <!-- TAB 3: Faire Retrait -->
+                            <form id="formRetrait" class="wallet-form-pane hidden space-y-5">
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-300 mb-1.5">Téléphone du Wallet</label>
+                                    <input type="text" id="retraitTel" placeholder="ex: 771234567" maxlength="9" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-neon font-mono transition">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-300 mb-1.5">Montant à Retirer (FCFA)</label>
+                                    <input type="number" id="retraitMontant" placeholder="ex: 15000" min="1" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-neon font-mono transition">
+                                </div>
+
+                                <!-- Dynamic Fee Preview -->
+                                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2 text-xs font-mono">
+                                    <div class="flex justify-between text-slate-400">
+                                        <span>Frais calculés :</span>
+                                        <span class="text-amber-400 font-bold" id="previewFrais">0 FCFA</span>
+                                    </div>
+                                    <div class="flex justify-between text-slate-200 font-bold border-t border-slate-800 pt-2">
+                                        <span>Total débité (Montant + Frais) :</span>
+                                        <span class="text-neon" id="previewTotal">0 FCFA</span>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold py-3.5 px-6 rounded-xl shadow-lg shadow-amber-500/20 transition flex items-center justify-center gap-2 text-sm">
+                                    <i class="fa-solid fa-hand-holding-dollar"></i> Confirmer le Retrait
+                                </button>
+                            </form>
+
+                            <!-- TAB 4: Historique des Transactions -->
+                            <div id="paneTransactions" class="wallet-form-pane hidden space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="text-sm font-bold text-white">Journal des Transactions</h4>
+                                    <button id="btnClearHistory" class="text-xs text-rose-400 hover:underline">
+                                        <i class="fa-solid fa-trash mr-1"></i>Effacer
+                                    </button>
+                                </div>
+
+                                <div class="space-y-3 max-h-80 overflow-y-auto pr-1" id="transactionsContainer">
+                                    <!-- Dynamic transaction items -->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Circuits & Excursions Section -->
+        <section id="circuits" class="py-20 border-b border-slate-800/60 bg-slate-950/40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-sky-400 text-xs font-bold tracking-widest uppercase mb-2 inline-block">
+                        <i class="fa-solid fa-route mr-1"></i> Circuits Prêts à Réserver
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Excursions & Expériences Uniques</h2>
+                    <p class="text-slate-400 text-sm mt-2">Profitez de formules touristiques clés en main guidées par des professionnels certifiés du Sénégal.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                    <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between hover:border-sky-500/50 transition">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-sky-500/10 text-sky-400 text-xs px-2.5 py-1 rounded-full border border-sky-500/20 font-semibold">1 Journée</span>
+                                <span class="text-lg font-bold text-neon font-mono">35 000 FCFA</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Safari Bandia & Lac Rose</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed mb-4">Observation des rhinocéros, girafes et zèbres dans la réserve de Bandia suivie d'une balade en pirogue sur le Lac Rose.</p>
+                            <ul class="text-xs text-slate-300 space-y-1.5 mb-6">
+                                <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Guide privé agréé</li>
+                                <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Véhicule 4x4 climatisé</li>
+                                <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Déjeuner sénégalais inclus</li>
+                            </ul>
+                        </div>
+                        <button onclick="reserverExcursion('Safari Bandia & Lac Rose', 35000)" class="w-full bg-slate-800 hover:bg-sky-500 hover:text-slate-950 text-sky-400 font-bold py-2.5 rounded-xl transition text-xs flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-ticket"></i> Réserver via Teranga Wallet
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between hover:border-amber-500/50 transition">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-amber-500/10 text-amber-400 text-xs px-2.5 py-1 rounded-full border border-amber-500/20 font-semibold">2 Jours / 1 Nuit</span>
+                                <span class="text-lg font-bold text-neon font-mono">85 000 FCFA</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Evasion Delta du Sine Saloum</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed mb-4">Nuitée en écolodge sur une île de piroguiers, visite du baobab géant de Fadial et observation des oiseaux migrateurs.</p>
+                            <ul class="text-xs text-slate-300 space-y-1.5 mb-6">
+                                <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Hébergement écolodge & repas</li>
+                                <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Excursion en pirogue traditionnelle</li>
+                                <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Animation culturelle du soir</li>
+                            </ul>
+                        </div>
+                        <button onclick="reserverExcursion('Evasion Delta du Sine Saloum', 85000)" class="w-full bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-amber-400 font-bold py-2.5 rounded-xl transition text-xs flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-ticket"></i> Réserver via Teranga Wallet
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between hover:border-emerald-500/50 transition">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-emerald-500/10 text-emerald-400 text-xs px-2.5 py-1 rounded-full border border-emerald-500/20 font-semibold">1 Journée</span>
+                                <span class="text-lg font-bold text-neon font-mono">25 000 FCFA</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Dakar Culture & Gorée Mémoire</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed mb-4">Traversée en chaloupe vers Gorée, visite du Musée des Civilisations Noires et du Monument de la Renaissance Africaine.</p>
+                            <ul class="text-xs text-slate-300 space-y-1.5 mb-6">
+                                <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Billets de chaloupe et musées</li>
+                                <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Guide historien local</li>
+                                <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Dégustation Thieboudienne</li>
+                            </ul>
+                        </div>
+                        <button onclick="reserverExcursion('Dakar Culture & Gorée Mémoire', 25000)" class="w-full bg-slate-800 hover:bg-emerald-500 hover:text-slate-950 text-emerald-400 font-bold py-2.5 rounded-xl transition text-xs flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-ticket"></i> Réserver via Teranga Wallet
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-12 text-slate-400 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-compass text-neon text-lg"></i>
+                        <span class="text-white font-extrabold text-base tracking-wide">TERANGA TOURISME</span>
+                    </div>
+                    <p class="text-slate-500 leading-relaxed">
+                        Plateforme officielle de valorisation du tourisme au Sénégal et d'intégration des acteurs du secteur avec le Teranga Digital Wallet.
+                    </p>
+                </div>
+
+                <div>
+                    <h5 class="text-slate-200 font-bold mb-3 uppercase tracking-wider text-[11px]">Destinations Phares</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#destinations" class="hover:text-emerald-400 transition">Dakar & Île de Gorée</a></li>
+                        <li><a href="#destinations" class="hover:text-emerald-400 transition">Saly & Somone</a></li>
+                        <li><a href="#destinations" class="hover:text-emerald-400 transition">Sine Saloum</a></li>
+                        <li><a href="#destinations" class="hover:text-emerald-400 transition">Saint-Louis & Djoudj</a></li>
+                        <li><a href="#destinations" class="hover:text-emerald-400 transition">Casamance & Cap Skirring</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-slate-200 font-bold mb-3 uppercase tracking-wider text-[11px]">Numéros Utiles Tourisme</h5>
+                    <ul class="space-y-2 text-slate-400">
+                        <li><i class="fa-solid fa-phone text-emerald-400 mr-2"></i>Police Touristique: 17 / +221 33 800 00 00</li>
+                        <li><i class="fa-solid fa-truck-medical text-amber-400 mr-2"></i>Sapeurs-Pompiers: 18</li>
+                        <li><i class="fa-solid fa-plane text-sky-400 mr-2"></i>AIBD Aéroport: +221 33 939 60 00</li>
+                        <li><i class="fa-solid fa-headset text-teal-400 mr-2"></i>Support Teranga: +221 77 000 00 00</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-slate-200 font-bold mb-3 uppercase tracking-wider text-[11px]">Teranga Wallet</h5>
+                    <p class="text-slate-500 mb-3">Payez directement vos excursions, taxis et hôtels avec le numéro local du marchand sans frais cachés.</p>
+                    <div class="flex gap-2 text-base">
+                        <span class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-400"><i class="fa-solid fa-shield-halved"></i></span>
+                        <span class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-emerald-400"><i class="fa-solid fa-bolt"></i></span>
+                        <span class="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-sky-400"><i class="fa-solid fa-mobile-screen"></i></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-slate-900 pt-8 flex flex-col sm:flex-row items-center justify-between text-slate-600 text-[11px]">
+                <p>&copy; 2026 Teranga Tourism Sénégal. Tous droits réservés.</p>
+                <p class="mt-2 sm:mt-0">Fait avec <i class="fa-solid fa-heart text-rose-500 mx-0.5"></i> au Sénégal</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Mobile Navigation Dock (Bottom Fixed Menu as per preference) -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-slate-950/95 backdrop-blur-lg border-t border-slate-800 px-4 py-2 flex items-center justify-around shadow-2xl">
+        <a href="#destinations" class="flex flex-col items-center gap-1 text-slate-400 hover:text-emerald-400 text-[10px] font-medium transition">
+            <i class="fa-solid fa-map-location-dot text-base"></i>
+            <span>Explore</span>
+        </a>
+        <a href="#acteurs" class="flex flex-col items-center gap-1 text-slate-400 hover:text-emerald-400 text-[10px] font-medium transition">
+            <i class="fa-solid fa-users text-base"></i>
+            <span>Acteurs</span>
+        </a>
+        <a href="#wallet" class="flex flex-col items-center gap-1 text-neon font-bold text-[10px] transition">
+            <div class="w-10 h-10 rounded-full bg-emerald-500 text-slate-950 flex items-center justify-center shadow-lg shadow-emerald-500/40 -mt-5 border-2 border-slate-950">
+                <i class="fa-solid fa-wallet text-base"></i>
+            </div>
+            <span>Wallet</span>
+        </a>
+        <a href="#circuits" class="flex flex-col items-center gap-1 text-slate-400 hover:text-emerald-400 text-[10px] font-medium transition">
+            <i class="fa-solid fa-route text-base"></i>
+            <span>Circuits</span>
+        </a>
+    </nav>
+
+
+    <!-- Actor Modal Details -->
+    <div id="actorModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-lg w-full p-6 relative shadow-2xl space-y-4">
+            <button id="closeModalBtn" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center text-sm transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modalContent">
+                <!-- Javascript will inject modal data here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Main JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>
