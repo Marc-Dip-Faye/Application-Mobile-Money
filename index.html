@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teranga Tourisme Sénégal | Portail Officiel & Wallet Pass</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand-logo">
+                <div class="logo-badge"><i class="fa-solid fa-compass"></i></div>
+                <div class="logo-text">
+                    <span class="brand-title">TERANGA<span class="highlight">TOURISM</span></span>
+                    <span class="brand-sub">SÉNÉGAL</span>
+                </div>
+            </a>
+            <nav class="nav-links">
+                <a href="#hero" class="nav-link active"><i class="fa-solid fa-house"></i> Accueil</a>
+                <a href="#acteurs" class="nav-link"><i class="fa-solid fa-users"></i> Acteurs</a>
+                <a href="#wallet" class="nav-link"><i class="fa-solid fa-wallet"></i> Wallet Teranga</a>
+                <a href="#destinations" class="nav-link"><i class="fa-solid fa-map-location-dot"></i> Destinations</a>
+                <a href="#contact" class="nav-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="#wallet" class="btn btn-primary btn-sm"><i class="fa-solid fa-plus-circle"></i> Mon Wallet</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-badge"><i class="fa-solid fa-star"></i> Le Portail Officiel du Tourisme Sénégalais</span>
+            <h1 class="hero-title">Découvrez l'Élégance de la <span class="gradient-text">Teranga</span></h1>
+            <p class="hero-subtitle">
+                Explorez le réseau complet des hébergements, guides certifiés, artisans locaux, restaurants gastronomiques et services de transport au Sénégal.
+            </p>
+            <div class="hero-buttons">
+                <a href="#acteurs" class="btn btn-primary"><i class="fa-solid fa-compass"></i> Explorer les Acteurs</a>
+                <a href="#wallet" class="btn btn-secondary"><i class="fa-solid fa-wallet"></i> Digital Wallet Teranga</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">250+</span>
+                    <span class="stat-label">Acteurs Référencés</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">14</span>
+                    <span class="stat-label">Régions Couvertes</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Paiement Sécurisé</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Acteurs du Tourisme -->
+    <section class="section actors-section" id="acteurs">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-shapes"></i> Réseau Local</span>
+                <h2 class="section-title">Les Acteurs du Tourisme Sénégalais</h2>
+                <p class="section-subtitle">Trouvez les meilleurs prestataires vérifiés pour votre séjour sur mesure.</p>
+            </div>
+
+            <!-- Filters & Search -->
+            <div class="filter-wrapper">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="actor-search" placeholder="Rechercher un hôtel, un guide, une ville..." onkeyup="filterActors()">
+                </div>
+                <div class="filter-tabs" id="filter-tabs">
+                    <button class="filter-btn active" data-category="all" onclick="setCategoryFilter('all')"><i class="fa-solid fa-border-all"></i> Tous</button>
+                    <button class="filter-btn" data-category="hotel" onclick="setCategoryFilter('hotel')"><i class="fa-solid fa-hotel"></i> Hôtels & Lodges</button>
+                    <button class="filter-btn" data-category="guide" onclick="setCategoryFilter('guide')"><i class="fa-solid fa-person-hiking"></i> Guides</button>
+                    <button class="filter-btn" data-category="restaurant" onclick="setCategoryFilter('restaurant')"><i class="fa-solid fa-utensils"></i> Restaurants</button>
+                    <button class="filter-btn" data-category="artisan" onclick="setCategoryFilter('artisan')"><i class="fa-solid fa-gem"></i> Artisans</button>
+                    <button class="filter-btn" data-category="transport" onclick="setCategoryFilter('transport')"><i class="fa-solid fa-car"></i> Transports</button>
+                </div>
+            </div>
+
+            <!-- Grid Acteurs -->
+            <div class="actors-grid" id="actors-grid">
+                <!-- Injecté par JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Teranga Pass Wallet -->
+    <section class="section wallet-section" id="wallet">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag"><i class="fa-solid fa-shield-halved"></i> Système Monetique Bénévole</span>
+                <h2 class="section-title">Wallet Numérique <span class="gradient-text">Teranga Pass</span></h2>
+                <p class="section-subtitle">Gérez vos paiements touristiques en FCFA en toute sécurité sans frais cachés.</p>
+            </div>
+
+            <div class="wallet-container">
+                <!-- Dynamic Active Wallets Display / Card Preview -->
+                <div class="wallet-card-preview">
+                    <div class="pass-card">
+                        <div class="card-top">
+                            <span class="card-brand"><i class="fa-solid fa-compass"></i> TERANGA PASS</span>
+                            <span class="card-chip"><i class="fa-solid fa-microchip"></i></span>
+                        </div>
+                        <div class="card-body">
+                            <span class="card-label">Titulaire du compte</span>
+                            <h3 class="card-holder" id="preview-holder">Ousmane Sow</h3>
+                            <div class="card-info-row">
+                                <div>
+                                    <span class="card-label">Numéro Sénégal</span>
+                                    <p class="card-phone" id="preview-phone">+221 77 845 12 34</p>
+                                </div>
+                                <div>
+                                    <span class="card-label">Code Secret</span>
+                                    <p class="card-code" id="preview-code">••••</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-bottom">
+                            <div>
+                                <span class="card-label">Solde Actuel</span>
+                                <p class="card-balance" id="preview-balance">150,000 FCFA</p>
+                            </div>
+                            <span class="status-badge"><i class="fa-solid fa-circle-check"></i> Actif</span>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats Summary -->
+                    <div class="wallet-quick-stats">
+                        <div class="qstat-card">
+                            <i class="fa-solid fa-wallet qstat-icon"></i>
+                            <div>
+                                <h4 id="stat-wallets-count">1</h4>
+                                <p>Wallet(s) Actif(s)</p>
+                            </div>
+                        </div>
+                        <div class="qstat-card">
+                            <i class="fa-solid fa-arrow-right-arrow-left qstat-icon"></i>
+                            <div>
+                                <h4 id="stat-trans-count">0</h4>
+                                <p>Transactions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wallet Management Console -->
+                <div class="wallet-console">
+                    <div class="console-tabs">
+                        <button class="console-tab active" onclick="switchWalletTab('create')"><i class="fa-solid fa-user-plus"></i> Créer Wallet</button>
+                        <button class="console-tab" onclick="switchWalletTab('depot')"><i class="fa-solid fa-arrow-down-to-line"></i> Dépôt</button>
+                        <button class="console-tab" onclick="switchWalletTab('retrait')"><i class="fa-solid fa-arrow-up-from-line"></i> Retrait</button>
+                        <button class="console-tab" onclick="switchWalletTab('history')"><i class="fa-solid fa-list-check"></i> Historique</button>
+                    </div>
+
+                    <div class="console-body">
+                        <!-- Alert Message Container -->
+                        <div id="wallet-alert" class="alert-box hidden"></div>
+
+                        <!-- Form 1: Créer Wallet -->
+                        <form id="form-create-wallet" class="wallet-form" onsubmit="handleCreateWallet(event)">
+                            <h3 class="form-title">Créer un nouveau Wallet Teranga</h3>
+                            <div class="form-group">
+                                <label for="create-nom"><i class="fa-solid fa-user"></i> Nom & Prénom du titulaire</label>
+                                <input type="text" id="create-nom" placeholder="Ex: Aminata Diallo" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="create-phone"><i class="fa-solid fa-phone"></i> Téléphone Sénégal (9 chiffres)</label>
+                                    <input type="text" id="create-phone" placeholder="Ex: 771234567" required>
+                                    <small class="form-hint">Doit commencer par 70, 75, 76, 77 ou 78.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="create-code"><i class="fa-solid fa-lock"></i> Code Secret (4 chiffres)</label>
+                                    <input type="password" id="create-code" maxlength="4" placeholder="Ex: 1234" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="create-solde"><i class="fa-solid fa-coins"></i> Solde Initial (FCFA)</label>
+                                <input type="number" id="create-solde" min="0" placeholder="Ex: 25000" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-plus-circle"></i> Valider la Création</button>
+                        </form>
+
+                        <!-- Form 2: Dépôt -->
+                        <form id="form-depot" class="wallet-form hidden" onsubmit="handleDepot(event)">
+                            <h3 class="form-title">Effectuer un Dépôt</h3>
+                            <div class="form-group">
+                                <label for="depot-phone"><i class="fa-solid fa-phone"></i> Numéro Téléphone du Wallet</label>
+                                <input type="text" id="depot-phone" placeholder="Ex: 771234567" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="depot-montant"><i class="fa-solid fa-money-bill-wave"></i> Montant du Dépôt (FCFA)</label>
+                                <input type="number" id="depot-montant" min="1" placeholder="Ex: 10000" required>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-block"><i class="fa-solid fa-arrow-down-to-line"></i> Confirmer le Dépôt</button>
+                        </form>
+
+                        <!-- Form 3: Retrait -->
+                        <form id="form-retrait" class="wallet-form hidden" onsubmit="handleRetrait(event)">
+                            <h3 class="form-title">Effectuer un Retrait</h3>
+                            <div class="form-group">
+                                <label for="retrait-phone"><i class="fa-solid fa-phone"></i> Numéro Téléphone du Wallet</label>
+                                <input type="text" id="retrait-phone" placeholder="Ex: 771234567" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="retrait-montant"><i class="fa-solid fa-money-bill-wave"></i> Montant à Retirer (FCFA)</label>
+                                <input type="number" id="retrait-montant" min="1" placeholder="Ex: 15000" oninput="updateCalculatedFees()" required>
+                            </div>
+                            <div class="fee-calculator-box">
+                                <div class="fee-item"><span>Frais de retrait :</span> <strong id="calc-frais">0 FCFA</strong></div>
+                                <div class="fee-item"><span>Total débité :</span> <strong id="calc-total" class="highlight-text">0 FCFA</strong></div>
+                                <small class="fee-note">Barème : &le;10k &rarr; 200F | &le;100k &rarr; 500F | &gt;100k &rarr; 1% (max 5000F)</small>
+                            </div>
+                            <button type="submit" class="btn btn-warning btn-block"><i class="fa-solid fa-arrow-up-from-line"></i> Confirmer le Retrait</button>
+                        </form>
+
+                        <!-- Panel 4: Historique des Transactions -->
+                        <div id="panel-history" class="wallet-panel hidden">
+                            <h3 class="form-title">Historique des Transactions</h3>
+                            <div class="history-list" id="history-list">
+                                <!-- Injecté par JS -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Incontournables -->
+    <section class="section destinations-section" id="destinations">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-map"></i> Incontournables</span>
+                <h2 class="section-title">Les Joyaux du Sénégal</h2>
+                <p class="section-subtitle">Découvrez les lieux mythiques à visiter absolument lors de votre voyage.</p>
+            </div>
+
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=800&q=80" alt="Île de Gorée" class="dest-img">
+                    <div class="dest-content">
+                        <span class="dest-region"><i class="fa-solid fa-location-dot"></i> Dakar</span>
+                        <h3 class="dest-title">Île de Gorée</h3>
+                        <p class="dest-desc">Site classé UNESCO, empreint de mémoire, d'architecture coloniale aux façades pimpantes et de ruelles tranquilles.</p>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Saly & Petite Côte" class="dest-img">
+                    <div class="dest-content">
+                        <span class="dest-region"><i class="fa-solid fa-location-dot"></i> Thies / Mbour</span>
+                        <h3 class="dest-title">Saly & Petite Côte</h3>
+                        <p class="dest-desc">Stations balnéaires bordées de cocotiers, de plages de sable fin, idéales pour le nautisme et la détente.</p>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80" alt="Casamance & Cap Skirring" class="dest-img">
+                    <div class="dest-content">
+                        <span class="dest-region"><i class="fa-solid fa-location-dot"></i> Ziguinchor</span>
+                        <h3 class="dest-title">Casamance & Cap Skirring</h3>
+                        <p class="dest-desc">Forêts luxuriantes, bolongs labyrinthiques, traditions diolas authentiques et plages paradisiaques.</p>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=800&q=80" alt="Saint-Louis du Sénégal" class="dest-img">
+                    <div class="dest-content">
+                        <span class="dest-region"><i class="fa-solid fa-location-dot"></i> Saint-Louis</span>
+                        <h3 class="dest-title">Saint-Louis du Sénégal</h3>
+                        <p class="dest-desc">Ancienne capitale de l'Afrique Occidentale Française, réputée pour le pont Faidherbe et son festival de Jazz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Détails Acteur -->
+    <div class="modal" id="actor-modal">
+        <div class="modal-backdrop" onclick="closeActorModal()"></div>
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeActorModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div id="modal-actor-content">
+                <!-- Directement peuplé par JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact & Section Rejoindre -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <div class="contact-text">
+                    <h2>Vous êtes un acteur du tourisme au Sénégal ?</h2>
+                    <p>Rejoignez gratuitement la plateforme officielle et bénéficiez de l'écosystème Teranga Pass pour recevoir les réservations de voyageurs du monde entier.</p>
+                </div>
+                <div class="contact-action">
+                    <button class="btn btn-light" onclick="alert('Formulaire de candidature envoyé ! Un conseiller vous recontactera sous 24h.')"><i class="fa-solid fa-paper-plane"></i> Devenir Partenaire</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <a href="#" class="brand-logo">
+                    <div class="logo-badge"><i class="fa-solid fa-compass"></i></div>
+                    <div class="logo-text">
+                        <span class="brand-title">TERANGA<span class="highlight">TOURISM</span></span>
+                        <span class="brand-sub">SÉNÉGAL</span>
+                    </div>
+                </a>
+                <p class="footer-desc">
+                    Plateforme officielle de valorisation des acteurs touristiques du Sénégal et système de paiement Teranga Pass.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-heading">Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="#hero">Accueil</a></li>
+                    <li><a href="#acteurs">Acteurs Touristiques</a></li>
+                    <li><a href="#wallet">Wallet Teranga</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-heading">Catégories</h4>
+                <ul class="footer-links">
+                    <li><a href="#acteurs" onclick="setCategoryFilter('hotel')">Hôtels & Lodges</a></li>
+                    <li><a href="#acteurs" onclick="setCategoryFilter('guide')">Guides Agréés</a></li>
+                    <li><a href="#acteurs" onclick="setCategoryFilter('restaurant')">Gastronomie Local</a></li>
+                    <li><a href="#acteurs" onclick="setCategoryFilter('artisan')">Artisans & Galerie</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-heading">Contact & Assistance</h4>
+                <p class="footer-info"><i class="fa-solid fa-location-dot"></i> Place de l'Indépendance, Dakar, Sénégal</p>
+                <p class="footer-info"><i class="fa-solid fa-phone"></i> +221 33 800 00 00</p>
+                <p class="footer-info"><i class="fa-solid fa-envelope"></i> contact@terangatourisme.sn</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Teranga Tourisme Sénégal. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation Dock (Bottom) -->
+    <div class="mobile-dock">
+        <a href="#hero" class="dock-item active">
+            <i class="fa-solid fa-house"></i>
+            <span>Accueil</span>
+        </a>
+        <a href="#acteurs" class="dock-item">
+            <i class="fa-solid fa-users"></i>
+            <span>Acteurs</span>
+        </a>
+        <a href="#wallet" class="dock-item">
+            <i class="fa-solid fa-wallet"></i>
+            <span>Wallet</span>
+        </a>
+        <a href="#destinations" class="dock-item">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Lieux</span>
+        </a>
+        <a href="#contact" class="dock-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Contact</span>
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
