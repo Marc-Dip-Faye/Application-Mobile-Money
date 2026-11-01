@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraAfrika — Portail Officiel des Acteurs du Tourisme au Sénégal</title>
+    <!-- Google Fonts: Luxury Serif & Modern Editorial Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header / Navbar Top -->
+    <header class="navbar-header" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="brand-logo" aria-label="TerraAfrika Accueil">
+                <span class="logo-icon"><i class="fa-solid fa-compass"></i></span>
+                <div class="logo-text">
+                    <span class="brand-title">Terra<span class="highlight">Afrika</span></span>
+                    <span class="brand-tagline">Sénégal • Teranga Prestige</span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav" aria-label="Navigation principale">
+                <a href="#hero" class="nav-link active"><i class="fa-solid fa-house"></i> Accueil</a>
+                <a href="#acteurs-section" class="nav-link"><i class="fa-solid fa-users-viewfinder"></i> Acteurs</a>
+                <a href="#itinerary-section" class="nav-link"><i class="fa-solid fa-map-location-dot"></i> Itinéraires</a>
+                <a href="#bookmarks-section" class="nav-link"><i class="fa-solid fa-bookmark"></i> Favoris <span id="fav-count-badge" class="badge">0</span></a>
+                <a href="#contact-section" class="nav-link"><i class="fa-solid fa-certificate"></i> Devenir Partenaire</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="btn-neon" id="btn-add-actor">
+                    <i class="fa-solid fa-plus-circle"></i> <span>Inscrire un Acteur</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="hero-badge">
+                <i class="fa-solid fa-certificate"></i> Portail d'Excellence du Tourisme au Sénégal
+            </div>
+            <h1 class="hero-title">
+                Explorez le Sénégal d'Exception avec ses <span class="glow-text">Acteurs Référents</span>
+            </h1>
+            <p class="hero-subtitle">
+                Écolodges d'exception, guides officiels du patrimoine, agences d'excursions nautiques, tables gastronomiques et artisans de renommée. Entrez en contact direct avec les bâtisseurs de la Teranga sénégalaise.
+            </p>
+
+            <!-- Search Bar in Hero -->
+            <div class="hero-search-box">
+                <div class="search-input-group">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="hero-search-input" placeholder="Que recherchez-vous ? (ex: Écolodge Lompoul, Guide Gorée, Pirogue Saloum...)">
+                </div>
+                <div class="search-select-group">
+                    <i class="fa-solid fa-location-dot select-icon"></i>
+                    <select id="hero-region-select">
+                        <option value="">Toutes les Régions du Sénégal</option>
+                        <option value="Dakar">Dakar & Île de Gorée</option>
+                        <option value="Petite Côte">Petite Côte, Saly & Somone</option>
+                        <option value="Saint-Louis">Saint-Louis & Fleuve Sénégal</option>
+                        <option value="Sine-Saloum">Delta du Sine-Saloum & Toubacouta</option>
+                        <option value="Casamance">Casamance, Cap Skirring & Oussouye</option>
+                        <option value="Kédougou">Kédougou & Parc de Niokolo-Koba</option>
+                    </select>
+                </div>
+                <button class="btn-hero-search" id="hero-search-btn">
+                    <span>Explorer</span> <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-num">350+</span>
+                    <span class="stat-label">Acteurs Vérifiés & Agréés</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-num">14</span>
+                    <span class="stat-label">Régions Couvertes</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-num">100%</span>
+                    <span class="stat-label">Teranga Éthique & Directe</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-num">4.9 ★</span>
+                    <span class="stat-label">Indice d'Excellence Voyageurs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Section: Tourism Actors Directory -->
+    <section class="section-directory" id="acteurs-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle"><i class="fa-solid fa-compass"></i> Répertoire Certifié</span>
+                <h2 class="section-title">Les Différents <span class="glow-text">Acteurs du Tourisme</span></h2>
+                <p class="section-desc">Hôtels, lodges, guides agréés, organisateurs de safaris et artisans locaux : choisissez vos interlocuteurs de confiance au Sénégal.</p>
+            </div>
+
+            <!-- Categories Tabs -->
+            <div class="categories-bar-wrapper">
+                <div class="categories-scroll" id="category-filters">
+                    <button class="category-btn active" data-category="all">
+                        <i class="fa-solid fa-layer-group"></i> <span>Tous les Acteurs</span>
+                    </button>
+                    <button class="category-btn" data-category="hotel">
+                        <i class="fa-solid fa-hotel"></i> <span>Hôtels & Éco-Lodges</span>
+                    </button>
+                    <button class="category-btn" data-category="guide">
+                        <i class="fa-solid fa-user-tie"></i> <span>Guides Touristiques</span>
+                    </button>
+                    <button class="category-btn" data-category="agency">
+                        <i class="fa-solid fa-compass-drafting"></i> <span>Agences & Excursions</span>
+                    </button>
+                    <button class="category-btn" data-category="restaurant">
+                        <i class="fa-solid fa-utensils"></i> <span>Gastronomie & Terroir</span>
+                    </button>
+                    <button class="category-btn" data-category="artisan">
+                        <i class="fa-solid fa-palette"></i> <span>Artisans & Culture</span>
+                    </button>
+                    <button class="category-btn" data-category="transport">
+                        <i class="fa-solid fa-van-shuttle"></i> <span>Transports & Safaris</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Additional Controls Bar -->
+            <div class="controls-bar">
+                <div class="active-count-text" id="actors-count">
+                    Chargement des acteurs en cours...
+                </div>
+                <div class="sort-wrapper">
+                    <label for="sort-select"><i class="fa-solid fa-arrow-down-wide-short"></i> Trier par :</label>
+                    <select id="sort-select">
+                        <option value="featured">Sélection Teranga (En Vedette)</option>
+                        <option value="rating">Meilleures Évaluations (★)</option>
+                        <option value="reviews">Nombre d'Avis Certifiés</option>
+                        <option value="name">Nom Alphabétique (A-Z)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Grid Container for Actors -->
+            <div class="actors-grid" id="actors-grid">
+                <!-- Dynamically populated via JS -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state hidden" id="empty-state">
+                <i class="fa-solid fa-magnifying-glass-location empty-icon"></i>
+                <h3>Aucun acteur correspondant à vos critères</h3>
+                <p>Modifiez vos filtres ou relancez une recherche par région ou mot-clé.</p>
+                <button class="btn-neon-outline" id="reset-filters-btn">
+                    <i class="fa-solid fa-rotate-left"></i> Réinitialiser les filtres
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Itinerary Planner -->
+    <section class="section-itinerary" id="itinerary-section">
+        <div class="container">
+            <div class="itinerary-card">
+                <div class="itinerary-info">
+                    <span class="section-subtitle"><i class="fa-solid fa-wand-magic-sparkles"></i> Planificateur Intelligent</span>
+                    <h2 class="section-title">Composez votre <span class="glow-text">Itinéraire Sur-Mesure</span></h2>
+                    <p>Associez hébergements de charme, guides diplômés et transports fiables pour un séjour inoubliable au pays de la Teranga.</p>
+
+                    <div class="itinerary-form">
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-map-location-dot"></i> Région Prioritaire</label>
+                            <select id="itinerary-region">
+                                <option value="Dakar & Gorée">Dakar, Île de Gorée & Corniche</option>
+                                <option value="Sine-Saloum">Delta du Sine-Saloum & Île aux Coquillages</option>
+                                <option value="Casamance">Casamance Verte & Plages de Cap Skirring</option>
+                                <option value="Saint-Louis">Saint-Louis Coloniale & Parc du Djoudj</option>
+                                <option value="Petite Côte">Petite Côte, Saly & Réserve de Bandia</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-calendar-days"></i> Durée du Séjour</label>
+                            <select id="itinerary-duration">
+                                <option value="3 jours">3 Jours — Escapade Découverte Express</option>
+                                <option value="7 jours" selected>7 Jours — Immersion Classique Teranga</option>
+                                <option value="14 jours">14 Jours — Grande Traversée du Sénégal</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-compass"></i> Profil & Thématique</label>
+                            <select id="itinerary-style">
+                                <option value="Ecotourisme & Nature">Écotourisme, Lodges Éco-responsables & Parcs</option>
+                                <option value="Culture & Histoire">Histoire, Patrimoine UNESCO & Musées</option>
+                                <option value="Détente & Plage">Détente Balnéaire, Océan & Délices Marins</option>
+                                <option value="Aventure & Safari">Safari Bandia, Pirogue dans les Bolongs & Désert</option>
+                            </select>
+                        </div>
+                        <button class="btn-neon" id="generate-itinerary-btn">
+                            <i class="fa-solid fa-route"></i> Générer mon Parcours Idéal
+                        </button>
+                    </div>
+                </div>
+
+                <div class="itinerary-result-box" id="itinerary-result">
+                    <div class="result-placeholder">
+                        <i class="fa-solid fa-map-location-dot placeholder-icon"></i>
+                        <h3>Votre itinéraire optimisé s'affichera ici</h3>
+                        <p>Sélectionnez votre destination et votre durée pour découvrir nos recommandations d'acteurs locaux recommandés.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mes Favoris Section -->
+    <section class="section-bookmarks" id="bookmarks-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle"><i class="fa-solid fa-heart"></i> Carnet de Voyage</span>
+                <h2 class="section-title">Mes Acteurs <span class="glow-text">Favoris</span></h2>
+                <p class="section-desc">Conservez vos prestataires favoris pour organiser vos contacts WhatsApp et téléphoniques en toute sérénité.</p>
+            </div>
+
+            <div class="actors-grid" id="bookmarks-grid">
+                <!-- Dynamically rendered via JS -->
+            </div>
+
+            <div class="empty-bookmarks hidden" id="empty-bookmarks">
+                <i class="fa-regular fa-bookmark empty-icon"></i>
+                <p>Vous n'avez pas encore sauvegardé d'acteurs touristiques.</p>
+                <a href="#acteurs-section" class="btn-neon-outline">
+                    <i class="fa-solid fa-magnifying-glass"></i> Parcourir l'annuaire
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Inscription Modal/Section -->
+    <section class="section-contact" id="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-text">
+                    <span class="section-subtitle"><i class="fa-solid fa-award"></i> Adhésion Professionnelle</span>
+                    <h2 class="section-title">Vous êtes un <span class="glow-text">Professionnel du Tourisme</span> au Sénégal ?</h2>
+                    <p>Rejoignez le réseau officiel TerraAfrika et faites rayonner vos prestations auprès des voyageurs du monde entier sans commissions intermédiaires abusives.</p>
+
+                    <div class="contact-benefits">
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fa-solid fa-circle-check"></i></div>
+                            <div>
+                                <h4>Label Qualité & Teranga Vérifié</h4>
+                                <p>Un gage de crédibilité officiel auprès des clientèles internationales et locales.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fa-solid fa-circle-check"></i></div>
+                            <div>
+                                <h4>Prise de Contact Directe WhatsApp & Téléphone</h4>
+                                <p>Vos clients vous contactent en direct sans intermédiaire ni frais cachés.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fa-solid fa-circle-check"></i></div>
+                            <div>
+                                <h4>Mise en Avant sur le Portail & Itinéraires</h4>
+                                <p>Intégration prioritaire dans les suggestions de circuits générées par les touristes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-card">
+                    <div class="form-header">
+                        <span class="form-badge"><i class="fa-solid fa-shield-halved"></i> Adhésion Rapide</span>
+                        <h3>Inscrire mon Établissement / Activité</h3>
+                    </div>
+                    <form id="actor-register-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-building"></i> Nom de la Structure *</label>
+                                <input type="text" required placeholder="Ex: Campement du Sine-Saloum">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-tag"></i> Catégorie d'Activité *</label>
+                                <select required>
+                                    <option value="hotel">Hôtel & Éco-Lodge</option>
+                                    <option value="guide">Guide Touristique Agréé</option>
+                                    <option value="agency">Agence & Excursionniste</option>
+                                    <option value="restaurant">Gastronomie & Table Traditionnelle</option>
+                                    <option value="artisan">Artisanat d'Art & Création Culturelle</option>
+                                    <option value="transport">Transport Touristique & Chauffeur Privé</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fa-solid fa-map-pin"></i> Région & Localité *</label>
+                                <input type="text" required placeholder="Ex: Toubacouta, Gorée, Saly, Saint-Louis...">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fa-brands fa-whatsapp"></i> Numéro WhatsApp Pro *</label>
+                                <input type="tel" required placeholder="+221 77 000 00 00">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-pen-fancy"></i> Présentation des Prestations & Atouts *</label>
+                            <textarea rows="3" required placeholder="Présentez vos hébergements, circuits proposés, tarifs indicatifs et valeurs écologiques..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-neon full-width">
+                            <i class="fa-solid fa-paper-plane"></i> Soumettre ma Demande d'Adhésion
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-col main-col">
+                <a href="#" class="brand-logo" aria-label="TerraAfrika Logo">
+                    <span class="logo-icon"><i class="fa-solid fa-compass"></i></span>
+                    <div class="logo-text">
+                        <span class="brand-title">Terra<span class="highlight">Afrika</span></span>
+                        <span class="brand-tagline">Sénégal Tourisme Durable</span>
+                    </div>
+                </a>
+                <p>La référence numérique du tourisme d'excellence au Sénégal. Valoriser les professionnels engagés, préserver le patrimoine culturel et naturel de la Teranga.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook TerraAfrika"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram TerraAfrika"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn TerraAfrika"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="WhatsApp TerraAfrika"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Destinations Clés</h4>
+                <ul>
+                    <li><a href="#acteurs-section">Dakar & Île Historique de Gorée</a></li>
+                    <li><a href="#acteurs-section">Saint-Louis & Parc du Djoudj</a></li>
+                    <li><a href="#acteurs-section">Delta du Sine-Saloum & Bolongs</a></li>
+                    <li><a href="#acteurs-section">Petite Côte, Saly & Somone</a></li>
+                    <li><a href="#acteurs-section">Casamance & Cap Skirring</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Corps de Métiers</h4>
+                <ul>
+                    <li><a href="#acteurs-section">Éco-Lodges & Résidences Hôtelières</a></li>
+                    <li><a href="#acteurs-section">Guides Historiques Certifiés</a></li>
+                    <li><a href="#acteurs-section">Agences de Safaris & Circuits</a></li>
+                    <li><a href="#acteurs-section">Gastronomie & Pêche Locale</a></li>
+                    <li><a href="#acteurs-section">Chauffeurs & Flotte VIP 4x4</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Engagements</h4>
+                <ul>
+                    <li><a href="#">Charte Nationale de la Teranga</a></li>
+                    <li><a href="#">Écotourisme & Zéro Déchet Plastique</a></li>
+                    <li><a href="#">Mentions Légales & Confidentialité</a></li>
+                    <li><a href="#">Assistance aux Voyageurs</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container bottom-flex">
+                <p>&copy; 2025 TerraAfrika — L'Excellence du Tourisme au Sénégal. Tous droits réservés.</p>
+                <p class="neon-credit"><i class="fa-solid fa-shield-halved"></i> Plateforme 100% Teranga Certifiée & Sécurisée</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Detail Modal -->
+    <div class="modal-backdrop hidden" id="actor-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-container">
+            <button class="modal-close-btn" id="modal-close" aria-label="Fermer la fenêtre"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-body" id="modal-body-content">
+                <!-- Dynamically filled by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation Dock (Native Mobile App appearance) -->
+    <nav class="mobile-dock" id="mobile-dock" aria-label="Navigation Mobile">
+        <a href="#hero" class="dock-item active" data-dock="hero">
+            <i class="fa-solid fa-compass"></i>
+            <span>Accueil</span>
+        </a>
+        <a href="#acteurs-section" class="dock-item" data-dock="acteurs-section">
+            <i class="fa-solid fa-users-viewfinder"></i>
+            <span>Acteurs</span>
+        </a>
+        <a href="#itinerary-section" class="dock-item" data-dock="itinerary-section">
+            <i class="fa-solid fa-route"></i>
+            <span>Circuit</span>
+        </a>
+        <a href="#bookmarks-section" class="dock-item" data-dock="bookmarks-section">
+            <i class="fa-solid fa-bookmark"></i>
+            <span>Favoris</span>
+        </a>
+        <a href="#contact-section" class="dock-item" data-dock="contact-section">
+            <i class="fa-solid fa-handshake"></i>
+            <span>Adhérer</span>
+        </a>
+    </nav>
+
+    <!-- JS Application -->
+    <script src="app.js"></script>
+</body>
+</html>
